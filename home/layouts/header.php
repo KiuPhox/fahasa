@@ -68,17 +68,35 @@
                 <h5>
                     Danh Mục Sản Phẩm
                 </h5>
-                <ul class="nav-link">
-                    <li onmouseover="ShowSubMenu('Sách Trong Nước');"><a href="">Sách Trong Nước</a></li>
-                    <li onmouseover="ShowSubMenu('Sách Nước Ngoài');"><a href="">Sách Nước Ngoài</a></li>
-                    <li onmouseover="ShowSubMenu('VPP - Dụng Cụ Học Sinh');"><a href="">VPP - Dụng Cụ Học Sinh</a></li>
-                    <li onmouseover="ShowSubMenu('Đồ Chơi');"><a href="">Đồ Chơi</a></li>
-                    <li onmouseover="ShowSubMenu('Làm Đẹp - Sức Khoẻ');"><a href="">Làm Đẹp - Sức Khoẻ</a></li>
-                    <li onmouseover="ShowSubMenu('Hành Trang Đến Trường');"><a href="">Hành Trang Đến Trường</a></li>
-                    <li onmouseover="ShowSubMenu('VPP - DCHS Theo Thương Hiệu');"><a href="">VPP - DCHS Theo Thương Hiệu</a></li>
-                    <li onmouseover="ShowSubMenu('Đồ Chơi Theo Thương Hiệu');"><a href="">Đồ Chơi Theo Thương Hiệu</a></li>
-                    <li onmouseover="ShowSubMenu('Bách Hoá Online - Lưu Niệm');"><a href="">Bách Hoá Online - Lưu Niệm</a></li>
-                </ul>
+                <div class="nav-link">
+                    <a href="" onmouseover="ShowSubMenu('Sách Trong Nước');">
+                        <span>Sách Trong Nước</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('Sách Nước Ngoài');">
+                        <span>Sách Nước Ngoài</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('VPP - Dụng Cụ Học Sinh');">
+                        <span>VPP - Dụng Cụ Học Sinh</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('Đồ Chơi');">
+                        <span>Đồ Chơi</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('Làm Đẹp - Sức Khoẻ');">
+                        <span>Làm Đẹp - Sức Khoẻ</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('Hành Trang Đến Trường');">
+                        <span>Hành Trang Đến Trường</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('VPP - DCHS Theo Thương Hiệu');">
+                        <span>VPP - DCHS Theo Thương Hiệu</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('Đồ Chơi Theo Thương Hiệu');">
+                        <span>Đồ Chơi Theo Thương Hiệu</span>
+                    </a>
+                    <a href="" onmouseover="ShowSubMenu('Bách Hoá Online - Lưu Niệm');">
+                        <span>Bách Hoá Online - Lưu Niệm</span>
+                    </a>
+                </div>
             </div>
             <div style="display: block" id="sub-menu">
                 <div class="row">
@@ -720,7 +738,8 @@
     list_menu_icon = document.getElementById('list-menu-icon');
     category = document.getElementById('category');
     sub_menu = document.getElementById('sub-menu');
-    category_li = document.querySelectorAll('.left-category .nav-link li');
+    category_a = document.querySelectorAll('.left-category .nav-link a');
+
 
     list_menu_icon.addEventListener("mouseover", function() {
         category.style.display = 'block';
@@ -731,10 +750,10 @@
     })
 
     function ShowSubMenu(str) {
-        category_li.forEach(function(item) {
+        category_a.forEach(function(item) {
             item.style.backgroundColor = "white";
-            if (item.textContent == str) {
-                console.log('a');
+            console.log(item.childNodes[1].textContent);
+            if (item.childNodes[1].textContent == str) {
                 item.style.backgroundColor = '#f2f4f5';
             };
         });

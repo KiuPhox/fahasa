@@ -5,40 +5,79 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Nhập/Đăng Kí</title>
+    <title>Khách hàng đăng nhập</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../icon/fontawesome/css/all.css">
     <link rel="stylesheet" href="../CSS/style.css">
     <style>
         .login-form {
-            width: 400px;
-            height: 470px;
+            width: 450px;
+            max-width: calc(100vw - 20px);
             margin: auto;
             margin-top: 100px;
         }
 
-        input {
+        .login-form input {
             width: 100%;
             height: 40px;
             padding-left: 10px;
-            border-radius: 5px;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+
+        .login-form input:focus-visible {
+            outline: none;
+        }
+
+        .login-form label {
+            font-size: 1.1em;
+        }
+
+        .nav-tabs {
+            border: none;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            transition: all 0.3s;
+            font-size: 1.1em;
+            font-weight: normal;
+        }
+
+        .nav-tabs .nav-link:focus {
+            color: #c92127;
+        }
+
+        .nav-tabs .nav-link:hover {
+            color: #c92127;
+        }
+
+        .nav-tabs .nav-link.active {
+            color: #c92127;
         }
 
         span {
             font-size: 14px;
         }
 
-        .showpass {
-            color: blueviolet;
-            cursor: pointer;
+        .input-group {
+            align-items: center;
+        }
+
+        .showpass,
+        .show-regis,
+        .OTP {
             position: absolute;
-            top: 280px;
-            right: 595px;
+            right: 12px;
+            color: #2489F4;
+            cursor: pointer;
+            user-select: none;
         }
 
         .forgot-pass {
             margin-top: 5px;
+            text-align: end;
         }
 
         .forgot-pass>span {
@@ -51,35 +90,51 @@
         }
 
         .login-button,
-        .skip-button,
         .loginfb-button {
-            border-radius: 7px;
-            width: 80%;
+            width: 245px;
+            border: none;
+            padding: 8px 0;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 700;
+        }
+
+        .login-button {
+            background: linear-gradient(90deg, rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 100%);
+            color: #636363;
+
+        }
+
+        .login-button:focus {
+            outline: none;
+        }
+
+        .login-button:hover {
+            cursor: default;
+        }
+
+        .loginfb-button {
+            background-color: #2489F4;
+            color: white;
+            border: 1px solid #2489F4;
         }
 
         .login-button-group {
             margin-top: 20px;
         }
 
-        .OTP {
-            color: blue;
-            cursor: pointer;
-            position: absolute;
-            top: 200px;
-            right: 595px;
+        .form-control {
+            color: #495057;
         }
 
-        .show-regis {
-            position: absolute;
-            color: blue;
-            cursor: pointer;
-            top: 364px;
-            right: 595px;
+        .input-group>.form-control:focus {
+            z-index: 0;
         }
 
-        body {
-
-            background-size: cover
+        .container {
+            width: 100%;
+            padding: 0;
+            margin: auto;
         }
     </style>
 </head>
@@ -93,7 +148,7 @@
                 <a class="nav-link active" data-toggle="tab" href="#dangnhap">Đăng Nhập</a>
             </li>
             <li class="nav-item" style="width: 50%; text-align: center;">
-                <a class="nav-link" data-toggle="tab" href="#dangki">Đăng Kí</a>
+                <a class="nav-link" data-toggle="tab" href="#dangki">Đăng Ký</a>
             </li>
         </ul>
 
@@ -101,50 +156,48 @@
         <div class="tab-content">
             <div class="tab-pane active container" id="dangnhap">
                 <form action="" style="margin-top: 15px;">
-                    <div>
-                        <label for="sdt">Số điện thoại/Email</label>
+                    <div class="mb-3">
+                        <label for="sdt">Email</label>
                         <br>
-                        <input type="text" id="sdt" placeholder="Nhập số điện thoại hoặc email">
+                        <input maxlength="200" class="form-control" type="email" name="email" placeholder="Nhập email">
                     </div>
-                    <div style="margin-top: 10px;">
-                        <label for="matkhau">Mật khẩu</label>
-                        <br>
-                        <input type="password" id="matkhau" placeholder="Nhập mật khẩu">
-                        <span class="showpass">Hiện mật khẩu</span>
+                    <label for="matkhau">Mật khẩu</label>
+                    <div class="input-group">
+                        <input class="form-control" type="password" id="matkhau" placeholder="Nhập mật khẩu">
+                        <span class="showpass">Hiện</span>
                     </div>
                 </form>
-                <div class="forgot-pass"><span>Quên mật khẩu ?</span></div>
+                <div class="forgot-pass mt-3"><span>Quên mật khẩu ?</span></div>
                 <div class="group-button">
-                    <div class="login-button-group"><button type="button" class="btn btn-success login-button">Đăng Nhập</button></div>
-                    <div class="login-button-group"><button type="button" class="btn btn-outline-danger skip-button">Bỏ qua</button></div>
-                    <div class="login-button-group"><button type="button" class="btn btn-primary loginfb-button" style="white-space: nowrap;"><i class="fab fa-facebook"></i> Đăng nhập bằng Facebook</button></div>
+                    <div class="login-button-group"><button type="button" class="login-button">Đăng Nhập</button></div>
+                    <div class="login-button-group"><button type="button" class="loginfb-button" style="white-space: nowrap;"><i class="fab fa-facebook"></i> Đăng nhập bằng Facebook</button></div>
                 </div>
             </div>
             <div class="tab-pane container" id="dangki">
                 <form action="">
                     <div style="margin-top: 15px;">
-                        <label for="sdt-2">Số điện thoại/Email</label>
-                        <br>
-                        <input type="text" id="sdt-2" placeholder="Nhập số điện thoại hoặc email">
-                        <span class="OTP">Gửi mã OTP</span>
+                        <label for="email">Email</label>
+                        <div class="input-group">
+                            <input name="email" class="form-control" type="text" id="sdt-2" placeholder="Nhập số điện thoại hoặc email">
+                            <span class="OTP">Gửi mã OTP</span>
+                        </div>
                     </div>
                     <div style="margin-top: 10px;">
                         <label for="otp">Mã xác nhận OTP</label>
                         <br>
-                        <input type="text" id="otp" placeholder="6 kí tự">
+                        <input class="form-control" type="text" id="otp" placeholder="6 kí tự">
                     </div>
-                    <div style="margin-top: 10px;">
-                        <label for="matkhau">Mật khẩu</label>
-                        <br>
-                        <input type="password" id="matkhau" placeholder="Nhập mật khẩu">
+                    <label class="mt-3" for="matkhau">Mật khẩu</label>
+                    <div class="input-group">
+                        <input class="form-control" type="password" id="matkhau" placeholder="Nhập mật khẩu">
+                        <span class="show-regis">Hiện</span>
                     </div>
-                    <span class="show-regis">Hiện</span>
+
                 </form>
                 <div class="group-button">
-                    <div class="login-button-group"><button type="button" class="btn btn-success login-button">Đăng Kí</button></div>
-                    <div class="login-button-group"><button type="button" class="btn btn-outline-danger skip-button">Bỏ qua</button></div>
+                    <div class="login-button-group"><button type="button" class="login-button">Đăng Kí</button></div>
                     <div style="font-size: 12px; margin-top: 10px;">
-                        <div>Bằng việc đăng ký, bạn đã đồng ý với Team12hasa.com về</div>
+                        <div>Bằng việc đăng ký, bạn đã đồng ý với Fahasa.com về</div>
                         <div><a style="text-decoration: none;" href="">Điều khoản dịch vụ </a>&#38;<a style="text-decoration: none;" href=""> Chính sách bảo mật</a></div>
                     </div>
                 </div>
