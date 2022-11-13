@@ -12,6 +12,7 @@ a {
 
 body {
     color: #333333;
+    background-color: #f4f4f4;
     font-size: 13px;
     font-weight: 400;
 }
@@ -355,4 +356,8 @@ a.product {
 
 .carousel-inner p.bot {
     text-decoration: line-through;
+}
+
+.bg-white {
+    border-radius: 10px;
 }

@@ -869,43 +869,41 @@
                         <div class="widget">
                             <h3>Fiction</h3>
                             <ul class="nav-link">
-                                <li><a href="">Comtemporary</a></li>
+                                <li><a href="">Comtemporary Fiction</a></li>
                                 <li><a href="">Romance</a></li>
-                                <li><a href="">Light Novel</a></li>
-                                <li><a href="">Ngôn tình</a></li>
+                                <li><a href="">Fantasy</a></li>
+                                <li><a href="">Classics</a></li>
                                 <li><a href="">Xem tất cả</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="widget">
-                            <h3>Kinh tế</h3>
+                            <h3>Business & Management</h3>
                             <ul class="nav-link">
-                                <li><a href="">Nhân Vật - Bài Học Kinh Doanh</a></li>
-                                <li><a href="">Truyện Ngắn Tản Văn</a></li>
-                                <li><a href="">Light Novel</a></li>
-                                <li><a href="">Ngôn tình</a></li>
+                                <li><a href="">Business & Management</a></li>
+                                <li><a href="">Economics</a></li>
+                                <li><a href="">Finance & Accounting</a></li>
                                 <li><a href="">Xem tất cả</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="widget">
-                            <h3>Văn học</h3>
+                            <h3>Personal Development</h3>
                             <ul class="nav-link">
-                                <li><a href="">Tiểu Thuyết</a></li>
-                                <li><a href="">Truyện Ngắn Tản Văn</a></li>
-                                <li><a href="">Light Novel</a></li>
-                                <li><a href="">Ngôn tình</a></li>
+                                <li><a href="">Popular Psychology</a></li>
+                                <li><a href="">Advice On Careers & Ac</a></li>
+                                <li><a href="">Personal Finance</a></li>
                                 <li><a href="">Xem tất cả</a></li>
                             </ul>
                         </div>
                     </div>
                     <div class="col-sm">
                         <div class="widget">
-                            <h3>Văn học</h3>
+                            <h3>CHILDREN'S BOOK</h3>
                             <ul class="nav-link">
-                                <li><a href="">Tiểu Thuyết</a></li>
+                                <li><a href="">Picture and Activity Books</a></li>
                                 <li><a href="">Truyện Ngắn Tản Văn</a></li>
                                 <li><a href="">Light Novel</a></li>
                                 <li><a href="">Ngôn tình</a></li>

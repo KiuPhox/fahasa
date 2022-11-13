@@ -1,3 +1,16 @@
+<?php
+
+require('../php/connect.php');
+
+$id = $_GET["id"];
+$sql = "SELECT * from books
+    WHERE books.id = $id";
+mysqli_set_charset($conn, 'utf8');
+
+$book = mysqli_query($conn, $sql);
+$book_infos = mysqli_fetch_array($book);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +18,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Team12hasa | Chi tiết</title>
+    <title><?php echo $book_infos['title'] ?></title>
     <!-- Latest compiled JavaScript -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../icon/fontawesome/css/all.css">
@@ -78,11 +91,15 @@
 
         .product-view-sa-supplier {
             display: inline-block;
-            width: 60%;
+            font-size: 1.1em;
             padding-right: 15px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .product-view-sa-supplier:first-child {
+            width: 400px;
         }
 
         .special-price {
@@ -137,6 +154,7 @@
         }
 
         .product-view-tab-content {
+            padding-bottom: 20px;
             border-bottom: 1px solid #c1c1c1;
         }
 
@@ -145,17 +163,21 @@
             margin-top: 20px;
             font-size: 1.1em;
         }
+
+        .reviews-number {
+            color: #F6A500;
+        }
     </style>
 </head>
 
 <body>
-    <?php include('layouts/header.php') ?>
-    <form class="product-form" action="" method="post">
+    <?php include('layouts/header.php'); ?>
+    <form class="product-form bg-white mt-4" action="" method="post">
         <div class="product-view">
-            <div class="product-essential">
+            <div class="product-essential p-4">
                 <div class="product-essential-media">
                     <div class="product-view-image">
-                        <img src="https://cdn0.fahasa.com/media/catalog/product/z/3/z3097453775918_7ea22457f168a4de92d0ba8178a2257b.jpg" alt="">
+                        <img src="<?php echo $book_infos['image'] ?>" alt="">
                     </div>
                     <div class="product-view-add-box">
                         <button class="btn-add-to-cart">Thêm vào giỏ hàng</button>
@@ -163,16 +185,19 @@
                     </div>
                 </div>
                 <div class="product-essential-detail">
-                    <h1>Giải Thích Ngữ Pháp Tiếng Anh (Tái Bản 2022)</h1>
+                    <h1><?php echo $book_infos['title'] ?></h1>
                     <div class="product-view-sa">
-                        <div class="product-view-sa-supplier">Nhà cung cấp: ZenBooks</div>
-                        <div class="product-view-sa-supplier">Tác giả: Mai Lan Hương</div>
+                        <div class="product-view-sa-supplier">Nhà cung cấp: <b>ZenBooks</b></div>
+                        <div class="product-view-sa-supplier">Tác giả: <b><?php echo $book_infos['author'] ?></b> </div>
                     </div>
                     <div class="product-view-sa">
-                        <div class="product-view-sa-supplier">Nhà xuất bản: NXB Đà Nẵng</div>
-                        <div class="product-view-sa-supplier">Hình thức bìa: Bìa Mềm</div>
+                        <div class="product-view-sa-supplier">Nhà xuất bản: <b>NXB Đà Nẵng</b></div>
+                        <div class="product-view-sa-supplier">Hình thức bìa: <b>Bìa Mềm</b></div>
                     </div>
-                    <div class="view-rate"></div>
+                    <div class="rating mt-2">
+                        <div class="rating-stars"></div>
+                        <div class="reviews-number">(0 đánh giá)</div>
+                    </div>
                     <div class="price-box">
                         <p class="special-price">143.000 đ</p>
                         <p class="old-price">220.000 đ</p>
@@ -187,14 +212,14 @@
             </div>
         </div>
     </form>
-    <div id="product-view-info">
-        <div class="product-view-content-title">Thông tin sản phẩm</div>
+    <div id="product-view-info" class="bg-white p-4">
+        <div class="product-view-content-title mb-3">Thông tin sản phẩm</div>
         <div class="product-view-tab-content">
             <table>
                 <tbody>
                     <tr>
                         <th>Mã hàng</th>
-                        <td>8794069303524</td>
+                        <td><?php echo $book_infos['isbn'] ?></td>
                     </tr>
                     <tr>
                         <th>Tên Nhà Cung Cấp</th>
@@ -214,16 +239,13 @@
                     </tr>
                     <tr>
                         <th>Số trang</th>
-                        <td>560</td>
+                        <td><?php echo $book_infos['page_quantity'] ?></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="product-tab-description">
-            Ngữ pháp Tiếng Anh tổng hợp các chủ điểm ngữ pháp trọng yếu mà học sinh cần nắm vững. Các chủ điểm ngữ pháp được trình bày rõ ràng, chi tiết. Sau mỗi chủ điểm ngữ pháp là phần bài tập & đáp án nhằm giúp các em củng cố kiến thức đã học, đồng thời tự kiểm tra kết quả.<br>
-            Sách Giải Thích Ngữ Pháp Tiếng Anh, tác Mai Lan Hương – Hà Thanh Uyên, là cuốn sách ngữ pháp đã được phát hành và tái bản rất nhiều lần trong những năm qua.<br>
-            Giải Thích Ngữ Pháp Tiếng Anh được biên soạn thành 9 chương, đề cập đến những vấn đề ngữ pháp từ cơ bản đến nâng cao, phù hợp với mọi trình độ. Các chủ điểm ngữ pháp trong từng chương được biên soạn chi tiết, giải thích cặn kẽ các cách dùng và quy luật mà người học cần nắm vững. Sau mỗi chủ điểm ngữ pháp là phần bài tập đa dạng nhằm giúp người học củng cố lý thuyết.<br>
-            Hy vọng Giải Thích Ngữ Pháp Tiếng Anh sẽ là một quyển sách thiết thực, đáp ứng yêu cầu học, ôn tập và nâng cao trình độ ngữ pháp cho người học và là quyển sách tham khảo bổ ích dành cho giáo viên.
+            <?php echo $book_infos['description'] ?>
         </div>
     </div>
     <div id="product-view-review">

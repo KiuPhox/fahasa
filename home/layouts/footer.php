@@ -1,4 +1,4 @@
-<div class="container" style="border-top: 1px gray solid; padding: unset; margin-top: 25px;">
+<div class="container p-4" style="border-top: 1px gray solid; margin-top: 25px;">
     <div class="" style="display: flex">
         <div class="left-footer" style="
               display: flex;
