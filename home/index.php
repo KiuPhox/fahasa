@@ -113,13 +113,13 @@
     <div id="menu">
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
-                <a href="https://www.fahasa.com/ma-giam-gia?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_flashsale.png" class="center"></a>
+                <a href="https://www.fahasa.com/ma-giam-gia?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_FlashSale_Hot_8px_1.png" class="center"></a>
             </div>
             <div class="cms-icon-menu-item-name">Flash Sale</div>
         </div>
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
-                <a href="/ma-giam-gia?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_mgg.png" class="center"></a>
+                <a href="/ma-giam-gia?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_MaGiamGia_8px_1.png" class="center"></a>
             </div>
             <div class="cms-icon-menu-item-name">Mã Giảm Giá</div>
         </div>
@@ -131,7 +131,7 @@
         </div>
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
-                <a href="/deal-hot-pages?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico-xuhuong.png" class="center"></a>
+                <a href="/deal-hot-pages?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_Trending_Hot_8px_1.png" class="center"></a>
             </div>
             <div class="cms-icon-menu-item-name">Xu Hướng</div>
         </div>
@@ -161,7 +161,7 @@
         </div>
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
-                <a href="/nhap-hoi-manga-comic?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_manga.png" class="center"></a>
+                <a href="/nhap-hoi-manga-comic?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_MangaCommic_8px_1.png" class="center"></a>
             </div>
             <div class="cms-icon-menu-item-name">Manga - Comic</div>
         </div>
