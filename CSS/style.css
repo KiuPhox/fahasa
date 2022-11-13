@@ -300,6 +300,7 @@ a.product {
     margin-top: 20px;
     max-width: unset;
     width: 80%;
+    background-color: white;
 }
 
 .container #doanhmuc a {

@@ -9,7 +9,7 @@
     <div class="cover-container">
         <div class="cover-navbar">
             <div class="logo">
-                <a href="">
+                <a href="index.php">
                     <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo/fahasa_logo.png">
                 </a>
             </div>
@@ -49,7 +49,7 @@
                 </a>
             </div>
             <div class="login cover-icon">
-                <a href="login.html" class="login-button" style="flex-direction: column;">
+                <a href="login.php" class="login-button" style="flex-direction: column;">
                     <div class="login-icon">
                         <i class="fa-regular fa-user"></i>
                     </div>
