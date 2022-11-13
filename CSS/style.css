@@ -9,6 +9,12 @@ a {
     color: black;
 }
 
+body {
+    color: #333333;
+    font-size: 13px;
+    font-weight: 400;
+}
+
 .top-header {
     background-color: #6ACF67;
 }
