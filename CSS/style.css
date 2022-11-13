@@ -1,0 +1,349 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.top-header {
+    background-color: #6ACF67;
+}
+
+.ads-banner {
+    width: 80%;
+    margin: auto;
+}
+
+.cover-container {
+    height: 65px;
+    background-color: white;
+}
+
+.cover-navbar {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 80%;
+    height: 100%;
+    margin: auto;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+}
+
+.search {
+    font-size: 1em;
+
+}
+
+.search-form {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+input.search {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    padding: 0 80px 0 24px;
+    border: 1px solid #CDCFD0;
+}
+
+input.search:focus-visible {
+    outline: none;
+}
+
+.search-button-container {
+    position: absolute;
+    top: 27%;
+    right: 4px;
+}
+
+.search-button {
+    width: 72px;
+    height: 30px;
+    background-color: #C92127;
+    border: 2px solid #C92127;
+    border-radius: 8px;
+}
+
+.search-button i {
+    color: white;
+}
+
+.cover-icon a {
+    text-decoration: none;
+    color: #646464;
+}
+
+.cover-icon {
+    margin-top: 10px;
+    width: 80px;
+}
+
+#list-menu-icon {
+    margin-right: 20px;
+}
+
+#list-menu-icon i {
+    font-size: 30px;
+    color: #646464;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+
+.vertical_menu-carousel {
+    width: 80%;
+    margin: auto;
+    display: flex;
+}
+
+#category {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    width: 80%;
+    height: 75%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    border: 1px grey solid;
+    border-radius: 20px;
+    padding: 20px 30px;
+}
+
+.category-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#category h5 {
+    margin-bottom: 5px;
+    font-size: 24px;
+    height: 30px;
+    text-align: center;
+    color: #7a7e7f;
+}
+
+.widget {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.widget h3 {
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.widget .nav-link li {
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.widget .nav-link li a {
+    text-decoration: none;
+}
+
+.widget .nav-link li:last-child a {
+    color: #2489f4;
+}
+
+.nav-link {
+    padding: 0;
+}
+
+.nav-link li {
+    list-style: none;
+}
+
+.left-category {
+    flex-basis: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-right: 12px;
+}
+
+.left-category a {
+    text-decoration: none;
+    margin-right: 10px;
+    color: black;
+    font-weight: bold;
+}
+
+.left-category ul {
+    list-style: none;
+    width: 100%;
+}
+
+.left-category ul li {
+    width: 100%;
+    padding: 14px 12px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+.slide-image {
+    width: 78%;
+}
+
+.carousel-item>img {
+    width: 100%;
+    height: 400px;
+}
+
+#sub-menu {
+    display: none;
+    height: 365px;
+    width: 951px;
+    padding: 8px 0;
+}
+
+#category>ul>li:hover {
+    background: lightskyblue;
+}
+
+#table-menu {
+    margin-left: 10px;
+}
+
+#table-menu>tr>th,
+td {
+    padding-top: 5px;
+    padding-bottom: 3px;
+    font-size: 12px;
+}
+
+.fa-heart {
+    color: red;
+}
+
+a.product {
+    margin-right: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.see-more {
+    color: orange !important;
+}
+
+.home-banner {
+    margin: auto;
+    width: 80%;
+    height: 210px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner>a>img {
+    width: 300px;
+    border-radius: 3px;
+}
+
+.form-login {
+    width: 300px;
+    height: 600px;
+    margin: auto;
+    border: 1px solid black;
+    border-radius: 3px;
+}
+
+/* Loc */
+.anh-kinhte-active {
+    border-radius: 3px;
+    text-decoration: none;
+    color: orange;
+
+}
+
+.container .anh-kinhte-active {
+    color: orange;
+    border: 1px solid orange;
+    border-radius: 3px;
+    padding: 10px;
+    margin: 0 5px;
+    text-decoration: none;
+}
+
+.container .anh-kinhte {
+    color: black;
+    border-radius: 3px;
+    padding: 10px;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.container .kinhte-hover a:hover {
+    color: orange;
+    border: 1px solid orange;
+    text-decoration: none;
+}
+
+.container {
+    margin-top: 20px;
+    max-width: unset;
+    width: 80%;
+}
+
+.container #doanhmuc a {
+    border-radius: 5px;
+    color: black;
+    text-decoration: none;
+    font-size: small;
+}
+
+.container #doanhmuc a:hover {
+    color: orange;
+    border: 1px solid orange;
+}
+
+.container #doanhmuc .hienthi {
+    color: orange;
+    border: 1px solid orange;
+}
+
+.carousel-inner a {
+    color: black;
+}
+
+#nut {
+    position: relative;
+    top: 5px;
+    border: 1px solid red;
+    background-color: #ffff;
+    color: red;
+    position: relative;
+    left: 160px;
+    width: 200px;
+    border-radius: 5px;
+}
+
+.carousel-inner-2 img {
+    width: 200px;
+    height: 200px;
+}
+
+.carousel-inner p.top {
+    color: red;
+}
+
+.carousel-inner p.bot {
+    text-decoration: line-through;
+}
