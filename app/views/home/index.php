@@ -8,12 +8,12 @@
     <meta name="author" content="Group 12">
     <title>Nhà sách trực tuyến Fahasa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="../CSS/style.css">
-    <link rel="stylesheet" href="../icon/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../../../public/css/style.css">
+    <link rel="stylesheet" href="../../../public/icon/fontawesome/css/all.css">
 </head>
 
 <body>
-    <?php include('./layouts/header.php') ?>
+    <?php include('../layouts/header.php'); ?>
     <div>
         <div>
             <div class="vertical_menu-carousel">
@@ -993,7 +993,7 @@
             </div>
         </div>
         <!-- Footer Sang -->
-        <?php include('./layouts/footer.php'); ?>
+        <?php include('../layouts/footer.php'); ?>
 
 
 

@@ -1,6 +1,6 @@
 <?php
 
-require('../php/connect.php');
+$conn = mysqli_connect("localhost", "root", "", "Fahasa");
 
 $id = $_GET["id"];
 $sql = "SELECT * from books
@@ -21,8 +21,8 @@ $book_infos = mysqli_fetch_array($book);
     <title><?php echo $book_infos['title'] ?></title>
     <!-- Latest compiled JavaScript -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../icon/fontawesome/css/all.css">
-    <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="../../../public/css/style.css">
+    <link rel="stylesheet" href="../../../public/icon/fontawesome/css/all.css">
 
     <style>
         .product-essential {
@@ -171,7 +171,7 @@ $book_infos = mysqli_fetch_array($book);
 </head>
 
 <body>
-    <?php include('layouts/header.php'); ?>
+    <?php include('../layouts/header.php'); ?>
     <form class="product-form bg-white mt-4" action="" method="post">
         <div class="product-view">
             <div class="product-essential p-4">
@@ -251,7 +251,7 @@ $book_infos = mysqli_fetch_array($book);
     <div id="product-view-review">
         <div class="product-view-content-title"></div>
     </div>
-    <?php include('layouts/footer.php') ?>
+    <?php include('../layouts/footer.php') ?>
 </body>
 
 </html>
