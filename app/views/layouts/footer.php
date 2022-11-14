@@ -29,6 +29,7 @@
 
     .right-footer h3 {
         text-transform: uppercase;
+        margin-bottom: 1.2em;
         font-size: 16px;
         color: black;
         font-weight: bold;
@@ -40,13 +41,17 @@
     }
 
     .footer-right-col a p {
-        transition: all 0.4s ease-in;
+        transition: all 0.3s ease-in;
 
     }
 
     .footer-right-col a:hover p {
         padding-left: 10px;
         color: #ea7696;
+    }
+
+    .footer-image-container {
+        margin: auto;
     }
 </style>
 
@@ -153,14 +158,13 @@
                 <h3 class="mt-3">LIÊN HỆ</h3>
                 <div class="row my-3" style="">
                     <div class="col-md-4">
-                        <em class="fa fa-location-dot" style="font-size: 18px">&nbsp;</em>Tại 60-62 Lê Lợi, Q.1,
-                        TP. HCM
+                        <em class="fa fa-location-dot" style="font-size: 18px">&nbsp;</em>60-62 Lê Lợi, Q.1, TP. HCM
                     </div>
                     <div class="col-md-4">
                         <em class="fa fa-envelope" style="font-size: 18px">&nbsp;</em>cskh@fahasa.com.vn
                     </div>
                     <div class="col-md-4">
-                        <em class="fa fa-phone" style="font-size: 18px">&nbsp;</em>Hotline 1900636467
+                        <em class="fa fa-phone" style="font-size: 18px">&nbsp;</em>1900636467
                     </div>
                 </div>
                 <div style="display: flex; justify-content: space-between">
@@ -169,10 +173,10 @@
                     </div>
 
                     <div class="footer-image-container">
-                        <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/ahamove_logo.png" width="110px" />
+                        <img src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/ahamove_logo3.png" width="160px" />
                     </div>
                     <div class="footer-image-container">
-                        <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/icon_giao_hang_nhanh.png" width="150px" />
+                        <img src="https://cdn0.fahasa.com/media/wysiwyg/Logo-NCC/icon_giao_hang_nhanh1.png" width="150px" />
                     </div>
                     <div class="footer-image-container">
                         <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/icon_snappy.png" width="150px" />
