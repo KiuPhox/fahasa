@@ -1,29 +1,72 @@
-<div class="container p-4" style="border-top: 1px gray solid; margin-top: 25px;">
-    <div class="" style="display: flex">
-        <div class="left-footer" style="
-              display: flex;
-              flex-direction: column;
-              flex-grow: 1;
-              width: 300px;
-              border-right: 1px gray solid;
-              padding-right: 10px;
-            ">
-            <div class="logo" style="margin-left: 25%; margin-top: 15px;">
+<style>
+    .footer-logo img {
+        width: 80%;
+    }
+
+    .left-footer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        flex-basis: 30%;
+        border-right: 1px solid #cecece;
+        padding-right: 10px;
+    }
+
+    .left-footer p {
+        color: black;
+        font-size: 13px;
+    }
+
+    .footer-content {
+        display: flex;
+    }
+
+    .social-icon {
+        margin: 1rem 0;
+    }
+
+    .footer-right-col {}
+
+    .right-footer h3 {
+        text-transform: uppercase;
+        font-size: 16px;
+        color: black;
+        font-weight: bold;
+    }
+
+    .footer-right-col a {
+        text-decoration: none;
+
+    }
+
+    .footer-right-col a p {
+        transition: all 0.4s ease-in;
+
+    }
+
+    .footer-right-col a:hover p {
+        padding-left: 10px;
+        color: #ea7696;
+    }
+</style>
+
+<div class="container px-4 pt-5" style="border-radius: 10px; margin-top: 25px;">
+    <div class="footer-content">
+        <div class="left-footer">
+            <div class="footer-logo mb-3">
                 <a href="">
-                    <h1 style="padding-top: 5px;">Team12</h1>
+                    <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo/fahasa_logo.png">
                 </a>
             </div>
             <p>
-                Lầu 0, 123-456 Hai Bà Trưng Quận 3 TP HCM,Công Ty Cổ Phần Phát Hành
-                Sách TP HCM - Team12hasa - 62 Lê Lợi, Quận 13, TP. HCM, Việt Nam
+                Lầu 5, 387-389 Hai Bà Trưng Quận 3 TP HCM
+                Công Ty Cổ Phần Phát Hành Sách TP HCM - FAHASA60 - 62 Lê Lợi, Quận 1, TP. HCM, Việt Nam
             </p>
             <p>
-                Team12hasa.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG
-                hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả
-                Hệ Thống Team12hasa trên toàn quốc.
+                Fahasa.com nhận đặt hàng trực tuyến và giao hàng tận nơi. KHÔNG hỗ trợ đặt mua và nhận hàng trực tiếp tại văn phòng cũng như tất cả Hệ Thống Fahasa trên toàn quốc.
             </p>
             <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/logo-bo-cong-thuong-da-thong-bao.png" alt="" style="width: 100px" />
-            <div>
+            <div class="social-icon">
                 <a target="_blank" href="https://www.facebook.com/fahasa/" title="Facebook">
                     <img alt="Facebook" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/footer/Facebook-on.png" />
                 </a>
@@ -52,36 +95,69 @@
                 </a>
             </div>
         </div>
-        <div class="right-footer" style="flex-grow: 3; display: flex; flex-direction: column">
-            <div style="display: flex; justify-content: space-between">
-                <div class="footer-right-c1" style="padding: 20px">
-                    <b>Dịch vụ</b>
-                    <p>Điều khoản sử dụng</p>
-                    <p>Chính sách bảo mật</p>
-                    <p>Giới thiệu Fahasa</p>
-                    <p>Hệ thống trung tâm - nhà sách</p>
+        <div class="right-footer col-md-8" style="display: flex; flex-direction: column">
+            <div class="row">
+                <div class="footer-right-col col-sm-6 col-md-4 col-sms-6 col-smb-12">
+                    <h3>Dịch vụ</h3>
+                    <a href="">
+                        <p>Điều khoản sử dụng</p>
+                    </a>
+                    <a href="">
+                        <p>Chính sách bảo mật thông tin cá nhân</p>
+                    </a>
+                    <a href="">
+                        <p>Chính sách bảo mật thanh toán</p>
+                    </a>
+                    <a href="">
+                        <p>Giới thiệu Fahasa</p>
+                    </a>
+                    <a href="">
+                        <p>Hệ thống trung tâm - nhà sách</p>
+                    </a>
                 </div>
-                <div class="footer-right-c2" style="padding: 20px">
-                    <b>HỖ TRỢ</b>
-                    <p>Chính sách đổi - trả - hoàn tiền</p>
-                    <p>Chính sách khách sỉ</p>
-                    <p>Phương thức vận chuyển</p>
-                    <p>Phương thức thanh toán và xuất HĐ</p>
+                <div class="footer-right-col col-sm-6 col-md-4 col-sms-6 col-smb-12">
+                    <h3>Hỗ trợ</h3>
+                    <a href="">
+                        <p>Chính sách đổi - trả - hoàn tiền</p>
+                    </a>
+                    <a href="">
+                        <p>Chính sách bảo hành - bồi hoàn</p>
+                    </a>
+                    <a href="">
+                        <p>Chính sách vận chuyển</p>
+                    </a>
+                    <a href="">
+                        <p>Chính sách khách sỉ</p>
+                    </a>
+                    <a href="">
+                        <p>Phương thức thanh toán và xuất HĐ</p>
+                    </a>
                 </div>
-                <div class="footer-right-c3" style="padding: 20px">
-                    <b>TÀI KHOẢN CỦA TÔI</b>
-                    <p>Đăng nhập/Tạo mới tài khoản</p>
-                    <p>Thay đổi địa chỉ khách hàng</p>
-                    <p>Chi tiết tài khoản</p>
-                    <p>Lịch sử mua hàng</p>
+                <div class="footer-right-col col-sm-6 col-md-4 col-sms-6 col-smb-12">
+                    <h3>Tài khoản của tôi</h3>
+                    <a href="">
+                        <p>Đăng nhập/Tạo mới tài khoản</p>
+                    </a>
+                    <a href="">
+                        <p>Thay đổi địa chỉ khách hàng</p>
+                    </a>
+                    <a href="">
+                        <p>Chi tiết tài khoản</p>
+                    </a>
+                    <a href="">
+                        <p>Lịch sử mua hàng</p>
+                    </a>
                 </div>
             </div>
-            <div style="padding-left: 20px">
-                <h3>LIÊN HỆ</h3>
-                <div class="row" style="margin: 5px -5px">
+            <div>
+                <h3 class="mt-3">LIÊN HỆ</h3>
+                <div class="row my-3" style="">
                     <div class="col-md-4">
-                        <em class="fa fa-map-marker" style="font-size: 18px">&nbsp;</em>Tại 60-62 Lê Lợi, Q.1,
+                        <em class="fa fa-location-dot" style="font-size: 18px">&nbsp;</em>Tại 60-62 Lê Lợi, Q.1,
                         TP. HCM
+                    </div>
+                    <div class="col-md-4">
+                        <em class="fa fa-envelope" style="font-size: 18px">&nbsp;</em>cskh@fahasa.com.vn
                     </div>
                     <div class="col-md-4">
                         <em class="fa fa-phone" style="font-size: 18px">&nbsp;</em>Hotline 1900636467
@@ -123,9 +199,8 @@
         </div>
     </div>
     <div style="text-align: center">
-        <p style="color: grey; opacity: 0.5; padding: 20px">
-            Giấy chứng nhận Đăng ký Kinh doanh số **123456789** do Sở Kế hoạch và
-            Đầu tư Thành phố Hồ Chí Minh cấp ngày 12/34/2012.
+        <p style="color: #adadad; padding: 20px; margin-bottom: 0">
+            Giấy chứng nhận Đăng ký Kinh doanh số 0304132047 do Sở Kế hoạch và Đầu tư Thành phố Hồ Chí Minh cấp ngày 20/12/2005, đăng ký thay đổi lần thứ 10, ngày 20/05/2022.
         </p>
     </div>
 </div>

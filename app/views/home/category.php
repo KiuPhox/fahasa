@@ -19,7 +19,7 @@
     <?php include('../layouts/header.php') ?>
     <div class="container">
         <div class="container-inner">
-            <div class="col-left"> </div>
+            <div class="col-left"></div>
             <div class="col-main"></div>
         </div>
         <?php include('../layouts/footer.php'); ?>

@@ -48,7 +48,6 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 20px;
 }
 
 .search {
@@ -104,14 +103,15 @@ input.search:focus-visible {
 }
 
 #list-menu-icon {
-    margin-right: 20px;
+    padding-right: 30px;
+    padding-left: 60px;
+    cursor: pointer;
 }
 
 #list-menu-icon i {
     font-size: 30px;
     color: #646464;
     margin-top: 20px;
-    cursor: pointer;
 }
 
 
@@ -308,7 +308,7 @@ a.product {
 .container {
     margin-top: 20px;
     max-width: unset;
-    width: 80%;
+    width: 83%;
     background-color: white;
 }
 

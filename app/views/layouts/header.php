@@ -745,6 +745,14 @@
         category.style.display = 'block';
     });
 
+    list_menu_icon.addEventListener("mouseleave", function() {
+        category.style.display = 'none';
+    });
+
+    category.addEventListener("mouseover", function() {
+        category.style.display = 'block';
+    })
+
     category.addEventListener("mouseleave", function() {
         category.style.display = 'none';
     })
