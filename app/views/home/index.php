@@ -102,7 +102,7 @@
 
         #menu {
             background-color: rgb(247, 243, 243);
-            width: 80%;
+            width: 83%;
             margin: auto;
             font-size: 12px;
             height: 115px;
@@ -110,7 +110,7 @@
             margin-bottom: 10px;
         }
     </style>
-    <div id="menu">
+    <div id="menu" class="container bg-white">
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
                 <a href="https://www.fahasa.com/ma-giam-gia?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_FlashSale_Hot_8px_1.png" class="center"></a>

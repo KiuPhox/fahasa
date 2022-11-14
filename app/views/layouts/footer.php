@@ -25,7 +25,6 @@
         margin: 1rem 0;
     }
 
-    .footer-right-col {}
 
     .right-footer h3 {
         text-transform: uppercase;
@@ -156,7 +155,7 @@
             </div>
             <div>
                 <h3 class="mt-3">LIÊN HỆ</h3>
-                <div class="row my-3" style="">
+                <div class="row my-3">
                     <div class="col-md-4">
                         <em class="fa fa-location-dot" style="font-size: 18px">&nbsp;</em>60-62 Lê Lợi, Q.1, TP. HCM
                     </div>

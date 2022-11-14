@@ -129,12 +129,12 @@ $book_infos = mysqli_fetch_array($book);
         }
 
         .product-form {
-            width: 80%;
+            width: 83%;
             margin: auto;
         }
 
         #product-view-info {
-            width: 80%;
+            width: 83%;
             margin: auto;
             margin-top: 30px;
         }
