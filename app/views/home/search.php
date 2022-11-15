@@ -185,8 +185,8 @@
                                         <div class="price-label">
                                             <div class="product-price">
                                                 <?php if ($book['discount'] > 0) { ?>
-                                                    <p class="special-price"><?php echo ceil($book['price'] * (1 - $book['discount'] / 100)) ?>.000đ</p>
-                                                    <p class="old-price"><?php echo $book['price'] ?>.000 đ</p>
+                                                    <p class="special-price"><?php echo number_format($book['price'] * (1 - $book['discount'] / 100), 0, '.', '.') ?> đ</p>
+                                                    <p class="old-price"><?php echo number_format($book['price'], 0, '.', '.'); ?> đ</p>
                                                 <?php } else { ?>
                                                     <p class="special-price"><?php echo $book['price'] ?>.000đ</p>
                                                 <?php } ?>
