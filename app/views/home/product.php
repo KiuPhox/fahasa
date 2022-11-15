@@ -1,14 +1,15 @@
 <?php
 
 $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+mysqli_set_charset($conn, 'utf8');
 
 $id = $_GET["id"];
 $sql = "SELECT * from books
     WHERE books.id = $id";
-mysqli_set_charset($conn, 'utf8');
-
 $book = mysqli_query($conn, $sql);
 $book_infos = mysqli_fetch_array($book);
+$sql = "SELECT * from ratings WHERE ratings.book_id = $id";
+$ratings = mysqli_query($conn, $sql);
 ?>
 
 <!DOCTYPE html>
