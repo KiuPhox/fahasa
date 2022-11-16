@@ -18,12 +18,8 @@ foreach ($ratings as $rating) {
     $reviews[$rating['rating'] - 1]++;
 }
 
-$total_reviews = array_sum($reviews);
-$rating_value = 0;
-for ($i = 1; $i <= 5; $i++) {
-    $rating_value += $i * $reviews[$i - 1] / $total_reviews;
-}
 
+$total_reviews = array_sum($reviews);
 ?>
 
 <!DOCTYPE html>
@@ -371,7 +367,7 @@ for ($i = 1; $i <= 5; $i++) {
                     </div>
                     <div class="rating mt-2">
                         <div class="rating-stars"></div>
-                        <div class="reviews-number">(0 đánh giá)</div>
+                        <div class="reviews-number">(<?php echo $total_reviews ?> đánh giá)</div>
                     </div>
                     <div class="price-box">
                         <p class="special-price"><?php echo number_format($book_infos['price'] * (1 - $book_infos['discount'] / 100), 0, '.', '.') ?> đ</p>
@@ -468,24 +464,36 @@ for ($i = 1; $i <= 5; $i++) {
             </div>
             <div class="product-view-tab-content-comment">
                 <div class="comment-content">
-                    <ul class="comment-list">
-                        <?php foreach ($ratings as $rating) { ?>
-                            <li>
-                                <div class="comment-left">
-                                    <p class="user-name"><?php $user_id = $rating['user_id'];
-                                                            echo mysqli_fetch_array(mysqli_query($conn, "SELECT * from users WHERE id = $user_id"))['name'] ?></p>
-                                    <span class="comment-date">16/05/2021</span>
-                                </div>
-                                <div class="comment-right">
-                                    <div class="rating-icons">
-                                        <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-                                        <span class="two" style="background: linear-gradient(to right, #f6a500 <?php echo $rating['rating'] / 5 * 100 ?>%, transparent 0%)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    <?php
+
+
+                    if ($total_reviews > 0) {
+                        $rating_value = 0;
+                        for ($i = 1; $i <= 5; $i++) {
+                            $rating_value += $i * $reviews[$i - 1] / $total_reviews;
+                        }
+
+
+                    ?>
+                        <ul class="comment-list">
+                            <?php foreach ($ratings as $rating) { ?>
+                                <li>
+                                    <div class="comment-left">
+                                        <p class="user-name"><?php $user_id = $rating['user_id'];
+                                                                echo mysqli_fetch_array(mysqli_query($conn, "SELECT * from users WHERE id = $user_id"))['name'] ?></p>
+                                        <span class="comment-date">16/05/2021</span>
                                     </div>
-                                    <span class="comment-right-content"><?php echo $rating['comment'] ?></span>
-                                </div>
-                            </li>
-                        <?php } ?>
-                    </ul>
+                                    <div class="comment-right">
+                                        <div class="rating-icons">
+                                            <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                            <span class="two" style="background: linear-gradient(to right, #f6a500 <?php echo $rating['rating'] / 5 * 100 ?>%, transparent 0%)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                        </div>
+                                        <span class="comment-right-content"><?php echo $rating['comment'] ?></span>
+                                    </div>
+                                </li>
+                            <?php } ?>
+                        </ul>
+                    <?php } ?>
                 </div>
             </div>
         </div>
