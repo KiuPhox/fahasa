@@ -17,6 +17,13 @@ $reviews = [0, 0, 0, 0, 0];
 foreach ($ratings as $rating) {
     $reviews[$rating['rating'] - 1]++;
 }
+
+$total_reviews = array_sum($reviews);
+$rating_value = 0;
+for ($i = 1; $i <= 5; $i++) {
+    $rating_value += $i * $reviews[$i - 1] / $total_reviews;
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -180,6 +187,7 @@ foreach ($ratings as $rating) {
             display: flex;
             justify-content: flex-start;
             align-items: center;
+            margin-bottom: 2.5rem;
         }
 
         .product-tab-description {
@@ -253,7 +261,7 @@ foreach ($ratings as $rating) {
         }
 
         .two {
-            background: linear-gradient(to right, #66bb6a 0%, transparent 0%);
+            background: linear-gradient(to right, #f6a500 0%, transparent 0%);
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent;
             transition: 0.5s ease-in-out all;
@@ -271,7 +279,6 @@ foreach ($ratings as $rating) {
             justify-content: center;
             align-items: center;
             position: relative;
-            width: 100%;
             height: 10%;
         }
 
@@ -290,6 +297,51 @@ foreach ($ratings as $rating) {
             color: #7A7E7F;
             font-weight: 400;
         }
+
+        .comment-list li {
+            display: flex;
+            margin-bottom: 3rem;
+        }
+
+        .comment-list li p {
+            font-size: 1.1em;
+            font-weight: 600;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin: 0;
+        }
+
+        .comment-left {
+            width: 15%;
+            margin-right: 8px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .comment-right {
+            flex-basis: 85%;
+            display: flex;
+            flex-direction: column;
+            margin-top: 12px;
+        }
+
+        .comment-right-content {
+            font-size: 1.1em;
+            color: black;
+            margin-top: 1rem;
+        }
+
+        .comment-right .rating-icons {
+            align-self: flex-start;
+            justify-self: flex-start;
+        }
+
+        .comment-right .rating-icons span {
+            transform: none;
+        }
+
+        .comment-list li span {}
     </style>
 </head>
 
@@ -379,7 +431,7 @@ foreach ($ratings as $rating) {
                     <span class="global-value">0.0</span>
                     <div class="rating-icons">
                         <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-                        <span class="two"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        <span class="two" style="background: linear-gradient(to right, #f6a500 <?php echo $rating_value / 5 * 100 ?>%, transparent 0%)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                     </div>
                     <span class="total-reviews">(0 đánh giá)</span>
                 </div>
@@ -415,7 +467,26 @@ foreach ($ratings as $rating) {
                 <button id="review-write-btn">Viết đánh giá</button>
             </div>
             <div class="product-view-tab-content-comment">
-
+                <div class="comment-content">
+                    <ul class="comment-list">
+                        <?php foreach ($ratings as $rating) { ?>
+                            <li>
+                                <div class="comment-left">
+                                    <p class="user-name"><?php $user_id = $rating['user_id'];
+                                                            echo mysqli_fetch_array(mysqli_query($conn, "SELECT * from users WHERE id = $user_id"))['name'] ?></p>
+                                    <span class="comment-date">16/05/2021</span>
+                                </div>
+                                <div class="comment-right">
+                                    <div class="rating-icons">
+                                        <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                        <span class="two" style="background: linear-gradient(to right, #f6a500 <?php echo $rating['rating'] / 5 * 100 ?>%, transparent 0%)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                    </div>
+                                    <span class="comment-right-content"><?php echo $rating['comment'] ?></span>
+                                </div>
+                            </li>
+                        <?php } ?>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -477,9 +548,9 @@ foreach ($ratings as $rating) {
                 .reduce((a, b) => a + b);
             let ratingValue = nFormat(parseFloat(final / getTotal(reviews)).toFixed(1));
             globalValue.innerHTML = ratingValue;
-            two.style.background = `linear-gradient(to right, #f6a500 ${
-    (ratingValue / 5) * 100
-  }%, transparent 0%)`;
+            //             two.style.background = `linear-gradient(to right, #f6a500 ${
+            //     (ratingValue / 5) * 100
+            //   }%, transparent 0%)`;
         }
 
         function nFormat(number) {
