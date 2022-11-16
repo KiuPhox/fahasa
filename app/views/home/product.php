@@ -10,6 +10,13 @@ $book = mysqli_query($conn, $sql);
 $book_infos = mysqli_fetch_array($book);
 $sql = "SELECT * from ratings WHERE ratings.book_id = $id";
 $ratings = mysqli_query($conn, $sql);
+
+
+$reviews = [0, 0, 0, 0, 0];
+
+foreach ($ratings as $rating) {
+    $reviews[$rating['rating'] - 1]++;
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,7 +64,8 @@ $ratings = mysqli_query($conn, $sql);
             margin-top: 24px;
         }
 
-        .product-view-add-box button {
+        .product-view-add-box button,
+        #review-write-btn {
             cursor: pointer;
             user-select: none;
             height: 44px;
@@ -67,7 +75,12 @@ $ratings = mysqli_query($conn, $sql);
             border-radius: 8px;
         }
 
-        .btn-add-to-cart {
+        #review-write-btn {
+            margin: auto !important;
+        }
+
+        .btn-add-to-cart,
+        #review-write-btn {
             margin-left: 0;
             color: #C92127;
             background: #fff;
@@ -148,6 +161,10 @@ $ratings = mysqli_query($conn, $sql);
 
         }
 
+        #product-view-review {
+            padding: 2rem;
+            border-radius: 10px;
+        }
 
         .product-view-content-title {
             font-size: 1.4em;
@@ -159,6 +176,12 @@ $ratings = mysqli_query($conn, $sql);
             border-bottom: 1px solid #c1c1c1;
         }
 
+        .product-view-tab-content-rating {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
         .product-tab-description {
             line-height: 25px;
             margin-top: 20px;
@@ -167,6 +190,105 @@ $ratings = mysqli_query($conn, $sql);
 
         .reviews-number {
             color: #F6A500;
+        }
+
+        .chart {
+            /* width: 500px; */
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .chart .rate-box {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .chart .rate-box>* {
+            height: 100%;
+            display: flex;
+            color: #444;
+        }
+
+        .rate-box .value {
+            display: flex;
+            align-items: center;
+        }
+
+
+        .chart .value,
+        .count {
+            font-size: 1.3em;
+            font-weight: 400;
+        }
+
+        .rate-box .progress-bar {
+            border-width: 1px;
+            position: relative;
+            background-color: #cfd8dc91;
+            height: 5px;
+            width: 225px;
+        }
+
+        .rate-box .progress-bar .progress {
+            background-color: #f6a500;
+            height: 100%;
+            border-radius: 100px;
+            transition: 300ms ease-in-out;
+        }
+
+        .global {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-right: 50px;
+        }
+
+        .one .fas {
+            color: #cfd8dc;
+        }
+
+        .two {
+            background: linear-gradient(to right, #66bb6a 0%, transparent 0%);
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent;
+            transition: 0.5s ease-in-out all;
+        }
+
+        .global-value {
+            font-size: 4em;
+            font-weight: 600;
+            line-height: 1.1em;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .rating-icons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            width: 100%;
+            height: 10%;
+        }
+
+        .rating-icons span {
+            position: absolute;
+            display: flex;
+            font-size: 14px;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 5px;
+        }
+
+
+        .total-reviews {
+            font-size: 14px;
+            color: #7A7E7F;
+            font-weight: 400;
         }
     </style>
 </head>
@@ -200,8 +322,8 @@ $ratings = mysqli_query($conn, $sql);
                         <div class="reviews-number">(0 đánh giá)</div>
                     </div>
                     <div class="price-box">
-                        <p class="special-price">143.000 đ</p>
-                        <p class="old-price">220.000 đ</p>
+                        <p class="special-price"><?php echo number_format($book_infos['price'] * (1 - $book_infos['discount'] / 100), 0, '.', '.') ?> đ</p>
+                        <p class="old-price"><?php echo number_format($book_infos['price'], 0, '.', '.'); ?> đ</p>
                     </div>
                     <div id="expected-delivery"></div>
                     <div class="product-view-quantity-box">
@@ -249,10 +371,131 @@ $ratings = mysqli_query($conn, $sql);
             <?php echo $book_infos['description'] ?>
         </div>
     </div>
-    <div id="product-view-review">
-        <div class="product-view-content-title"></div>
+    <div id="product-view-review" class="container">
+        <div class="product-view-content-title mb-3">Đánh giá sản phẩm</div>
+        <div class="product-view-tab-content-review">
+            <div class="product-view-tab-content-rating">
+                <div class="global">
+                    <span class="global-value">0.0</span>
+                    <div class="rating-icons">
+                        <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                        <span class="two"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                    </div>
+                    <span class="total-reviews">(0 đánh giá)</span>
+                </div>
+                <div class="chart">
+                    <div class="rate-box">
+                        <span class="value">5 sao</span>
+                        <div class="progress-bar">
+                            <span class="progress"></span>
+                        </div>
+                        <span class="count">0%</span>
+                    </div>
+                    <div class="rate-box">
+                        <span class="value">4 sao</span>
+                        <div class="progress-bar"><span class="progress"></span></div>
+                        <span class="count">0%</span>
+                    </div>
+                    <div class="rate-box">
+                        <span class="value">3 sao</span>
+                        <div class="progress-bar"><span class="progress"></span></div>
+                        <span class="count">0%</span>
+                    </div>
+                    <div class="rate-box">
+                        <span class="value">2 sao</span>
+                        <div class="progress-bar"><span class="progress"></span></div>
+                        <span class="count">0%</span>
+                    </div>
+                    <div class="rate-box">
+                        <span class="value">1 sao</span>
+                        <div class="progress-bar"><span class="progress"></span></div>
+                        <span class="count">0%</span>
+                    </div>
+                </div>
+                <button id="review-write-btn">Viết đánh giá</button>
+            </div>
+            <div class="product-view-tab-content-comment">
+
+            </div>
+        </div>
     </div>
     <?php include('../layouts/footer.php') ?>
+
+    <script>
+        let rateBox = Array.from(document.querySelectorAll(".rate-box"));
+        let globalValue = document.querySelector(".global-value");
+        let two = document.querySelector(".two");
+        let totalReviews = document.querySelector(".total-reviews");
+
+        let reviews = {
+            5: <?php echo $reviews[4] ?>,
+            4: <?php echo $reviews[3] ?>,
+            3: <?php echo $reviews[2] ?>,
+            2: <?php echo $reviews[1] ?>,
+            1: <?php echo $reviews[0] ?>,
+        };
+
+        updateValues();
+
+        function updateValues() {
+            rateBox.forEach((box) => {
+                let valueBox = rateBox[rateBox.indexOf(box)].querySelector(".value");
+                let countBox = rateBox[rateBox.indexOf(box)].querySelector(".count");
+                let progress = rateBox[rateBox.indexOf(box)].querySelector(".progress");
+
+
+                let progressValue = Math.round(
+                    (reviews[valueBox.innerHTML[0]] / getTotal(reviews)) * 100
+                );
+
+                if (getTotal(reviews) == 0) {
+                    progressValue = 0;
+                }
+
+                progress.style.width = `${progressValue}%`;
+                countBox.innerHTML = progressValue + '%';
+            });
+            totalReviews.innerHTML = '(' + getTotal(reviews) + ' đánh giá)';
+            finalRating();
+        }
+
+        function getTotal(reviews) {
+            return Object.values(reviews).reduce((a, b) => a + b);
+        }
+
+        document.querySelectorAll(".value").forEach((element) => {
+            element.addEventListener("click", () => {
+                let target = element.innerHTML;
+                reviews[target] += 1;
+                updateValues();
+            });
+        });
+
+        function finalRating() {
+            let final = Object.entries(reviews)
+                .map((val) => val[0] * val[1])
+                .reduce((a, b) => a + b);
+            let ratingValue = nFormat(parseFloat(final / getTotal(reviews)).toFixed(1));
+            globalValue.innerHTML = ratingValue;
+            two.style.background = `linear-gradient(to right, #f6a500 ${
+    (ratingValue / 5) * 100
+  }%, transparent 0%)`;
+        }
+
+        function nFormat(number) {
+            if (number >= 1000 && number < 1000000) {
+                return `${number.toString().slice(0, -3)}k`;
+            } else if (number >= 1000000 && number < 1000000000) {
+                return `${number.toString().slice(0, -6)}m`;
+            } else if (number >= 1000000000) {
+                return `${number.toString().slice(0, -9)}md`;
+            } else if (number === "NaN") {
+                return `0.0`;
+            } else {
+                return number;
+            }
+        }
+    </script>
 </body>
 
 </html>
