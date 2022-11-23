@@ -101,12 +101,13 @@
             border-radius: 8px;
             font-size: 1.1em;
             font-weight: 700;
+
         }
 
         .login-button {
             background: linear-gradient(90deg, rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 100%);
             color: #636363;
-
+            transition: all 0.3s;
         }
 
         .login-button:focus {
@@ -149,40 +150,40 @@
             <!-- Nav tabs -->
             <ul class="nav nav-tabs">
                 <li class="nav-item" style="width: 50%; text-align: center;">
-                    <a class="nav-link active" data-toggle="tab" href="#dangnhap">Đăng Nhập</a>
+                    <a class="nav-link active" data-toggle="tab" href="#login-container">Đăng Nhập</a>
                 </li>
                 <li class="nav-item" style="width: 50%; text-align: center;">
-                    <a class="nav-link" data-toggle="tab" href="#dangki">Đăng Ký</a>
+                    <a class="nav-link" data-toggle="tab" href="#register-container">Đăng Ký</a>
                 </li>
             </ul>
 
             <!-- Tab panes -->
             <div class="tab-content">
-                <div class="tab-pane active log-container" id="dangnhap">
-                    <form action="" style="margin-top: 15px;">
+                <div class="tab-pane active log-container" id="login-container">
+                    <form action="login/login_process" method="post" style="margin-top: 15px;">
                         <div class="mb-3">
-                            <label for="sdt">Email</label>
-                            <br>
-                            <input maxlength="200" class="form-control" type="email" name="email" placeholder="Nhập email">
+                            <label for="email">Email</label>
+                            <input maxlength="200" class="form-control" id="email-1" type="email" name="email" placeholder="Nhập email">
                         </div>
-                        <label for="matkhau">Mật khẩu</label>
+                        <label for="password">Mật khẩu</label>
                         <div class="input-group">
-                            <input class="form-control" type="password" id="matkhau" placeholder="Nhập mật khẩu">
+                            <input class="form-control" type="password" id="password-1" name="password" placeholder="Nhập mật khẩu">
                             <span class="showpass">Hiện</span>
                         </div>
+
+                        <div class="forgot-pass mt-3"><span>Quên mật khẩu ?</span></div>
+                        <div class="group-button">
+                            <div class="login-button-group"><button type="button" id="login-button" class="login-button">Đăng Nhập</button></div>
+                            <div class="login-button-group"><button type="button" class="loginfb-button" style="white-space: nowrap;"><i class="fab fa-facebook"></i> Đăng nhập bằng Facebook</button></div>
+                        </div>
                     </form>
-                    <div class="forgot-pass mt-3"><span>Quên mật khẩu ?</span></div>
-                    <div class="group-button">
-                        <div class="login-button-group"><button type="button" class="login-button">Đăng Nhập</button></div>
-                        <div class="login-button-group"><button type="button" class="loginfb-button" style="white-space: nowrap;"><i class="fab fa-facebook"></i> Đăng nhập bằng Facebook</button></div>
-                    </div>
                 </div>
-                <div class="tab-pane log-container" id="dangki">
+                <div class="tab-pane log-container" id="register-container">
                     <form action="">
                         <div style="margin-top: 15px;">
                             <label for="email">Email</label>
                             <div class="input-group">
-                                <input name="email" class="form-control" type="text" id="sdt-2" placeholder="Nhập số điện thoại hoặc email">
+                                <input name="email" class="form-control" type="text" id="email-2" placeholder="Nhập email">
                                 <span class="OTP">Gửi mã OTP</span>
                             </div>
                         </div>
@@ -193,7 +194,7 @@
                         </div>
                         <label class="mt-3" for="matkhau">Mật khẩu</label>
                         <div class="input-group">
-                            <input class="form-control" type="password" id="matkhau" placeholder="Nhập mật khẩu">
+                            <input class="form-control" type="password" id="password-2" placeholder="Nhập mật khẩu">
                             <span class="show-regis">Hiện</span>
                         </div>
 
@@ -212,13 +213,42 @@
 
     <?php include(dirname(__FILE__) . '/' . '../layouts/footer.php'); ?>
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        const login_email_input = document.getElementById('email-1');
+        const login_password_input = document.getElementById('password-1');
+        const register_email_input = document.getElementById('email-2');
+        const register_password_input = document.getElementById('password-2');
+        const login_button = document.getElementById('login-button');
+
+        const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+        const passwordPattern = /^.{6,}$/
+
+        $("#email-1").on('change paste input', LoginValidation)
+        $("#password-1").on('changepaste input', LoginValidation)
+
+        function LoginValidation() {
+            if (emailPattern.test(login_email_input.value) && passwordPattern.test(login_password_input.value)) {
+                console.log("true");
+                login_button.style.color = "white";
+                login_button.style.background = "#C92127";
+                login_button.style.cursor = "pointer";
+                login_button.setAttribute('type', "submit");
+            } else {
+                login_button.style.color = "#636363";
+                login_button.style.background = "linear-gradient(90deg, rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 100%)";
+                login_button.style.cursor = "default";
+                login_button.setAttribute('type', "button");
+            }
+        }
+    </script>
 </body>
 
 </html>

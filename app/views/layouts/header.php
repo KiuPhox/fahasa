@@ -14,13 +14,13 @@
                 </a>
             </div>
             <div id="list-menu-icon">
-                <a href="category"><i class="fa-solid fa-list-ul"></i></a>
+                <a href="/Fahasa/category"><i class="fa-solid fa-list-ul"></i></a>
 
             </div>
             <form class="search-form">
                 <input class="search" name="q" type="text" placeholder="Tìm kiếm sản phẩm mong muốn...">
                 <a href="#" class="search-button-container">
-                    <button class="search-button">
+                    <button type="button" class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
                 </a>
@@ -38,7 +38,7 @@
                 </a>
             </div>
             <div class="cart cover-icon">
-                <a href="./cart/cart.html" class="cart-button" style="flex-direction: column;">
+                <a href="checkout/cart" class="cart-button" style="flex-direction: column;">
                     <div class="cart-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
@@ -50,16 +50,41 @@
                 </a>
             </div>
             <div class="login cover-icon">
-                <a href="login" class="login-button" style="flex-direction: column;">
+                <a href="/Fahasa/login" class="login-button" style="flex-direction: column;">
                     <div class="login-icon">
                         <i class="fa-regular fa-user"></i>
                     </div>
                     <div>
                         <p style="font-size:13px;">
-                            Tài khoản
+                            <?php if (isset($_SESSION['id'])) {
+                                if (mb_strlen($_SESSION['name']) >= 7) {
+                                    echo mb_substr($_SESSION['name'], 0, 7) . "...";
+                                } else {
+                                    echo $_SESSION['name'];
+                                }
+                            } else {
+                                echo "Tài khoản";
+                            } ?>
                         </p>
                     </div>
                 </a>
+                <?php if (isset($_SESSION['id'])) { ?>
+                    <div class="login-dropdown container">
+                        <div class="login-dropdown-top">
+                            <h5><?php echo $_SESSION['name'] ?></h5>
+                        </div>
+                        <div class="login-nav">
+                            <a href="">
+                                <i class="fa-regular fa-clipboard"></i>
+                                <span>Đơn hàng của tôi</span>
+                            </a>
+                            <a href="/Fahasa/login/logout_process">
+                                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                                <span>Thoát tài khoản</span>
+                            </a>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>

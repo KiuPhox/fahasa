@@ -140,6 +140,8 @@ input.search:focus-visible {
     border: 1px grey solid;
     border-radius: 20px;
     padding: 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
 }
 
 .category-container {
@@ -368,4 +370,59 @@ a.product {
 
 .bg-white {
     border-radius: 10px;
+}
+
+.cover-icon {
+    position: relative;
+}
+
+.login-dropdown {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 2.5rem;
+    right: 0;
+    width: 300px;
+    z-index: 2;
+    border-radius: 8px;
+    padding: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.login-dropdown h5 {
+    font-size: 1.3em;
+    color: #0D0E0F;
+    font-weight: bold;
+    max-width: 200px;
+    height: 22px;
+    text-transform: capitalize;
+    margin: auto;
+}
+
+.login-dropdown .login-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.login-dropdown .login-nav a:hover {
+    background-color: #f2f4f5;
+    border-radius: 8px;
+}
+
+.login-dropdown .login-nav a {
+    text-align: left;
+    padding: 1em 0;
+    width: 100%;
+    color: #7A7E7F;
+}
+
+.login-dropdown .login-nav a span {
+    font-size: 14px;
+}
+
+.login-dropdown .login-nav a i {
+    font-size: 20px;
+    margin: 0 10px;
 }
