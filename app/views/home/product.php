@@ -1,25 +1,6 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "Fahasa");
-mysqli_set_charset($conn, 'utf8');
 
-$id = $_GET["id"];
-$sql = "SELECT * from books
-    WHERE books.id = $id";
-$book = mysqli_query($conn, $sql);
-$book_infos = mysqli_fetch_array($book);
-$sql = "SELECT * from ratings WHERE ratings.book_id = $id";
-$ratings = mysqli_query($conn, $sql);
-
-
-$reviews = [0, 0, 0, 0, 0];
-
-foreach ($ratings as $rating) {
-    $reviews[$rating['rating'] - 1]++;
-}
-
-
-$total_reviews = array_sum($reviews);
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +10,11 @@ $total_reviews = array_sum($reviews);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $book_infos['title'] ?></title>
+    <title><?php echo $book['title'] ?></title>
     <!-- Latest compiled JavaScript -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../../public/css/style.css">
-    <link rel="stylesheet" href="../../../public/icon/fontawesome/css/all.css">
+    <link rel="stylesheet" href="../public/css/style.css">
+    <link rel="stylesheet" href="../public/icon/fontawesome/css/all.css">
 
     <style>
         .product-essential {
@@ -258,6 +239,7 @@ $total_reviews = array_sum($reviews);
 
         .two {
             background: linear-gradient(to right, #f6a500 0%, transparent 0%);
+            background-clip: text;
             -webkit-background-clip: text !important;
             -webkit-text-fill-color: transparent;
             transition: 0.5s ease-in-out all;
@@ -336,19 +318,17 @@ $total_reviews = array_sum($reviews);
         .comment-right .rating-icons span {
             transform: none;
         }
-
-        .comment-list li span {}
     </style>
 </head>
 
 <body>
-    <?php include('../layouts/header.php'); ?>
+    <?php include(__DIR__ . '/' . '../layouts/header.php'); ?>
     <form class="product-form bg-white mt-4" action="" method="post">
         <div class="product-view">
             <div class="product-essential p-4">
                 <div class="product-essential-media">
                     <div class="product-view-image">
-                        <img src="<?php echo $book_infos['image'] ?>" alt="">
+                        <img src="<?php echo $book['image'] ?>" alt="">
                     </div>
                     <div class="product-view-add-box">
                         <button class="btn-add-to-cart">Thêm vào giỏ hàng</button>
@@ -356,10 +336,10 @@ $total_reviews = array_sum($reviews);
                     </div>
                 </div>
                 <div class="product-essential-detail">
-                    <h1><?php echo $book_infos['title'] ?></h1>
+                    <h1><?php echo $book['title'] ?></h1>
                     <div class="product-view-sa">
                         <div class="product-view-sa-supplier">Nhà cung cấp: <b>ZenBooks</b></div>
-                        <div class="product-view-sa-supplier">Tác giả: <b><?php echo $book_infos['author'] ?></b> </div>
+                        <div class="product-view-sa-supplier">Tác giả: <b><?php echo $book['author'] ?></b> </div>
                     </div>
                     <div class="product-view-sa">
                         <div class="product-view-sa-supplier">Nhà xuất bản: <b>NXB Đà Nẵng</b></div>
@@ -370,8 +350,8 @@ $total_reviews = array_sum($reviews);
                         <div class="reviews-number">(<?php echo $total_reviews ?> đánh giá)</div>
                     </div>
                     <div class="price-box">
-                        <p class="special-price"><?php echo number_format($book_infos['price'] * (1 - $book_infos['discount'] / 100), 0, '.', '.') ?> đ</p>
-                        <p class="old-price"><?php echo number_format($book_infos['price'], 0, '.', '.'); ?> đ</p>
+                        <p class="special-price"><?php echo number_format($book['price'] * (1 - $book['discount'] / 100), 0, '.', '.') ?> đ</p>
+                        <p class="old-price"><?php echo number_format($book['price'], 0, '.', '.'); ?> đ</p>
                     </div>
                     <div id="expected-delivery"></div>
                     <div class="product-view-quantity-box">
@@ -390,7 +370,7 @@ $total_reviews = array_sum($reviews);
                 <tbody>
                     <tr>
                         <th>Mã hàng</th>
-                        <td><?php echo $book_infos['isbn'] ?></td>
+                        <td><?php echo $book['isbn'] ?></td>
                     </tr>
                     <tr>
                         <th>Tên Nhà Cung Cấp</th>
@@ -410,13 +390,13 @@ $total_reviews = array_sum($reviews);
                     </tr>
                     <tr>
                         <th>Số trang</th>
-                        <td><?php echo $book_infos['page_quantity'] ?></td>
+                        <td><?php echo $book['page_quantity'] ?></td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <div class="product-tab-description">
-            <?php echo $book_infos['description'] ?>
+            <?php echo $book['description'] ?>
         </div>
     </div>
     <div id="product-view-review" class="container">
@@ -465,15 +445,7 @@ $total_reviews = array_sum($reviews);
             <div class="product-view-tab-content-comment">
                 <div class="comment-content">
                     <?php
-
-
                     if ($total_reviews > 0) {
-                        $rating_value = 0;
-                        for ($i = 1; $i <= 5; $i++) {
-                            $rating_value += $i * $reviews[$i - 1] / $total_reviews;
-                        }
-
-
                     ?>
                         <ul class="comment-list">
                             <?php foreach ($ratings as $rating) { ?>
@@ -498,7 +470,7 @@ $total_reviews = array_sum($reviews);
             </div>
         </div>
     </div>
-    <?php include('../layouts/footer.php') ?>
+    <?php include(__DIR__ . '/' . '../layouts/footer.php') ?>
 
     <script>
         let rateBox = Array.from(document.querySelectorAll(".rate-box"));

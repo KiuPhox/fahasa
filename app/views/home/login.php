@@ -8,9 +8,8 @@
     <title>Khách hàng đăng nhập</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-
-    <link rel="stylesheet" href="../../../public/css/style.css">
-    <link rel="stylesheet" href="../../../public/icon/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/icon/fontawesome/css/all.css">
     <style>
         .login-form {
             border-radius: 10px;
@@ -144,7 +143,7 @@
 </head>
 
 <body>
-    <?php include('../layouts/header.php') ?>
+    <?php include(dirname(__FILE__) . '/' . '../layouts/header.php'); ?>
     <div class="login-form container">
         <div class="login-form-content">
             <!-- Nav tabs -->
@@ -211,7 +210,7 @@
         </div>
     </div>
 
-    <?php include('../layouts/footer.php'); ?>
+    <?php include(dirname(__FILE__) . '/' . '../layouts/footer.php'); ?>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

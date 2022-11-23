@@ -9,9 +9,21 @@
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="../../../public/css/style.css">
-    <link rel="stylesheet" href="../../../public/icon/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/icon/fontawesome/css/all.css">
     <style>
+        .page-title h1 {
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 400;
+            line-height: 36px;
+            color: #565555;
+        }
+
+        .page-title {
+            margin-left: 20px;
+        }
+
         .container-inner {
             display: flex;
             flex-direction: row;
@@ -107,6 +119,19 @@
             padding: 0;
         }
 
+        .col-left p {
+            text-transform: uppercase;
+            font-weight: 600;
+            font-size: 14px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+        }
+
+        .col-left a li {
+            font-size: 14px;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 4px 0;
+        }
+
         .col-left-inner {
             background-color: white;
             padding: 0 15px;
@@ -126,13 +151,8 @@
 </head>
 
 <body>
-    <?php include('../layouts/header.php');
-    $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-    mysqli_set_charset($conn, 'utf8');
+    <?php include(__DIR__ . '/' . '../layouts/header.php');
 
-    $sql = "SELECT * from categories";
-    $categories = mysqli_query($conn, $sql);
-    $books = mysqli_query($conn, "SELECT * from books");
     ?>
     <div class="container" style="background: none;">
         <div class="container-inner">
@@ -143,7 +163,7 @@
                             <p>Thể loại</p>
                             <?php
                             foreach ($categories as $category) { ?>
-                                <a>
+                                <a href="<?php echo '?c=' . $category['name']; ?>">
                                     <li><?php echo $category['name']; ?></li>
                                 </a>
                             <?php }
@@ -155,6 +175,12 @@
             </div>
             <div class="col-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
                 <div class="col-main-content">
+                    <div class="page-title">
+                        <?php if (isset($_GET["q"]) && !empty($_GET["q"])) { ?>
+                            <h1>KẾT QUẢ TÌM KIẾM VỚI: <?php echo $_GET["q"] ?></h1>
+                        <?php } ?>
+                    </div>
+
                     <div class="toolbar-top">
                         <div class="toolbar col-sm-12 col-xs-12 col-md-12">
                             <div class="sorter col-sm-4 col-xs-6 col-md-4">
@@ -177,9 +203,9 @@
 
                                     <div class="product-content">
                                         <div class="product-image">
-                                            <a href="product.php?id=<?php echo $book['id'] ?>"><img src="<?php echo $book['image'] ?>"></a>
+                                            <a href="product/<?php echo $book['id'] ?>"><img src="<?php echo $book['image'] ?>"></a>
                                         </div>
-                                        <a href="product.php?id=<?php echo $book['id'] ?>">
+                                        <a href="product/<?php echo $book['id'] ?>">
                                             <h2 class="product-name"><?php echo $book['title'] ?></h2>
                                         </a>
                                         <div class="price-label">
@@ -205,7 +231,7 @@
             </div>
         </div>
     </div>
-    <?php include('../layouts/footer.php'); ?>
+    <?php include(__DIR__ . '/' . '../layouts/footer.php') ?>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

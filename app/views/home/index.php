@@ -8,12 +8,42 @@
     <meta name="author" content="Group 12">
     <title>Nhà sách trực tuyến Fahasa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
-    <link rel="stylesheet" href="../../../public/css/style.css">
-    <link rel="stylesheet" href="../../../public/icon/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./public/css/style.css">
+    <link rel="stylesheet" href="./public/icon/fontawesome/css/all.css">
+    <style>
+        div#menu {
+            display: flex;
+        }
+
+        .menu-info>a {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .menu-info>a>img {
+            width: 60px;
+        }
+
+        div.col-sms-3 {
+            flex: 8%;
+            margin: 10px 10px;
+            text-align: center;
+        }
+
+        #menu {
+            background-color: rgb(247, 243, 243);
+            width: 83%;
+            margin: auto;
+            font-size: 12px;
+            height: 115px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
-    <?php include('../layouts/header.php'); ?>
+    <?php include(dirname(__FILE__) . '/' . '../layouts/header.php'); ?>
     <div>
         <div>
             <div class="vertical_menu-carousel">
@@ -80,36 +110,7 @@
     </div>
     </div>
     <!-- Son -->
-    <style>
-        div#menu {
-            display: flex;
-        }
 
-        .menu-info>a {
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .menu-info>a>img {
-            width: 60px;
-        }
-
-        div.col-sms-3 {
-            flex: 8%;
-            margin: 10px 10px;
-            text-align: center;
-        }
-
-        #menu {
-            background-color: rgb(247, 243, 243);
-            width: 83%;
-            margin: auto;
-            font-size: 12px;
-            height: 115px;
-            margin-top: 10px;
-            margin-bottom: 10px;
-        }
-    </style>
     <div id="menu" class="container bg-white">
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
@@ -993,7 +994,7 @@
             </div>
         </div>
         <!-- Footer Sang -->
-        <?php include('../layouts/footer.php'); ?>
+        <?php include(dirname(__FILE__) . '/' . '../layouts/footer.php'); ?>
 
 
 

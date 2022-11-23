@@ -9,15 +9,16 @@
     <div class="cover-container">
         <div class="cover-navbar">
             <div class="logo">
-                <a href="index.php">
+                <a href="/Fahasa/">
                     <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo/fahasa_logo.png">
                 </a>
             </div>
             <div id="list-menu-icon">
-                <i class="fa-solid fa-list-ul"></i>
+                <a href="category"><i class="fa-solid fa-list-ul"></i></a>
+
             </div>
             <form class="search-form">
-                <input class="search" type="text" placeholder="Tìm kiếm sản phẩm mong muốn...">
+                <input class="search" name="q" type="text" placeholder="Tìm kiếm sản phẩm mong muốn...">
                 <a href="#" class="search-button-container">
                     <button class="search-button">
                         <i class="fas fa-search"></i>
@@ -49,7 +50,7 @@
                 </a>
             </div>
             <div class="login cover-icon">
-                <a href="login.php" class="login-button" style="flex-direction: column;">
+                <a href="login" class="login-button" style="flex-direction: column;">
                     <div class="login-icon">
                         <i class="fa-regular fa-user"></i>
                     </div>
