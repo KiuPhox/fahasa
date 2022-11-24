@@ -16,6 +16,7 @@ class User extends Model
 
         $_SESSION['id'] = $result['id'];
         $_SESSION['name'] = $result['name'];
+        $_SESSION['level'] = $result['level'];
 
         return mysqli_query($conn, $sql)->num_rows == 1;
     }

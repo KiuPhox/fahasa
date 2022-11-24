@@ -49,7 +49,7 @@
                     </div>
                 </a>
             </div>
-            <div class="login cover-icon">
+            <div id="login-icon" class="login cover-icon">
                 <a href="/Fahasa/login" class="login-button" style="flex-direction: column;">
                     <div class="login-icon">
                         <i class="fa-regular fa-user"></i>
@@ -69,11 +69,25 @@
                     </div>
                 </a>
                 <?php if (isset($_SESSION['id'])) { ?>
-                    <div class="login-dropdown container">
-                        <div class="login-dropdown-top">
-                            <h5><?php echo $_SESSION['name'] ?></h5>
-                        </div>
+                    <div id="login-dropdown" class="login-dropdown container">
+                        <a href="" class="login-dropdown-top">
+                            <div class="login-dropdown-top-container">
+                                <h5><?php echo $_SESSION['name'] ?></h5>
+                                <p><?php if ($_SESSION['level'] == 1) {
+                                        echo "Thành viên Fahasa";
+                                    } else {
+                                        echo "Quản trị viên";
+                                    } ?></p>
+                            </div>
+                            <i style="font-size: 16px;" class="fa-solid fa-chevron-right"></i>
+                        </a>
                         <div class="login-nav">
+                            <?php if ($_SESSION['level'] == 0) { ?>
+                                <a href="">
+                                    <i class="fa-solid fa-chart-line"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            <?php } ?>
                             <a href="">
                                 <i class="fa-regular fa-clipboard"></i>
                                 <span>Đơn hàng của tôi</span>
@@ -761,11 +775,12 @@
 </div>
 
 <script>
-    list_menu_icon = document.getElementById('list-menu-icon');
-    category = document.getElementById('category');
-    sub_menu = document.getElementById('sub-menu');
-    category_a = document.querySelectorAll('.left-category .nav-link a');
-
+    const list_menu_icon = document.getElementById('list-menu-icon');
+    const category = document.getElementById('category');
+    const sub_menu = document.getElementById('sub-menu');
+    const category_a = document.querySelectorAll('.left-category .nav-link a');
+    const login_icon = document.getElementById('login-icon');
+    const login_dropdown = document.getElementById('login-dropdown');
 
     list_menu_icon.addEventListener("mouseover", function() {
         category.style.display = 'block';
@@ -782,6 +797,25 @@
     category.addEventListener("mouseleave", function() {
         category.style.display = 'none';
     })
+
+    <?php if (isset($_SESSION['id'])) { ?>
+        login_icon.addEventListener("mouseover", function() {
+            login_dropdown.style.display = 'flex';
+        })
+
+        login_dropdown.addEventListener("mouseover", function() {
+            login_dropdown.style.display = 'flex';
+        })
+
+        login_dropdown.addEventListener("mouseleave", function() {
+            login_dropdown.style.display = 'none';
+        })
+
+        login_icon.addEventListener("mouseleave", function() {
+            login_dropdown.style.display = 'none';
+        })
+    <?php } ?>
+
 
     function ShowSubMenu(str) {
         category_a.forEach(function(item) {

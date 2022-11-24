@@ -14,7 +14,7 @@
 
     .left-footer p {
         color: black;
-        font-size: 13px;
+        font-size: 13.5px;
     }
 
     .footer-content {
@@ -41,6 +41,8 @@
 
     .footer-right-col a p {
         transition: all 0.3s ease-in;
+        margin: 14px 0;
+        font-size: 13.2px;
 
     }
 
