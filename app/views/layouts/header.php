@@ -17,10 +17,10 @@
                 <a href="/Fahasa/category"><i class="fa-solid fa-list-ul"></i></a>
 
             </div>
-            <form class="search-form">
+            <form class="search-form" action="/Fahasa/category">
                 <input class="search" name="q" type="text" placeholder="Tìm kiếm sản phẩm mong muốn...">
                 <a href="#" class="search-button-container">
-                    <button type="button" class="search-button">
+                    <button type="submit" class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
                 </a>
