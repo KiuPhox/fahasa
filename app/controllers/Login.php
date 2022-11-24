@@ -9,7 +9,7 @@ class Login
         if (isset($_SESSION['id'])) {
             header("Location:/Fahasa/");
         } else {
-            require("./app/views/home/login.php");
+            require("./app/views/user/home/login.php");
         }
     }
 

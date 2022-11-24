@@ -26,7 +26,7 @@ class Home
                 $rating_value += $i * $reviews[$i - 1] / $total_reviews;
             }
         }
-        require("./app/views/home/product.php");
+        require("./app/views/user/home/product.php");
     }
 
     public function category()
@@ -34,11 +34,11 @@ class Home
         $categories = Category::getAll();
         $books = Book::getAll();
 
-        require("./app/views/home/category.php");
+        require("./app/views/user/home/category.php");
     }
 
     public function index()
     {
-        require("./app/views/home/index.php");
+        require("./app/views/user/home/index.php");
     }
 }

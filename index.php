@@ -19,4 +19,7 @@ $router->add('login', ['controller' => 'Login', 'action' => 'index']);
 $router->add('login/login_process', ['controller' => 'Login', 'action' => 'login']);
 $router->add('login/logout_process', ['controller' => 'Login', 'action' => 'logout']);
 
+
+//Customer
+$router->add('customer/account', ['controller' => 'Customer', 'action' => 'account']);
 $router->dispatch($_SERVER['QUERY_STRING']);

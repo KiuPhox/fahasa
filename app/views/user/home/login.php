@@ -144,7 +144,7 @@
 </head>
 
 <body>
-    <?php include(dirname(__FILE__) . '/' . '../layouts/header.php'); ?>
+    <?php include(dirname(__FILE__) . '/' . '../../layouts/header.php'); ?>
     <div class="login-form container">
         <div class="login-form-content">
             <!-- Nav tabs -->
@@ -211,7 +211,7 @@
         </div>
     </div>
 
-    <?php include(dirname(__FILE__) . '/' . '../layouts/footer.php'); ?>
+    <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 

@@ -70,7 +70,7 @@
                 </a>
                 <?php if (isset($_SESSION['id'])) { ?>
                     <div id="login-dropdown" class="login-dropdown container">
-                        <a href="" class="login-dropdown-top">
+                        <a href="/Fahasa/customer/account" class="login-dropdown-top">
                             <div class="login-dropdown-top-container">
                                 <h5><?php echo $_SESSION['name'] ?></h5>
                                 <p><?php if ($_SESSION['level'] == 1) {

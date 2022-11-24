@@ -43,7 +43,7 @@
 </head>
 
 <body>
-    <?php include(dirname(__FILE__) . '/' . '../layouts/header.php'); ?>
+    <?php include(dirname(__FILE__) . '/' . '../../layouts/header.php'); ?>
     <div>
         <div>
             <div class="vertical_menu-carousel">
@@ -994,7 +994,7 @@
             </div>
         </div>
         <!-- Footer Sang -->
-        <?php include(dirname(__FILE__) . '/' . '../layouts/footer.php'); ?>
+        <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
 
 
 

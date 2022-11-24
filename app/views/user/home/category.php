@@ -151,7 +151,7 @@
 </head>
 
 <body>
-    <?php include(__DIR__ . '/' . '../layouts/header.php');
+    <?php include(__DIR__ . '/' . '../../layouts/header.php');
 
     ?>
     <div class="container" style="background: none;">
@@ -231,7 +231,7 @@
             </div>
         </div>
     </div>
-    <?php include(__DIR__ . '/' . '../layouts/footer.php') ?>
+    <?php include(__DIR__ . '/' . '../../layouts/footer.php') ?>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

@@ -16,12 +16,12 @@
 </head>
 
 <body>
-    <?php include(dirname(__FILE__) . '/' . '../layouts/header.php'); ?>
+    <?php include(dirname(__FILE__) . '/' . '../../layouts/header.php'); ?>
     <div class="container">
 
     </div>
 
-    <?php include(dirname(__FILE__) . '/' . '../layouts/footer.php'); ?>
+    <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

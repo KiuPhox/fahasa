@@ -322,7 +322,7 @@
 </head>
 
 <body>
-    <?php include(__DIR__ . '/' . '../layouts/header.php'); ?>
+    <?php include(__DIR__ . '/' . '../../layouts/header.php'); ?>
     <form class="product-form bg-white mt-4" action="" method="post">
         <div class="product-view">
             <div class="product-essential p-4">
@@ -470,7 +470,7 @@
             </div>
         </div>
     </div>
-    <?php include(__DIR__ . '/' . '../layouts/footer.php') ?>
+    <?php include(__DIR__ . '/' . '../../layouts/footer.php') ?>
 
     <script>
         let rateBox = Array.from(document.querySelectorAll(".rate-box"));
