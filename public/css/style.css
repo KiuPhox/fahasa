@@ -26,6 +26,10 @@ li {
     list-style: none;
 }
 
+button:focus {
+    outline: none;
+}
+
 h1,
 h2,
 h3,
@@ -452,4 +456,15 @@ a.product {
 .login-dropdown .login-nav a i {
     font-size: 20px;
     margin: 0 10px;
+}
+
+.black-background-box {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.35);
 }

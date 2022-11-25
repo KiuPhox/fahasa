@@ -38,7 +38,7 @@
                 </a>
             </div>
             <div class="cart cover-icon">
-                <a href="checkout/cart" class="cart-button" style="flex-direction: column;">
+                <a href="/Fahasa/checkout/cart" class="cart-button" style="flex-direction: column;">
                     <div class="cart-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
@@ -50,7 +50,8 @@
                 </a>
             </div>
             <div id="login-icon" class="login cover-icon">
-                <a href="/Fahasa/login" class="login-button" style="flex-direction: column;">
+                <a href="<?php if (isset($_SESSION['id'])) echo "/Fahasa/customer/account";
+                            else echo "/Fahasa/login"; ?> " class="login-button" style="flex-direction: column;">
                     <div class="login-icon">
                         <i class="fa-regular fa-user"></i>
                     </div>

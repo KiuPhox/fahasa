@@ -49,7 +49,8 @@
         }
 
         .product-view-add-box button,
-        #review-write-btn {
+        #review-write-btn,
+        #post-review-btn {
             cursor: pointer;
             user-select: none;
             height: 44px;
@@ -71,11 +72,15 @@
             border: 2px solid #C92127;
         }
 
-        .btn-buy-now {
-            margin-left: 10px;
+        .btn-buy-now,
+        #post-review-btn {
             color: #fff;
             background: #C92127;
             border: none;
+        }
+
+        .btn-buy-now {
+            margin-left: 10px;
         }
 
         .product-essential-detail h1 {
@@ -269,6 +274,10 @@
             margin-bottom: 5px;
         }
 
+        #popup-write-review .rating-icons span {
+            font-size: 25px;
+        }
+
 
         .total-reviews {
             font-size: 14px;
@@ -317,6 +326,51 @@
 
         .comment-right .rating-icons span {
             transform: none;
+        }
+
+        #popup-write-review {
+            position: fixed;
+            width: 55%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            flex-direction: column;
+            align-items: center;
+
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        }
+
+        #popup-write-review .popup-title {
+            width: 100%;
+            text-transform: uppercase;
+            color: #212121;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        #popup-write-review .popup-title i {
+            float: right;
+            font-size: 24px;
+            color: #c1c1c1;
+            cursor: pointer;
+        }
+
+        #popup-write-review .popup-content {
+            width: 100%;
+        }
+
+        #post-review-btn {
+            float: right;
+        }
+
+        #review-field {
+            height: 122px;
+            resize: none;
+            width: 100%;
+            margin: 24px 0;
         }
     </style>
 </head>
@@ -404,43 +458,29 @@
         <div class="product-view-tab-content-review">
             <div class="product-view-tab-content-rating">
                 <div class="global">
-                    <span class="global-value">0.0</span>
+                    <span class="global-value"><?php echo number_format($rating_value, 1, '.', ''); ?></span>
                     <div class="rating-icons">
                         <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                         <span class="two" style="background: linear-gradient(to right, #f6a500 <?php echo $rating_value / 5 * 100 ?>%, transparent 0%)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
                     </div>
-                    <span class="total-reviews">(0 đánh giá)</span>
+                    <span class="total-reviews">(<?php echo $total_reviews ?> đánh giá)</span>
                 </div>
                 <div class="chart">
-                    <div class="rate-box">
-                        <span class="value">5 sao</span>
-                        <div class="progress-bar">
-                            <span class="progress"></span>
+                    <?php for ($i = 5; $i > 0; $i--) { ?>
+                        <div class="rate-box">
+                            <span class="value"><?php echo $i ?> sao</span>
+                            <div class="progress-bar">
+                                <span style="width: <?php echo $progress[$i - 1] ?>%" class="progress"></span>
+                            </div>
+                            <span class="count"><?php echo round($progress[$i - 1]) ?>%</span>
                         </div>
-                        <span class="count">0%</span>
-                    </div>
-                    <div class="rate-box">
-                        <span class="value">4 sao</span>
-                        <div class="progress-bar"><span class="progress"></span></div>
-                        <span class="count">0%</span>
-                    </div>
-                    <div class="rate-box">
-                        <span class="value">3 sao</span>
-                        <div class="progress-bar"><span class="progress"></span></div>
-                        <span class="count">0%</span>
-                    </div>
-                    <div class="rate-box">
-                        <span class="value">2 sao</span>
-                        <div class="progress-bar"><span class="progress"></span></div>
-                        <span class="count">0%</span>
-                    </div>
-                    <div class="rate-box">
-                        <span class="value">1 sao</span>
-                        <div class="progress-bar"><span class="progress"></span></div>
-                        <span class="count">0%</span>
-                    </div>
+                    <?php } ?>
                 </div>
-                <button id="review-write-btn">Viết đánh giá</button>
+                <?php if (isset($_SESSION['id'])) { ?>
+                    <button type="button" id="review-write-btn"><i class="fa-solid fa-pencil"></i> Viết đánh giá</button>
+                <?php } else { ?>
+                    <span style="margin: auto;">Chỉ có thành viên mới có thể viết nhận xét. Vui lòng đăng nhập hoặc đăng ký.</span>
+                <?php } ?>
             </div>
             <div class="product-view-tab-content-comment">
                 <div class="comment-content">
@@ -453,7 +493,7 @@
                                     <div class="comment-left">
                                         <p class="user-name"><?php $user_id = $rating['user_id'];
                                                                 echo mysqli_fetch_array(mysqli_query($conn, "SELECT * from users WHERE id = $user_id"))['name'] ?></p>
-                                        <span class="comment-date">16/05/2021</span>
+                                        <span class="comment-date"><?php echo date_format(date_create($rating['created_at']), "d/m/Y") ?></span>
                                     </div>
                                     <div class="comment-right">
                                         <div class="rating-icons">
@@ -470,82 +510,80 @@
             </div>
         </div>
     </div>
+
+    <?php if (isset($_SESSION['id'])) { ?>
+        <div class="black-background-box">
+            <div id="popup-write-review" class="container">
+                <div class="popup-title">
+                    Viết đánh giá sản phẩm
+                    <i id="close-review-btn" class="fa-solid fa-xmark"></i>
+                </div>
+                <div style="margin: 2rem 0;" class="rating-icons">
+                    <span class="one">
+                        <i onmouseover="ratingProduct(1)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(2)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(3)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(4)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(5)" class="fas fa-star"></i>
+                    </span>
+                    <span class="two" style="background: linear-gradient(to right, #f6a500 100%, transparent 0%)">
+                        <i onmouseover="ratingProduct(1)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(2)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(3)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(4)" class="fas fa-star"></i>
+                        <i onmouseover="ratingProduct(5)" class="fas fa-star"></i>
+                    </span>
+                </div>
+                <div class="popup-content">
+                    <form>
+                        <textarea id="review-field" class="form-control" placeholder="Nhập nhận xét của bạn"></textarea>
+                        <button onclick="postRating();" type="button" id="post-review-btn" type="button">Gửi nhận xét</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <?php } ?>
+
     <?php include(__DIR__ . '/' . '../../layouts/footer.php') ?>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
     <script>
-        let rateBox = Array.from(document.querySelectorAll(".rate-box"));
-        let globalValue = document.querySelector(".global-value");
-        let two = document.querySelector(".two");
-        let totalReviews = document.querySelector(".total-reviews");
+        <?php if (isset($_SESSION['id'])) { ?>
+            let two = document.querySelector("#popup-write-review .two");
+            let popup_write_review = document.getElementById("popup-write-review");
+            let review_write_btn = document.getElementById("review-write-btn");
+            let close_review_btn = document.getElementById("close-review-btn");
+            let review_field = document.getElementById("review-field");
+            let value = 100;
 
-        let reviews = {
-            5: <?php echo $reviews[4] ?>,
-            4: <?php echo $reviews[3] ?>,
-            3: <?php echo $reviews[2] ?>,
-            2: <?php echo $reviews[1] ?>,
-            1: <?php echo $reviews[0] ?>,
-        };
+            review_write_btn.addEventListener('click', function() {
+                popup_write_review.parentElement.style.display = 'block';
+            })
 
-        updateValues();
+            close_review_btn.addEventListener('click', function() {
+                popup_write_review.parentElement.style.display = 'none';
+            })
 
-        function updateValues() {
-            rateBox.forEach((box) => {
-                let valueBox = rateBox[rateBox.indexOf(box)].querySelector(".value");
-                let countBox = rateBox[rateBox.indexOf(box)].querySelector(".count");
-                let progress = rateBox[rateBox.indexOf(box)].querySelector(".progress");
-
-
-                let progressValue = Math.round(
-                    (reviews[valueBox.innerHTML[0]] / getTotal(reviews)) * 100
-                );
-
-                if (getTotal(reviews) == 0) {
-                    progressValue = 0;
-                }
-
-                progress.style.width = `${progressValue}%`;
-                countBox.innerHTML = progressValue + '%';
-            });
-            totalReviews.innerHTML = '(' + getTotal(reviews) + ' đánh giá)';
-            finalRating();
-        }
-
-        function getTotal(reviews) {
-            return Object.values(reviews).reduce((a, b) => a + b);
-        }
-
-        document.querySelectorAll(".value").forEach((element) => {
-            element.addEventListener("click", () => {
-                let target = element.innerHTML;
-                reviews[target] += 1;
-                updateValues();
-            });
-        });
-
-        function finalRating() {
-            let final = Object.entries(reviews)
-                .map((val) => val[0] * val[1])
-                .reduce((a, b) => a + b);
-            let ratingValue = nFormat(parseFloat(final / getTotal(reviews)).toFixed(1));
-            globalValue.innerHTML = ratingValue;
-            //             two.style.background = `linear-gradient(to right, #f6a500 ${
-            //     (ratingValue / 5) * 100
-            //   }%, transparent 0%)`;
-        }
-
-        function nFormat(number) {
-            if (number >= 1000 && number < 1000000) {
-                return `${number.toString().slice(0, -3)}k`;
-            } else if (number >= 1000000 && number < 1000000000) {
-                return `${number.toString().slice(0, -6)}m`;
-            } else if (number >= 1000000000) {
-                return `${number.toString().slice(0, -9)}md`;
-            } else if (number === "NaN") {
-                return `0.0`;
-            } else {
-                return number;
+            function ratingProduct(star) {
+                value = star / 5 * 100
+                two.style.background = "linear-gradient(to right, #f6a500 " + value + "%, transparent 0%)";
             }
-        }
+
+            function postRating() {
+                $.ajax({
+                    url: "/Fahasa/product/rating",
+                    type: 'post',
+                    data: {
+                        book_id: <?php echo $book['id'] ?>,
+                        rating: value / 20,
+                        comment: review_field.value,
+                    }
+                }).done(function(respone) {
+                    location.reload();
+                });
+            }
+        <?php } ?>
     </script>
 </body>
 

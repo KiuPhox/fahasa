@@ -20,6 +20,10 @@ $router->add('login/login_process', ['controller' => 'Login', 'action' => 'login
 $router->add('login/logout_process', ['controller' => 'Login', 'action' => 'logout']);
 
 
-//Customer
+// Customer
 $router->add('customer/account', ['controller' => 'Customer', 'action' => 'account']);
+
+// Rating
+$router->add('product/rating', ['controller' => 'Home', 'action' => 'rating']);
+
 $router->dispatch($_SERVER['QUERY_STRING']);
