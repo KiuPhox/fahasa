@@ -64,7 +64,7 @@
             margin: auto !important;
         }
 
-        .btn-add-to-cart,
+        #btn-add-to-cart,
         #review-write-btn {
             margin-left: 0;
             color: #C92127;
@@ -372,6 +372,40 @@
             width: 100%;
             margin: 24px 0;
         }
+
+        .product-view-quantity-box {
+            display: flex;
+        }
+
+        .product-view-quantity-box-block {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #c1c1c1;
+            border-radius: 4px;
+            height: 32px;
+        }
+
+        .product-view-quantity-box-block #qty {
+            border: none !important;
+            width: 3em !important;
+            color: #0D0E0F;
+            font-weight: 700;
+            font-size: 1.2em;
+            height: 100%;
+            display: inline;
+            text-align: center;
+            border: none;
+            outline: none;
+        }
+
+
+
+        a.btn-subtract-qty,
+        a.btn-add-qty {
+            padding: 0 16px;
+            cursor: pointer;
+        }
     </style>
 </head>
 
@@ -385,18 +419,18 @@
                         <img src="<?php echo $book['image'] ?>" alt="">
                     </div>
                     <div class="product-view-add-box">
-                        <button class="btn-add-to-cart">Thêm vào giỏ hàng</button>
+                        <button type="button" onclick="addToCart();" id="btn-add-to-cart">Thêm vào giỏ hàng</button>
                         <button class="btn-buy-now">Mua ngay</button>
                     </div>
                 </div>
                 <div class="product-essential-detail">
                     <h1><?php echo $book['title'] ?></h1>
                     <div class="product-view-sa">
-                        <div class="product-view-sa-supplier">Nhà cung cấp: <b>ZenBooks</b></div>
+                        <div class="product-view-sa-supplier">Nhà cung cấp: <b><?php echo $supplier['name'] ?></b></div>
                         <div class="product-view-sa-supplier">Tác giả: <b><?php echo $book['author'] ?></b> </div>
                     </div>
                     <div class="product-view-sa">
-                        <div class="product-view-sa-supplier">Nhà xuất bản: <b>NXB Đà Nẵng</b></div>
+                        <div class="product-view-sa-supplier">Nhà xuất bản: <b><?php echo $publisher['name'] ?></b></div>
                         <div class="product-view-sa-supplier">Hình thức bìa: <b>Bìa Mềm</b></div>
                     </div>
                     <div class="rating mt-2">
@@ -411,6 +445,13 @@
                     <div class="product-view-quantity-box">
                         <label for="qty">Số lượng:</label>
                         <div class="product-view-quantity-box-block">
+                            <a onclick="subtractQty();" class="btn-subtract-qty">
+                                <img style="width: 12px; height: auto;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_minus2x.png">
+                            </a>
+                            <input name="qty" id="qty" maxvalue="999" minvalue="1" align="center" value="1" onkeypress="validateNumber(event)" class="input-text qty">
+                            <a onclick="addQty();" class="btn-add-qty">
+                                <img style="width: 12px; height: auto;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_plus2x.png">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -424,19 +465,21 @@
                 <tbody>
                     <tr>
                         <th>Mã hàng</th>
-                        <td><?php echo $book['isbn'] ?></td>
+                        <td><?php echo $book['book_code'] ?></td>
                     </tr>
                     <tr>
                         <th>Tên Nhà Cung Cấp</th>
-                        <td>ZenBooks</td>
+                        <a href="">
+                            <td><?php echo $supplier['name'] ?></td>
+                        </a>
                     </tr>
                     <tr>
                         <th>Tác giả</th>
-                        <td>Mai Lan Hương, Hà Thanh Uyên</td>
+                        <td><?php echo $book['author'] ?></td>
                     </tr>
                     <tr>
                         <th>NXB</th>
-                        <td>NXB Đà Nẵng</td>
+                        <td><?php echo $publisher['name'] ?></td>
                     </tr>
                     <tr>
                         <th>Năm XB</th>
@@ -555,6 +598,8 @@
             let review_write_btn = document.getElementById("review-write-btn");
             let close_review_btn = document.getElementById("close-review-btn");
             let review_field = document.getElementById("review-field");
+            let qty = document.getElementById("qty");
+
             let value = 100;
 
             review_write_btn.addEventListener('click', function() {
@@ -584,6 +629,51 @@
                 });
             }
         <?php } ?>
+
+        function validateNumber(event) {
+            var theEvent = event || window.event;
+
+            if (theEvent.type == 'paste') {
+                key = event.clipBoardData.getData('/text/plain');
+            } else {
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+
+            var regex = /[0-9]|\./;
+            if (!regex.test(key)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault)
+                    theEvent.preventDefault();
+            }
+        }
+
+        function subtractQty() {
+            qty.value--;
+            if (qty.value < 1) {
+                qty.value = 1;
+            }
+        }
+
+        function addQty() {
+            qty.value++;
+        }
+
+        function addToCart(quantity = 1) {
+
+            quantity = qty.value;
+
+            $.ajax({
+                url: "/Fahasa/cart/addtocart",
+                type: 'post',
+                data: {
+                    book_id: <?php echo $book['id'] ?>,
+                    quantity: quantity,
+                }
+            }).done(function(respone) {
+                // location.reload();
+            });
+        }
     </script>
 </body>
 

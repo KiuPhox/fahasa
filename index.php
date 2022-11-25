@@ -1,5 +1,6 @@
 <?php
-
+$conn = mysqli_connect("localhost", "root", "", "Fahasa");
+mysqli_set_charset($conn, 'utf8');
 session_start();
 require_once('core/router.php');
 
@@ -12,13 +13,12 @@ $router->add('category', ['controller' => 'Home', 'action' => 'category']);
 
 // Cart
 $router->add('checkout/cart', ['controller' => 'Cart', 'action' => 'index']);
-
+$router->add('cart/addtocart', ['controller' => 'Cart', 'action' => 'addToCart']);
 // Login
 
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);
 $router->add('login/login_process', ['controller' => 'Login', 'action' => 'login']);
 $router->add('login/logout_process', ['controller' => 'Login', 'action' => 'logout']);
-
 
 // Customer
 $router->add('customer/account', ['controller' => 'Customer', 'action' => 'account']);

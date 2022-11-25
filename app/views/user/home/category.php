@@ -147,6 +147,12 @@
         .col-main {
             border-radius: 10px;
         }
+
+        .product-content .amount {
+            color: #F6A500 !important;
+            font-size: 14px;
+            font-weight: 500;
+        }
     </style>
 </head>
 
@@ -220,7 +226,7 @@
                                         </div>
                                         <div class="ratings">
                                             <div class="rating-box"></div>
-                                            <div class="amount">(0)</div>
+                                            <div class="amount">(<?php echo Rating::getAllByBookID($book['id'])->num_rows ?>)</div>
                                         </div>
                                     </div>
                                 </div>

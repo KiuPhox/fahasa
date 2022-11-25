@@ -8,7 +8,7 @@ class Rating extends Model
     {
         $conn = mysqli_connect("localhost", "root", "", "Fahasa");
         mysqli_set_charset($conn, 'utf8');
-        return mysqli_query($conn, "SELECT * FROM ratings WHERE book_id = $id");
+        return mysqli_query($conn, "SELECT * FROM ratings WHERE book_id = $id ORDER BY created_at DESC");
     }
 
     public static function post($book_id, $user_id, $rating, $comment)

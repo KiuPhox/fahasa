@@ -3,7 +3,8 @@
 require_once('./app/models/Book.php');
 require_once('./app/models/Category.php');
 require_once('./app/models/Rating.php');
-
+require_once('./app/models/Publisher.php');
+require_once('./app/models/Supplier.php');
 class Home
 {
     public function product($id)
@@ -12,7 +13,8 @@ class Home
         mysqli_set_charset($conn, 'utf8');
 
         $book = Book::getByID($id);
-
+        $publisher = Publisher::getByID($book['publisher_id']);
+        $supplier = Supplier::getByID($book['supplier_id']);
         $ratings = Rating::getAllByBookID($id);
 
         $reviews = [0, 0, 0, 0, 0];
