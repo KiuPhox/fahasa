@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 16, 2022 at 08:32 PM
+-- Generation Time: Nov 25, 2022 at 01:39 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -57,8 +57,7 @@ INSERT INTO `books` (`id`, `title`, `author`, `description`, `image`, `price`, `
 (8, 'Thay Đổi Cuộc Sống Với Nhân Số Học', 'Lê Đỗ Quỳnh Hương', 'Đầu năm 2020, chuỗi chương trình “Thay đổi cuộc sống với Nhân số học” của  biên tập viên, người dẫn chương trình quen thuộc tại Việt Nam Lê Đỗ Quỳnh Hương ra đời trên Youtube, với mục đích chia sẻ kiến thức, giúp mọi người tìm hiểu và phát triển, hoàn thiện bản thân, các mối quan hệ xã hội thông qua bộ môn Nhân số học. Chương trình đã nhận được sự yêu mến và phản hồi tích cực của rất nhiều khán giả và độc giả sau mỗi tập phát sóng.', 'https://cdn0.fahasa.com/media/catalog/product/t/d/tdcsvnsh.jpg', 248000, 29, 1, 3, 51, '2016-02-24 17:00:00', 416, '8935086853634', '2022-10-09 09:35:46', '2022-10-30 09:08:48'),
 (9, 'Hiểu Về Trái Tim (Tái Bản 2019)', 'Minh Niệm', '“Hiểu về trái tim” là một cuốn sách đặc biệt được viết bởi thiền sư Minh Niệm. Với phong thái và lối hành văn gần gũi với những sinh hoạt của người Việt, thầy Minh Niệm đã thật sự thổi hồn Việt vào cuốn sách nhỏ này.', 'https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_14922.jpg', 138000, 9, 1, 1, 3354343, '2022-01-26 17:00:00', 480, '8935086849903', '2022-10-09 17:24:31', '2022-10-30 09:42:35'),
 (10, 'Rèn Luyện Tư Duy Phản Biện', 'Albert Rutherford', 'Như bạn có thể thấy, chìa khóa để trở thành một người có tư duy phản biện tốt chính là sự tự nhận thức. Bạn cần phải đánh giá trung thực những điều trước đây bạn nghĩ là đúng, cũng như quá trình suy nghĩ đã dẫn bạn tới những kết luận đó. Nếu bạn không có những lý lẽ hợp lý, hoặc nếu suy nghĩ của bạn bị ảnh hưởng bởi những kinh nghiệm và cảm xúc, thì lúc đó hãy cân nhắc sử dụng tư duy phản biện! Bạn cần phải nhận ra được rằng con người, kể từ khi sinh ra, rất giỏi việc đưa ra những lý do lý giải cho những suy nghĩ khiếm khuyết của mình. Nếu bạn đang có những kết luận sai lệch này thì có một sự thật là những đức tin của bạn thường mâu thuẫn với nhau và đó thường là kết quả của thiên kiến xác nhận, nhưng nếu bạn biết điều này, thì bạn đã tiến gần hơn tới sự thật rồi!', 'https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_18448.jpg', 99000, 34, 1, 1, 123, '2017-01-11 17:00:00', 208, '8936066687812', '2022-10-09 17:34:38', '2022-10-09 17:34:38'),
-(11, 'Blockchain - Bản Chất Của Blockchain', 'Mark Gates', 'Blockchain - Bản Chất Của Blockchain, Bitcoin, Tiền Điện Tử, Hợp Đồng Thông Minh Và Tương Lai Của Tiền Tệ\n\nTiền điện tử, với đại diện tiêu biểu nhất là Bitcoin, đang là mối quan tâm hàng đầu của giới tài chính toàn cầu. Khả năng thanh toán bằng tiền ảo mở ra hàng loạt tiềm năng cho thương mại và thay đổi toàn diện thói quen tiêu dùng của con người. Hạt nhân của công nghệ hứa hẹn rung chuyển thế giới này được gọi là Blockchain.\n\nBlockchain được giới công nghệ đánh giá là phát kiến vĩ đại nhất sau khi mạng Internet ra đời. Ứng dụng phổ biến nhất của nó là các loại tiền điện tử nổi tiếng (Bitcoin, Ethereum, Ripple...)', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8936066684996.jpg', 110000, 34, 1, 1, 188, '2022-05-09 17:00:00', 288, '8936066684996', '2022-10-26 11:53:57', '2022-10-26 11:53:57'),
-(12, 'We are all weird', 'Godin, Seth', NULL, 'https://s3.eu-west-3.amazonaws.com/nova-shakespeare-production/product/images_117/5259029_1.jpg', 13, 0, 1, 1, 12, '2015-07-22 17:00:00', 1111, '9780241209011', '2022-10-30 09:22:32', '2022-10-30 09:22:32');
+(11, 'Blockchain - Bản Chất Của Blockchain', 'Mark Gates', 'Blockchain - Bản Chất Của Blockchain, Bitcoin, Tiền Điện Tử, Hợp Đồng Thông Minh Và Tương Lai Của Tiền Tệ\n\nTiền điện tử, với đại diện tiêu biểu nhất là Bitcoin, đang là mối quan tâm hàng đầu của giới tài chính toàn cầu. Khả năng thanh toán bằng tiền ảo mở ra hàng loạt tiềm năng cho thương mại và thay đổi toàn diện thói quen tiêu dùng của con người. Hạt nhân của công nghệ hứa hẹn rung chuyển thế giới này được gọi là Blockchain.\n\nBlockchain được giới công nghệ đánh giá là phát kiến vĩ đại nhất sau khi mạng Internet ra đời. Ứng dụng phổ biến nhất của nó là các loại tiền điện tử nổi tiếng (Bitcoin, Ethereum, Ripple...)', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8936066684996.jpg', 110000, 34, 1, 1, 188, '2022-05-09 17:00:00', 288, '8936066684996', '2022-10-26 11:53:57', '2022-10-26 11:53:57');
 
 -- --------------------------------------------------------
 
@@ -137,7 +136,9 @@ INSERT INTO `ratings` (`id`, `book_id`, `user_id`, `rating`, `comment`, `created
 (12, 11, 5, 4, 'Nội dung sách chỉ mang tính tổng quan, không đi sâu vào chi tiết, thực tế vận hành của các tiền mã hoá vẫn còn một khoảng cách xa. Sách phù hợp cho những người mới bặt đầu tìm hiểu về tiền mã hóa.', '2022-11-15'),
 (13, 11, 5, 5, 'Sách viết theo bố cục cuối các chương đều có hệ thống lại các ý chính nên rất dễ nắm được nội dung giúp bạn có cái nhìn tổng quan về blockchain. Nội dung viết rõ ràng, dễ hiểu, dễ nhớ. Tuy nhiên, ngôn ngữ dịch còn khiến mình cảm thấy chưa chuyên nghiệp và còn xuất hiện 1 vài lỗi chính tả. Nhưng nhìn chung về nội dung, đây là một quyển sách hay và nên đọc. Cảm ơn tác giả và Fahasa.', '2022-11-15'),
 (14, 11, 5, 5, 'Sách rất hay và bổ ích, rất cần thiết cho những ai muốn tìm hiểu sâu hơn về bitcoin và cụ thể là blockchain (xương sống của bitcoin).', '2022-11-15'),
-(15, 11, 5, 5, 'Hiện nay nhiều người đang đổ xô đi đầu tư vào bitcoin, ethereum... mà không chịu tìm hiểu bản chất của blockchain (blockchain là công nghệ quyết định sự hoạt động của tiền ảo). Đọc cuốn này sẽ giúp bạn có được cái nhìn cơ bản nhất. Sách khá dễ hiểu.', '2022-11-15');
+(15, 11, 5, 5, 'Hiện nay nhiều người đang đổ xô đi đầu tư vào bitcoin, ethereum... mà không chịu tìm hiểu bản chất của blockchain (blockchain là công nghệ quyết định sự hoạt động của tiền ảo). Đọc cuốn này sẽ giúp bạn có được cái nhìn cơ bản nhất. Sách khá dễ hiểu.', '2022-11-15'),
+(20, 2, 7, 1, 'Sách như cac', '2022-11-25'),
+(21, 2, 8, 4, 'Cũng được đấy', '2022-11-25');
 
 -- --------------------------------------------------------
 
@@ -159,9 +160,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `level`, `created_at`) VALUES
-(1, 'Admin', '$2y$10$sEN7.oCLpJ3s77ogynLKU.Uq9Zim673GLy/fomiX4EjPlMeYq/djS', 'admin@admin.com', 0, '2022-10-09 04:26:34'),
-(5, 'Mai Linh', '$2y$10$95S9U.wdH.4kmM.uCm3ZeuYPvRLbSAiQD9UPv4oeuQl7U1MMsJppS', 'mailinh@gmail.com', 1, '2022-10-09 22:41:01'),
-(6, 'Tuan', '123456', 'tuan@gmail.com', 1, '2022-11-15 07:36:56');
+(1, 'Admin', '123456', 'admin@admin.com', 0, '2022-10-09 04:26:34'),
+(5, 'Mai Linh', '123456', 'mailinh@gmail.com', 1, '2022-10-09 22:41:01'),
+(6, 'Nguyễn Phan Anh Tuấn', '123456', 'tuan@gmail.com', 1, '2022-11-15 07:36:56'),
+(7, 'Hoàng', '123456', 'hoang@gmail.com', 1, '2022-11-25 12:33:32'),
+(8, 'Tốt Nguyễn', '123456', 'tot@gmail.com', 1, '2022-11-25 12:35:16');
 
 --
 -- Indexes for dumped tables
@@ -229,13 +232,13 @@ ALTER TABLE `publishers`
 -- AUTO_INCREMENT for table `ratings`
 --
 ALTER TABLE `ratings`
-  MODIFY `id` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- Constraints for dumped tables
