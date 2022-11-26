@@ -281,23 +281,37 @@
             font-size: 1.4em;
         }
 
+
         .btn-proceed-checkout {
             user-select: none;
             height: 44px;
-            width: 200px;
+            width: 100%;
             font-weight: 600;
             font-size: 1.2em;
             text-transform: uppercase;
             color: white;
-            background: linear-gradient(90deg, rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 100%);
+            background: #C92127;
             border: none;
             border-radius: 8px;
+        }
+
+        .btn-proceed-checkout:disabled {
+            background: linear-gradient(90deg, rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 100%);
         }
 
         .block-total-cart {
             background: white;
             padding: 1rem;
             border-radius: 8px;
+        }
+
+        .retail-note a {
+            color: red;
+            transition: all 300ms ease-in 0s;
+        }
+
+        .retail-note a:hover {
+            color: #F39801;
         }
     </style>
 </head>
@@ -405,7 +419,7 @@
                     </div>
                     <div class="checkout-type-button-cart" style="text-align: center;">
                         <div class="method-button-cart">
-                            <button type="button" title="Thanh toán" class="button btn-proceed-checkout btn-checkout" disabled>Thanh toán
+                            <button type="button" title="Thanh toán" class="button btn-proceed-checkout btn-checkout" <?php if ($paymentCheck == false) echo "disabled" ?>>Thanh toán
                             </button>
                             <div class="retail-note"><a href="https://www.fahasa.com/chinh-sach-khach-si/" target="_blank">(Giảm giá trên web chỉ áp dụng cho bán lẻ)</a></div>
                         </div>
@@ -420,8 +434,6 @@
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-    <!-- Popper JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

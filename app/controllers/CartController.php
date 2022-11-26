@@ -7,11 +7,14 @@ class CartController
     {
         $total = 0;
         $allChecked = true;
+        $paymentCheck = false;
         $cart = $_SESSION['cart'];
 
         foreach ($cart as $id => $book) {
             if ($book['checked'] == "false") {
                 $allChecked = false;
+            } else {
+                $paymentCheck = true;
             }
         }
 
