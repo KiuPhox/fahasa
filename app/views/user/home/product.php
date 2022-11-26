@@ -660,7 +660,6 @@
         }
 
         function addToCart(quantity = 1) {
-
             quantity = qty.value;
 
             $.ajax({
@@ -668,6 +667,7 @@
                 type: 'post',
                 data: {
                     id: <?php echo $book['id'] ?>,
+                    checked: false,
                     quantity: quantity,
                 }
             }).done(function(respone) {

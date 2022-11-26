@@ -14,6 +14,10 @@ $router->add('category', ['controller' => 'Home', 'action' => 'category']);
 // Cart
 $router->add('checkout/cart', ['controller' => 'CartController', 'action' => 'index']);
 $router->add('cart/addtocart', ['controller' => 'CartController', 'action' => 'addToCart']);
+$router->add('cart/check', ['controller' => 'CartController', 'action' => 'toggleCheckBook']);
+$router->add('cart/checkall', ['controller' => 'CartController', 'action' => 'checkAll']);
+$router->add('cart/add', ['controller' => 'CartController', 'action' => 'addQuantity']);
+$router->add('cart/subtract', ['controller' => 'CartController', 'action' => 'subtractQuantity']);
 // Login
 
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);

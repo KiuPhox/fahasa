@@ -320,11 +320,10 @@
                 <p style="font-size: 14px; margin: 20px 0;">Chưa có sản phẩm trong giỏ hàng của bạn.</p>
                 <a href="/Fahasa/category"><button class="shopping-btn" type="button">Mua sắm ngay</button></a>
             </div> -->
-            <?php $cart = $_SESSION['cart'] ?>
             <div class="col-sm-8 col-xs-12">
                 <div class="header-cart-item">
                     <div style="flex-basis: 8%;">
-                        <input id="checkbox-all-books" class="checkbox-add-cart" type="checkbox">
+                        <input onclick="checkAll();" id="checkbox-all-books" class="checkbox-add-cart" type="checkbox" <?php if ($allChecked) echo "checked" ?>>
                     </div>
                     <div style="flex-basis: 68%; justify-content: flex-start;">
                         <span>Chọn tất cả (<span class="num-items-checkbox"><?php echo count($cart) ?></span> sản phẩm)</span>
@@ -340,7 +339,7 @@
                 <div class="book-cart-left">
                     <?php foreach ($cart as $id => $book) { ?>
                         <div class="item-book-cart">
-                            <div class="checked-book-cart"><input type="checkbox" name="checkbox_product_379652" class="checkbox-add-cart"></div>
+                            <div class="checked-book-cart"><input onclick="toggleCheckBook(<?php echo $id ?>)" type="checkbox" name="checkbox_product_379652" class="checkbox-add-cart" <?php if ($book['checked'] == "true") echo "checked" ?>></div>
                             <div class="img-book-cart">
                                 <a class="book-image" href="/Fahasa/product/<?php echo $id ?>">
                                     <img src="<?php echo $book['image'] ?>" width="120" height="120">
@@ -363,15 +362,17 @@
                                 <div class="number-book-cart">
                                     <div class="book-view-quantity-box">
                                         <div class="book-view-quantity-box-block ">
-                                            <a class="btn-subtract-qty" onclick=""><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/ico_minus2x.png"></a>
+                                            <a style="cursor: pointer;" class="btn-subtract-qty" onclick="subtractQuantity(<?php echo $id ?>)"><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/ico_minus2x.png"></a>
                                             <input type="text" class="qty-carts" name="cart[379652][qty]" id="qty-379652" maxlength="12" align="center" value="<?php echo $book['quantity'] ?>" title="So luong">
-                                            <a class="btn-add-qty" onclick="cart.addQty('379652', event);"><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_plus2x.png"></a>
+                                            <a style="cursor: pointer;" class="btn-add-qty" onclick="addQuantity(<?php echo $id ?>)"><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_plus2x.png"></a>
                                         </div>
                                         <div class="book-view-icon-remove-mobile" style="display:none;"><a onclick="" title="Remove item" id="379652" class="btn-remove-mobile-cart"><i class="fa fa-trash-o" style="font-size:22px"></i></a></div>
                                     </div>
                                     <div class="cart-price-total"><span class="cart-price"><span class="price">
                                                 <?php $subtotal =  $book['price'] * (1 - $book['discount'] / 100) * $book['quantity'];
-                                                $total += $subtotal;
+                                                if ($book['checked'] == "true") {
+                                                    $total += $subtotal;
+                                                }
                                                 echo number_format($subtotal, 0, '.', '.') ?> đ
                                             </span></span>
                                     </div>
@@ -399,7 +400,7 @@
                         <div class="border-book"></div>
                         <div class="total-cart-page title-final-total">
                             <div class="title-cart-page-left">Tổng Số Tiền (gồm VAT)</div>
-                            <div class="number-cart-page-right"><span class="price"><?php echo number_format($total + 18000, 0, '.', '.'); ?> đ</span></div>
+                            <div class="number-cart-page-right"><span class="price"><?php echo number_format($total, 0, '.', '.'); ?> đ</span></div>
                         </div>
                     </div>
                     <div class="checkout-type-button-cart" style="text-align: center;">
@@ -424,6 +425,56 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function toggleCheckBook(id) {
+            $.ajax({
+                url: "/Fahasa/cart/check",
+                type: 'post',
+                data: {
+                    id: id,
+                }
+            }).done(function(respone) {
+                location.reload();
+            });
+        }
+
+        function addQuantity(id) {
+            $.ajax({
+                url: "/Fahasa/cart/add",
+                type: 'post',
+                data: {
+                    id: id,
+                }
+            }).done(function(respone) {
+                location.reload();
+            });
+        }
+
+        function subtractQuantity(id) {
+            $.ajax({
+                url: "/Fahasa/cart/subtract",
+                type: 'post',
+                data: {
+                    id: id,
+                }
+            }).done(function(respone) {
+                location.reload();
+            });
+        }
+
+        function checkAll() {
+            $.ajax({
+                url: "/Fahasa/cart/checkall",
+                type: 'post',
+                data: {
+                    check: document.getElementById("checkbox-all-books").checked,
+                }
+            }).done(function(respone) {
+                location.reload();
+            });
+        }
+    </script>
 </body>
 
 </html>
