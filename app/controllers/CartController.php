@@ -74,4 +74,10 @@ class CartController
             $_SESSION['cart'][$id]['checked'] = $check;
         }
     }
+
+    public function deleteItem()
+    {
+        $id = $_POST['id'];
+        unset($_SESSION['cart'][$id]);
+    }
 }

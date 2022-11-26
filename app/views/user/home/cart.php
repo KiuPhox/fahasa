@@ -313,6 +313,13 @@
         .retail-note a:hover {
             color: #F39801;
         }
+
+        .item-book-cart .div-of-btn-remove-cart {
+            flex-basis: 8%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 </head>
 
@@ -324,108 +331,111 @@
             <span class="cart-title-num-items">(<?php echo Cart::count() ?> sản phẩm)</span>
         </div>
         <div class="cart-ui-content row">
-            <!-- <div style="flex: 1; box-shadow: 0px 0px 2px rgb(0 0 0 / 10%); padding: 2rem;
+            <?php if (empty($cart)) { ?>
+                <div style="flex: 1; box-shadow: 0px 0px 2px rgb(0 0 0 / 10%); padding: 2rem;
             background-color: #fff;
             border-radius: 8px; display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;">
-                <img src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/checkout_cart/ico_emptycart.svg">
-                <p style="font-size: 14px; margin: 20px 0;">Chưa có sản phẩm trong giỏ hàng của bạn.</p>
-                <a href="/Fahasa/category"><button class="shopping-btn" type="button">Mua sắm ngay</button></a>
-            </div> -->
-            <div class="col-sm-8 col-xs-12">
-                <div class="header-cart-item">
-                    <div style="flex-basis: 8%;">
-                        <input onclick="checkAll();" id="checkbox-all-books" class="checkbox-add-cart" type="checkbox" <?php if ($allChecked) echo "checked" ?>>
-                    </div>
-                    <div style="flex-basis: 68%; justify-content: flex-start;">
-                        <span>Chọn tất cả (<span class="num-items-checkbox"><?php echo count($cart) ?></span> sản phẩm)</span>
-                    </div>
-                    <div style="flex-basis: 13%;">
-                        Số lượng
-                    </div>
-                    <div style="flex-basis: 21%;">
-                        Thành tiền
-                    </div>
-                    <div style="flex-basis: 8%;"></div>
+                    <img src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/checkout_cart/ico_emptycart.svg">
+                    <p style="font-size: 14px; margin: 20px 0;">Chưa có sản phẩm trong giỏ hàng của bạn.</p>
+                    <a href="/Fahasa/category"><button class="shopping-btn" type="button">Mua sắm ngay</button></a>
                 </div>
-                <div class="book-cart-left">
-                    <?php foreach ($cart as $id => $book) { ?>
-                        <div class="item-book-cart">
-                            <div class="checked-book-cart"><input onclick="toggleCheckBook(<?php echo $id ?>)" type="checkbox" name="checkbox_product_379652" class="checkbox-add-cart" <?php if ($book['checked'] == "true") echo "checked" ?>></div>
-                            <div class="img-book-cart">
-                                <a class="book-image" href="/Fahasa/product/<?php echo $id ?>">
-                                    <img src="<?php echo $book['image'] ?>" width="120" height="120">
-                                </a>
-                            </div>
-                            <div class="group-book-info">
-                                <div class="info-book-cart">
-                                    <div>
-                                        <h2 class="book-name-full-text"><a href="/Fahasa/product/<?php echo $id ?>"><?php echo $book['title'] ?></a></h2>
-                                    </div>
-                                    <div class="price-original">
-                                        <div class="cart-price">
-                                            <div class="cart-book-price">
-                                                <div><span class="price"><?php echo number_format($book['price'] * (1 - $book['discount'] / 100), 0, '.', '.') ?> đ</span></div>
-                                                <div style="margin-left: 8px;" class="old-price"><span class="price"><?php echo number_format($book['price'], 0, '.', '.'); ?> đ</span></div>
+            <?php } else { ?>
+                <div class="col-sm-8 col-xs-12">
+                    <div class="header-cart-item">
+                        <div style="flex-basis: 8%;">
+                            <input onclick="checkAll();" id="checkbox-all-books" class="checkbox-add-cart" type="checkbox" <?php if ($allChecked) echo "checked" ?>>
+                        </div>
+                        <div style="flex-basis: 68%; justify-content: flex-start;">
+                            <span>Chọn tất cả (<span class="num-items-checkbox"><?php echo count($cart) ?></span> sản phẩm)</span>
+                        </div>
+                        <div style="flex-basis: 13%;">
+                            Số lượng
+                        </div>
+                        <div style="flex-basis: 21%;">
+                            Thành tiền
+                        </div>
+                        <div style="flex-basis: 8%;"></div>
+                    </div>
+                    <div class="book-cart-left">
+                        <?php foreach ($cart as $id => $book) { ?>
+                            <div class="item-book-cart">
+                                <div class="checked-book-cart"><input onclick="toggleCheckBook(<?php echo $id ?>)" type="checkbox" name="checkbox_product_379652" class="checkbox-add-cart" <?php if ($book['checked'] == "true") echo "checked" ?>></div>
+                                <div class="img-book-cart">
+                                    <a class="book-image" href="/Fahasa/product/<?php echo $id ?>">
+                                        <img src="<?php echo $book['image'] ?>" width="120" height="120">
+                                    </a>
+                                </div>
+                                <div class="group-book-info">
+                                    <div class="info-book-cart">
+                                        <div>
+                                            <h2 class="book-name-full-text"><a href="/Fahasa/product/<?php echo $id ?>"><?php echo $book['title'] ?></a></h2>
+                                        </div>
+                                        <div class="price-original">
+                                            <div class="cart-price">
+                                                <div class="cart-book-price">
+                                                    <div><span class="price"><?php echo number_format($book['price'] * (1 - $book['discount'] / 100), 0, '.', '.') ?> đ</span></div>
+                                                    <div style="margin-left: 8px;" class="old-price"><span class="price"><?php echo number_format($book['price'], 0, '.', '.'); ?> đ</span></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="number-book-cart">
-                                    <div class="book-view-quantity-box">
-                                        <div class="book-view-quantity-box-block ">
-                                            <a style="cursor: pointer;" class="btn-subtract-qty" onclick="subtractQuantity(<?php echo $id ?>)"><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/ico_minus2x.png"></a>
-                                            <input type="text" class="qty-carts" name="cart[379652][qty]" id="qty-379652" maxlength="12" align="center" value="<?php echo $book['quantity'] ?>" title="So luong">
-                                            <a style="cursor: pointer;" class="btn-add-qty" onclick="addQuantity(<?php echo $id ?>)"><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_plus2x.png"></a>
+                                    <div class="number-book-cart">
+                                        <div class="book-view-quantity-box">
+                                            <div class="book-view-quantity-box-block ">
+                                                <a style="cursor: pointer;" class="btn-subtract-qty" onclick="subtractQuantity(<?php echo $id ?>)"><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/ico_minus2x.png"></a>
+                                                <input type="text" class="qty-carts" name="cart[379652][qty]" id="qty-379652" maxlength="12" align="center" value="<?php echo $book['quantity'] ?>" title="So luong">
+                                                <a style="cursor: pointer;" class="btn-add-qty" onclick="addQuantity(<?php echo $id ?>)"><img style="width: 12px; height: auto;vertical-align: middle;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_plus2x.png"></a>
+                                            </div>
+
                                         </div>
-                                        <div class="book-view-icon-remove-mobile" style="display:none;"><a onclick="" title="Remove item" id="379652" class="btn-remove-mobile-cart"><i class="fa fa-trash-o" style="font-size:22px"></i></a></div>
+                                        <div class="cart-price-total"><span class="cart-price"><span class="price">
+                                                    <?php $subtotal =  $book['price'] * (1 - $book['discount'] / 100) * $book['quantity'];
+                                                    if ($book['checked'] == "true") {
+                                                        $total += $subtotal;
+                                                    }
+                                                    echo number_format($subtotal, 0, '.', '.') ?> đ
+                                                </span></span>
+                                        </div>
+
                                     </div>
-                                    <div class="cart-price-total"><span class="cart-price"><span class="price">
-                                                <?php $subtotal =  $book['price'] * (1 - $book['discount'] / 100) * $book['quantity'];
-                                                if ($book['checked'] == "true") {
-                                                    $total += $subtotal;
-                                                }
-                                                echo number_format($subtotal, 0, '.', '.') ?> đ
-                                            </span></span>
-                                    </div>
+
                                 </div>
+                                <div class="div-of-btn-remove-cart"><a onclick="deleteItem(<?php echo $id; ?>);" title="Remove Item" class="btn-remove-desktop-cart"><i class="fa-regular fa-trash-can" style="font-size:22px; color: #646464; cursor: pointer;"></i></a></div>
                             </div>
-                            <div class="div-of-btn-remove-cart"><a onclick="" class="btn-remove-book-cart"><i class="fa fa-trash-o" style="font-size:22px"></i></a></div>
-                        </div>
-                        <div class="border-book"></div>
-                    <?php } ?>
-
-
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="block-total-cart">
-                    <div class="block-totals-cart-page">
-                        <div class="total-cart-page ">
-                            <div class="title-cart-page-left">Thành tiền</div>
-                            <div class="number-cart-page-right"><span class="price"><?php echo number_format($total, 0, '.', '.'); ?> đ</span></div>
-                        </div>
-                        <div class="total-cart-page ">
-                            <div class="title-cart-page-left">Phí vận chuyển (Giao hàng tiêu chuẩn)</div>
-                            <div class="number-cart-page-right"><span class="price">18.000 đ</span></div>
-                        </div>
-                        <div class="border-book"></div>
-                        <div class="total-cart-page title-final-total">
-                            <div class="title-cart-page-left">Tổng Số Tiền (gồm VAT)</div>
-                            <div class="number-cart-page-right"><span class="price"><?php echo number_format($total, 0, '.', '.'); ?> đ</span></div>
-                        </div>
+                            <div class="border-book"></div>
+                        <?php } ?>
                     </div>
-                    <div class="checkout-type-button-cart" style="text-align: center;">
-                        <div class="method-button-cart">
-                            <button type="button" title="Thanh toán" class="button btn-proceed-checkout btn-checkout" <?php if ($paymentCheck == false) echo "disabled" ?>>Thanh toán
-                            </button>
-                            <div class="retail-note"><a href="https://www.fahasa.com/chinh-sach-khach-si/" target="_blank">(Giảm giá trên web chỉ áp dụng cho bán lẻ)</a></div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="block-total-cart">
+                        <div class="block-totals-cart-page">
+                            <div class="total-cart-page ">
+                                <div class="title-cart-page-left">Thành tiền</div>
+                                <div class="number-cart-page-right"><span class="price"><?php echo number_format($total, 0, '.', '.'); ?> đ</span></div>
+                            </div>
+                            <div class="total-cart-page ">
+                                <div class="title-cart-page-left">Phí vận chuyển (Giao hàng tiêu chuẩn)</div>
+                                <div class="number-cart-page-right"><span class="price">18.000 đ</span></div>
+                            </div>
+                            <div class="border-book"></div>
+                            <div class="total-cart-page title-final-total">
+                                <div class="title-cart-page-left">Tổng Số Tiền (gồm VAT)</div>
+                                <div class="number-cart-page-right"><span class="price"><?php echo number_format($total, 0, '.', '.'); ?> đ</span></div>
+                            </div>
+                        </div>
+                        <div class="checkout-type-button-cart" style="text-align: center;">
+                            <div class="method-button-cart">
+                                <button type="button" title="Thanh toán" class="button btn-proceed-checkout btn-checkout" <?php if ($paymentCheck == false) echo "disabled" ?>>Thanh toán
+                                </button>
+                                <div class="retail-note"><a href="https://www.fahasa.com/chinh-sach-khach-si/" target="_blank">(Giảm giá trên web chỉ áp dụng cho bán lẻ)</a></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
 
@@ -481,6 +491,18 @@
                 type: 'post',
                 data: {
                     check: document.getElementById("checkbox-all-books").checked,
+                }
+            }).done(function(respone) {
+                location.reload();
+            });
+        }
+
+        function deleteItem(id) {
+            $.ajax({
+                url: "/Fahasa/cart/delete",
+                type: 'post',
+                data: {
+                    id: id,
                 }
             }).done(function(respone) {
                 location.reload();
