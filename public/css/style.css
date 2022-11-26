@@ -455,7 +455,8 @@ a.product {
 
 .login-dropdown .login-nav a i {
     font-size: 20px;
-    margin: 0 10px;
+    margin-left: 14px;
+    width: 10%;
 }
 
 .black-background-box {

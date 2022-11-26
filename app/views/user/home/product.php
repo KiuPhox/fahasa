@@ -446,11 +446,11 @@
                         <label for="qty">Số lượng:</label>
                         <div class="product-view-quantity-box-block">
                             <a onclick="subtractQty();" class="btn-subtract-qty">
-                                <img style="width: 12px; height: auto;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_minus2x.png">
+                                <img style="user-select: none;   width: 12px; height: auto;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_minus2x.png">
                             </a>
                             <input name="qty" id="qty" maxvalue="999" minvalue="1" align="center" value="1" onkeypress="validateNumber(event)" class="input-text qty">
                             <a onclick="addQty();" class="btn-add-qty">
-                                <img style="width: 12px; height: auto;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_plus2x.png">
+                                <img style="user-select: none;   width: 12px; height: auto;" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_plus2x.png">
                             </a>
                         </div>
                     </div>
@@ -667,7 +667,7 @@
                 url: "/Fahasa/cart/addtocart",
                 type: 'post',
                 data: {
-                    book_id: <?php echo $book['id'] ?>,
+                    id: <?php echo $book['id'] ?>,
                     quantity: quantity,
                 }
             }).done(function(respone) {

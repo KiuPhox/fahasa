@@ -12,8 +12,8 @@ $router->add('product/{id:\d+}', ['controller' => 'Home', 'action' => 'product']
 $router->add('category', ['controller' => 'Home', 'action' => 'category']);
 
 // Cart
-$router->add('checkout/cart', ['controller' => 'Cart', 'action' => 'index']);
-$router->add('cart/addtocart', ['controller' => 'Cart', 'action' => 'addToCart']);
+$router->add('checkout/cart', ['controller' => 'CartController', 'action' => 'index']);
+$router->add('cart/addtocart', ['controller' => 'CartController', 'action' => 'addToCart']);
 // Login
 
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);
