@@ -24,6 +24,7 @@
                         <i class="fas fa-search"></i>
                     </button>
                 </a>
+
             </form>
             <div class="notice cover-icon">
                 <a href="#" class="notice-button" style="flex-direction: column;">
@@ -37,7 +38,7 @@
                     </div>
                 </a>
             </div>
-            <div class="cart cover-icon">
+            <div id="cart-icon" class="cart cover-icon" style="position: relative;">
                 <a href="/Fahasa/checkout/cart" class="cart-button" style="flex-direction: column;">
                     <div class="cart-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
@@ -48,6 +49,34 @@
                         </p>
                     </div>
                 </a>
+                <?php $mini_cart = $_SESSION['cart'] ?>
+
+                <div id="cart-dropdown">
+                    <div class="cart-dropdown-title">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Giỏ hàng (<?php echo count($mini_cart) ?>)</span>
+                    </div>
+                    <div class="cart-dropdown-content">
+                        <?php if (empty($mini_cart)) { ?>
+                            <img style="margin-top: 20px;" width="100" src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/checkout_cart/ico_emptycart.svg">
+                            <p style="font-size: 16px; margin: 20px 0;">Chưa có sản phẩm nào</p>
+                        <?php } else { ?>
+
+                            <?php foreach ($mini_cart as $index => $item) { ?>
+                                <div class="cart-dropdown-item">
+                                    <a href="/Fahasa/product/<?php echo $index ?>"><img height="80px" src="<?php echo $item['image'] ?>"></a>
+                                    <div class="item-detail">
+                                        <a href="/Fahasa/product/<?php echo $index ?>" class="item-name"><?php echo $item['title'] ?></a>
+                                        <div>
+                                            <span class="price"><?php echo number_format($item['price'] * (1 - $item['discount'] / 100), 0, '.', '.') ?> đ</span>
+                                            <span style="margin-left: 8px; color: #7A7E7F; font-size: 1.1em;">x<?php echo $item['quantity'] ?></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        <?php } ?>
+                    </div>
+                </div>
             </div>
             <div id="login-icon" class="login cover-icon">
                 <a href="<?php if (isset($_SESSION['id'])) echo "/Fahasa/customer/account";
@@ -773,6 +802,7 @@
             </li>
         </ul> -->
     </div>
+
 </div>
 
 <script>
@@ -781,7 +811,26 @@
     const sub_menu = document.getElementById('sub-menu');
     const category_a = document.querySelectorAll('.left-category .nav-link a');
     const login_icon = document.getElementById('login-icon');
+    const cart_icon = document.getElementById('cart-icon');
     const login_dropdown = document.getElementById('login-dropdown');
+    const cart_dropdown = document.getElementById('cart-dropdown');
+
+
+    cart_icon.addEventListener("mouseover", function() {
+        cart_dropdown.style.display = 'block';
+    });
+
+    cart_icon.addEventListener("mouseleave", function() {
+        cart_dropdown.style.display = 'none';
+    });
+
+    cart_dropdown.addEventListener("mouseover", function() {
+        cart_dropdown.style.display = 'block';
+    });
+
+    cart_dropdown.addEventListener("mouseleave", function() {
+        cart_dropdown.style.display = 'none';
+    });
 
     list_menu_icon.addEventListener("mouseover", function() {
         category.style.display = 'block';

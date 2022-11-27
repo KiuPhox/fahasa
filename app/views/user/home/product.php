@@ -671,7 +671,7 @@
                     quantity: quantity,
                 }
             }).done(function(respone) {
-                // location.reload();
+                location.reload();
             });
         }
     </script>
