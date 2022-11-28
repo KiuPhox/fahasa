@@ -4,6 +4,11 @@ mysqli_set_charset($conn, 'utf8');
 session_start();
 require_once('core/router.php');
 
+if (!isset($_SESSION['cart'])) {
+    $_SESSION['cart'] = [];
+}
+
+
 $router = new Router();
 
 // Home
