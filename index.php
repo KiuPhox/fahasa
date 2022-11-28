@@ -27,7 +27,9 @@ $router->add('login/logout_process', ['controller' => 'Login', 'action' => 'logo
 
 // Customer
 $router->add('customer/account', ['controller' => 'Customer', 'action' => 'account']);
-
+$router->add('customer/account/edit', ['controller' => 'Customer', 'action' => 'accountEdit']);
+$router->add('customer/account/editPost', ['controller' => 'Customer', 'action' => 'accountEditPost']);
+$router->add('customer/account/updatePassword', ['controller' => 'Customer', 'action' => 'accountUpdatePaswword']);
 // Rating
 $router->add('product/rating', ['controller' => 'Home', 'action' => 'rating']);
 

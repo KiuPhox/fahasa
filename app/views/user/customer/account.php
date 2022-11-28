@@ -140,7 +140,7 @@
                 <div class="block-content">
                     <ul>
                         <li class="current"><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="https://www.fahasa.com/customer/account/edit/">Thông tin tài khoản</a></li>
+                        <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
                         <li><a href="https://www.fahasa.com/customer/address/">Sổ địa chỉ</a></li>
                         <li><a href="https://www.fahasa.com/sales/order/history/">Đơn hàng của tôi</a></li>
                         <li><a href="https://www.fahasa.com/tryout/voucher/">Ví voucher</a></li>
@@ -218,9 +218,6 @@
 
                         </tbody>
                     </table>
-                    <script type="text/javascript">
-                        decorateTable('my-orders-table')
-                    </script>
                 </div>
                 <div class="box-account box-recent">
                     <div class="box-head">
@@ -260,9 +257,6 @@
                             </tr>
                         </tbody>
                     </table>
-                    <script type="text/javascript">
-                        decorateTable('my-orders-table')
-                    </script>
                 </div>
             </div>
         </div>

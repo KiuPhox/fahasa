@@ -39,7 +39,8 @@ p,
 span,
 dl,
 ol,
-ul {
+ul,
+label {
     margin: 0;
 }
 
