@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2022 at 12:26 PM
+-- Generation Time: Nov 29, 2022 at 05:57 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,9 +44,9 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`id`, `name`, `phone_number`, `address`, `city`, `district`, `ward`, `is_default`, `user_id`) VALUES
-(1, 'Nguyễn Phan Anh Tuấn', '0941974458', '221 Lê Văn Việt', 'Tỉnh Hưng Yên', 'Thành phố Hưng Yên', 'Xã Tân Hưng', 0, 1),
-(3, 'Nguyễn Phan Anh Tuấn', '0941974458', '691 Lê Văn Việt', 'Tỉnh Vĩnh Phúc', 'Thành phố Vĩnh Yên', 'Phường Liên Bảo', 0, 1),
-(5, 'Anh Tuan', '2321312312', 'Lô 34 đường số 10 KĐT Lê Hồng Phong', 'Tỉnh Khánh Hòa', 'Thành phố Nha Trang', 'Phường Phước Hải', 1, 1),
+(1, 'Nguyễn Phan Anh Tuấn', '0941974458', '221 Lê Văn Việt', 'Tỉnh Hưng Yên', 'Thành phố Hưng Yên', 'Xã Tân Hưng', 1, 1),
+(3, 'Nguyễn Phan Anh Tuấn', '0941974458', '691 Lê Văn Việt', 'Tỉnh Bắc Ninh', 'Thành phố Bắc Ninh', 'Phường Khắc Niệm', 0, 1),
+(5, 'Anh Tuan', '2321312312', 'Lô 34 đường số 10 KĐT Lê Hồng Phong', 'Tỉnh Khánh Hòa', 'Thành phố Nha Trang', 'Phường Phước Hải', 0, 1),
 (6, 'Nguyễn Phan Anh Tuấn', '0838940955', '580AB Nguyen Oanh', 'Thành phố Hồ Chí Minh', 'Quận Gò Vấp', 'Phường 17', 1, 6),
 (7, 'Ho', '8584449394', '149X/23 Tô Hiến Thành', 'Thành phố Hồ Chí Minh', 'Quận 11', 'Phường 05', 0, 6);
 
@@ -87,7 +87,7 @@ INSERT INTO `books` (`id`, `title`, `author`, `description`, `image`, `price`, `
 (8, 'Thay Đổi Cuộc Sống Với Nhân Số Học', 'Lê Đỗ Quỳnh Hương', 'Đầu năm 2020, chuỗi chương trình “Thay đổi cuộc sống với Nhân số học” của  biên tập viên, người dẫn chương trình quen thuộc tại Việt Nam Lê Đỗ Quỳnh Hương ra đời trên Youtube, với mục đích chia sẻ kiến thức, giúp mọi người tìm hiểu và phát triển, hoàn thiện bản thân, các mối quan hệ xã hội thông qua bộ môn Nhân số học. Chương trình đã nhận được sự yêu mến và phản hồi tích cực của rất nhiều khán giả và độc giả sau mỗi tập phát sóng.', 'https://cdn0.fahasa.com/media/catalog/product/t/d/tdcsvnsh.jpg', 248000, 29, 2, 1, 3, 51, '2016-02-24 17:00:00', 416, '8935086853634', '2022-10-09 09:35:46', '2022-10-30 09:08:48'),
 (9, 'Hiểu Về Trái Tim (Tái Bản 2019)', 'Minh Niệm', '“Hiểu về trái tim” là một cuốn sách đặc biệt được viết bởi thiền sư Minh Niệm. Với phong thái và lối hành văn gần gũi với những sinh hoạt của người Việt, thầy Minh Niệm đã thật sự thổi hồn Việt vào cuốn sách nhỏ này.', 'https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_14922.jpg', 138000, 9, 3, 1, 1, 3354343, '2022-01-26 17:00:00', 480, '8935086849903', '2022-10-09 17:24:31', '2022-10-30 09:42:35'),
 (10, 'Rèn Luyện Tư Duy Phản Biện', 'Albert Rutherford', 'Như bạn có thể thấy, chìa khóa để trở thành một người có tư duy phản biện tốt chính là sự tự nhận thức. Bạn cần phải đánh giá trung thực những điều trước đây bạn nghĩ là đúng, cũng như quá trình suy nghĩ đã dẫn bạn tới những kết luận đó. Nếu bạn không có những lý lẽ hợp lý, hoặc nếu suy nghĩ của bạn bị ảnh hưởng bởi những kinh nghiệm và cảm xúc, thì lúc đó hãy cân nhắc sử dụng tư duy phản biện! Bạn cần phải nhận ra được rằng con người, kể từ khi sinh ra, rất giỏi việc đưa ra những lý do lý giải cho những suy nghĩ khiếm khuyết của mình. Nếu bạn đang có những kết luận sai lệch này thì có một sự thật là những đức tin của bạn thường mâu thuẫn với nhau và đó thường là kết quả của thiên kiến xác nhận, nhưng nếu bạn biết điều này, thì bạn đã tiến gần hơn tới sự thật rồi!', 'https://cdn0.fahasa.com/media/catalog/product/i/m/image_195509_1_18448.jpg', 99000, 34, 4, 1, 1, 123, '2017-01-11 17:00:00', 208, '8936066687812', '2022-10-09 17:34:38', '2022-10-09 17:34:38'),
-(11, 'Blockchain - Bản Chất Của Blockchain', 'Mark Gates', 'Blockchain - Bản Chất Của Blockchain, Bitcoin, Tiền Điện Tử, Hợp Đồng Thông Minh Và Tương Lai Của Tiền Tệ\n\nTiền điện tử, với đại diện tiêu biểu nhất là Bitcoin, đang là mối quan tâm hàng đầu của giới tài chính toàn cầu. Khả năng thanh toán bằng tiền ảo mở ra hàng loạt tiềm năng cho thương mại và thay đổi toàn diện thói quen tiêu dùng của con người. Hạt nhân của công nghệ hứa hẹn rung chuyển thế giới này được gọi là Blockchain.\n\nBlockchain được giới công nghệ đánh giá là phát kiến vĩ đại nhất sau khi mạng Internet ra đời. Ứng dụng phổ biến nhất của nó là các loại tiền điện tử nổi tiếng (Bitcoin, Ethereum, Ripple...)', 'https://cdn0.fahasa.com/media/catalog/product/8/9/8936066684996.jpg', 110000, 34, 2, 1, 1, 188, '2022-05-09 17:00:00', 288, '8936066684996', '2022-10-26 11:53:57', '2022-10-26 11:53:57');
+(11, 'Càng Kỷ Luật, Càng Tự Do', 'Ca Tây', 'KỶ LUẬT vốn là ván cờ bạn phải tự đấu với chính mình. Thắng - bạn sẽ có được “bản năng của người mạnh mẽ nhất”, đó là sự tự kiểm soát bản thân. Thua - bạn mãi sống trong cảm giác tạm bợ, nuối tiếc. Càng dễ dàng dung túng cho những thói quen trì hoãn bao nhiêu, cuộc sống của bạn sẽ đi càng nhanh tới sự mất kiểm soát và thiếu quy hoạch bấy nhiêu.', 'https://cdn0.fahasa.com/media/catalog/product/c/o/cover_c_ng-k_-lu_t_-c_ng-t_-do.jpg', 119000, 36, 4, 5, 3, 188, '2022-05-09 17:00:00', 288, '8936186546945', '2022-10-26 11:53:57', '2022-10-26 11:53:57');
 
 -- --------------------------------------------------------
 
@@ -217,7 +217,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `phone_number`, `gender`, `birthday`, `level`, `created_at`) VALUES
-(1, 'Admin Tuấn', '123456', 'admin@admin.com', '9094123312', 'Nữ', '2022-11-03', 0, '2022-10-09 04:26:34'),
+(1, 'Admin Tuấn', '123456', 'admin@admin.com', '9094123312', 'Nam', '2022-11-03', 0, '2022-10-09 04:26:34'),
 (5, 'Mai Linh', '123456', 'mailinh@gmail.com', '0123456789', 'Nam', '2002-01-12', 1, '2022-10-09 22:41:01'),
 (6, 'Nguyễn Phan Anh Tuấn', '123456', 'tuan@gmail.com', '0941974458', 'Nam', '1975-01-01', 1, '2022-11-15 07:36:56'),
 (7, 'Hoàng', '123456', 'hoang@gmail.com', NULL, 'Nam', '1975-01-01', 1, '2022-11-25 12:33:32'),
@@ -286,7 +286,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `books`
