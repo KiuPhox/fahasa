@@ -141,7 +141,7 @@
                     <ul>
                         <li class="current"><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
                         <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="https://www.fahasa.com/customer/address/">Sổ địa chỉ</a></li>
+                        <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
                         <li><a href="https://www.fahasa.com/sales/order/history/">Đơn hàng của tôi</a></li>
                         <li><a href="https://www.fahasa.com/tryout/voucher/">Ví voucher</a></li>
                         <li><a href="https://www.fahasa.com/tryout/seriesbook/">Sách theo bộ</a></li>

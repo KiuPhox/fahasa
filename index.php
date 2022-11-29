@@ -1,8 +1,10 @@
 <?php
+require_once('core/router.php');
+
 $conn = mysqli_connect("localhost", "root", "", "Fahasa");
 mysqli_set_charset($conn, 'utf8');
 session_start();
-require_once('core/router.php');
+
 
 if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
@@ -35,6 +37,13 @@ $router->add('customer/account', ['controller' => 'Customer', 'action' => 'accou
 $router->add('customer/account/edit', ['controller' => 'Customer', 'action' => 'accountEdit']);
 $router->add('customer/account/editPost', ['controller' => 'Customer', 'action' => 'accountEditPost']);
 $router->add('customer/account/updatePassword', ['controller' => 'Customer', 'action' => 'accountUpdatePaswword']);
+
+$router->add('customer/address', ['controller' => 'Customer', 'action' => 'address']);
+$router->add('customer/address/new', ['controller' => 'Customer', 'action' => 'addressNew']);
+$router->add('customer/address/newPost', ['controller' => 'Customer', 'action' => 'addressNewPost']);
+$router->add('customer/address/edit/{id:\d+}', ['controller' => 'Customer', 'action' => 'addressEdit']);
+$router->add('customer/address/editPost/{id:\d+}', ['controller' => 'Customer', 'action' => 'addressEditPost']);
+$router->add('customer/address/delete/{id:\d+}', ['controller' => 'Customer', 'action' => 'addressDelete']);
 // Rating
 $router->add('product/rating', ['controller' => 'Home', 'action' => 'rating']);
 

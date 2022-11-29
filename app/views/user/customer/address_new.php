@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thông tin tài khoản</title>
+    <title>Thêm địa chỉ mới</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../../public/css/style.css">
@@ -77,12 +77,13 @@
             color: #555555;
         }
 
-        #form-account-info input {
+        #form-account-info input,
+        #form-account-info select {
             height: 30px;
             font-weight: 600;
             font-size: 1em;
             width: 70%;
-            padding: 0.375rem 1.1em;
+            padding: 0 1.1em;
             color: #495057;
             background-color: #fff;
             background-clip: padding-box;
@@ -90,13 +91,14 @@
             border-radius: 0.25rem;
         }
 
+
+
         #form-account-info .form-check-input {
             height: initial;
             width: initial;
         }
 
-        #btn-save-account,
-        #btn-save-password {
+        #btn-save-account {
             user-select: none;
             height: 40px;
             padding: 0 50px;
@@ -123,8 +125,8 @@
                 <div class="block-content">
                     <ul>
                         <li><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li class="current"><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
+                        <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li class="current"><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
                         <li><a href="https://www.fahasa.com/sales/order/history/">Đơn hàng của tôi</a></li>
                         <li><a href="https://www.fahasa.com/tryout/voucher/">Ví voucher</a></li>
                         <li><a href="https://www.fahasa.com/tryout/seriesbook/">Sách theo bộ</a></li>
@@ -140,81 +142,119 @@
         <div class="col-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <div class="my-account mb-4">
                 <div class="page-title">
-                    <h1>Thông tin tài khoản</h1>
+                    <h1>Thêm địa chỉ mới</h1>
                 </div>
-                <form id="form-account-info" method="post" action="/Fahasa/customer/account/editPost">
+                <form id="form-account-info" method="post" action="/Fahasa/customer/address/newPost">
 
                     <div class="row align-items-center my-3">
                         <label for="name" class="form-label">Tên</label>
-                        <input name="name" id="name" class="form-control" placeholder="Nhập tên" value="<?php echo $user['name'] ?>">
+                        <input name="name" id="name" class="form-control" placeholder="Nhập tên" value="">
                     </div>
                     <div class="row align-items-center my-3">
                         <label for="phone_number" class="form-label">Số điện thoại</label>
-                        <input name="phone_number" id="phone_number" class="form-control" placeholder="Nhập số điện thoại" value="<?php echo $user['phone_number'] ?>">
+                        <input name="phone_number" id="phone_number" class="form-control" placeholder="Nhập số điện thoại" value="">
                     </div>
                     <div class="row align-items-center my-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input name="email" id="email" class="form-control" placeholder="Nhập email" value="<?php echo $user['email'] ?>">
+                        <label for="address" class="form-label">Địa chỉ</label>
+                        <input name="address" id="address" class="form-control" placeholder="Nhập địa chỉ" value="">
                     </div>
                     <div class="row align-items-center my-3">
-                        <label for="email" class="form-label">Giới tính</label>
+                        <label for="city" class="form-label">Tỉnh/Thành phố</label>
+                        <select id="city" name="city" class="form-select" aria-label="Default select example">
+                            <option selected>Vui lòng chọn</option>
+                        </select>
+                    </div>
+                    <div class="row align-items-center my-3">
+                        <label for="district" class="form-label">Quận/Huyện</label>
+                        <select id="district" name="district" class="form-select" aria-label="Default select example">
+                            <option selected>Vui lòng chọn</option>
+                        </select>
+                    </div>
+                    <div class="row align-items-center my-3">
+                        <label for="ward" class="form-label">Xã/Phường</label>
+                        <select id="ward" name="ward" class="form-select" aria-label="Default select example">
+                            <option selected>Vui lòng chọn</option>
+                        </select>
+                    </div>
+                    <div class="row align-items-center my-3">
+                        <label for="email" class="form-label">Mặc định</label>
                         <div class="form-check">
-                            <input class="form-check-input" name="gender" value="Nam" type="radio" id="male" <?php if ($user['gender'] == "Nam") echo "checked" ?>>
-                            <label class="form-check-label" for="male">
-                                Nam
+                            <input class="form-check-input" name="default" type="checkbox">
+                            <label class="form-check-label">
+                                Đặt làm địa chỉ mặc định
                             </label>
                         </div>
-                        <div class="form-check">
-                            <input class="form-check-input" name="gender" value="Nữ" type="radio" id="female" <?php if ($user['gender'] == "Nữ") echo "checked" ?>>
-                            <label class="form-check-label" for="female">
-                                Nữ
-                            </label>
-                        </div>
-                    </div>
-                    <div class="row align-items-center my-3">
-                        <label for="birthday" class="form-label">Ngày sinh</label>
-                        <input type="date" name="birthday" id="birthday" class="form-control" max="<?php echo date("Y-m-d") ?>" value="<?php echo $user['birthday'] ?>">
                     </div>
                     <div style="display: flex; justify-content: center;" class="mt-4 mb-3">
-                        <button id="btn-save-account" type="submit">Lưu thay đổi</button>
+                        <button id="btn-save-account" type="submit">Lưu địa chỉ</button>
                     </div>
                 </form>
 
-            </div>
-            <div class="my-account">
-                <div class="page-title">
-                    <h1>Đổi mật khẩu</h1>
-                </div>
-                <form id="form-account-info" method="post" action="/Fahasa/customer/account/updatePassword">
-                    <div class="row align-items-center my-3">
-                        <label for="current_password" class="form-label">Mật khẩu hiện tại</label>
-                        <input type="password" name="current_password" id="name" class="form-control" placeholder="Mật khẩu hiện tại">
-                    </div>
-                    <div class="row align-items-center my-3">
-                        <label for="password" class="form-label">Mật khẩu mới</label>
-                        <input type="password" name="password" id="phone_number" class="form-control" placeholder="Mật khẩu mới">
-                    </div>
-                    <div class="row align-items-center my-3">
-                        <label for="confirmation" class="form-label">Nhập lại mật khẩu mới</label>
-                        <input type="password" name="confirmation" id="email" class="form-control" placeholder="Nhập lại mật khẩu mới">
-                    </div>
-                    <div style="display: flex; justify-content: center;" class="mt-4 mb-3">
-                        <button id="btn-save-password" type="submit">Lưu thay đổi</button>
-                    </div>
-                </form>
             </div>
         </div>
     </div>
 
     <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        var cities = document.getElementById("city");
+        var districts = document.getElementById("district");
+        var wards = document.getElementById("ward");
+
+        var firstDistrict = 0;
+
+        var Parameter = {
+            url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+            method: "GET",
+            responseType: "application/json",
+        };
+
+        var promise = axios(Parameter);
+        promise.then(function(result) {
+            renderCity(result.data);
+        });
+
+
+
+        function renderCity(data) {
+
+            for (const x of data) {
+                cities.options[cities.options.length] = new Option(x.Name, x.Name);
+            }
+
+            cities.onchange = function() {
+                districts.length = 1;
+                wards.length = 1;
+                if (cities.value != "") {
+                    const result = data.filter(n => n.Name === cities.value);
+
+                    for (const k of result[0].Districts) {
+                        districts.options[districts.options.length] = new Option(k.Name, k.Name);
+                    }
+                }
+            };
+
+            districts.onchange = function() {
+                wards.length = 1;
+                const dataCity = data.filter((n) => n.Name === cities.value);
+                if (district.value != "") {
+                    const dataWards = dataCity[0].Districts.filter(n => n.Name === district.value)[0].Wards;
+
+                    for (const w of dataWards) {
+                        wards.options[wards.options.length] = new Option(w.Name, w.Name);
+                    }
+                }
+            };
+        }
+    </script>
 </body>
 
 </html>
