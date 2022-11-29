@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 28, 2022 at 05:53 AM
+-- Generation Time: Nov 29, 2022 at 12:26 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,35 @@ SET time_zone = "+00:00";
 --
 -- Database: `fahasa`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `addresses`
+--
+
+CREATE TABLE `addresses` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone_number` varchar(50) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `district` varchar(50) NOT NULL,
+  `ward` varchar(50) NOT NULL,
+  `is_default` tinyint(1) NOT NULL DEFAULT 1,
+  `user_id` bigint(20) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`id`, `name`, `phone_number`, `address`, `city`, `district`, `ward`, `is_default`, `user_id`) VALUES
+(1, 'Nguyễn Phan Anh Tuấn', '0941974458', '221 Lê Văn Việt', 'Tỉnh Hưng Yên', 'Thành phố Hưng Yên', 'Xã Tân Hưng', 0, 1),
+(3, 'Nguyễn Phan Anh Tuấn', '0941974458', '691 Lê Văn Việt', 'Tỉnh Vĩnh Phúc', 'Thành phố Vĩnh Yên', 'Phường Liên Bảo', 0, 1),
+(5, 'Anh Tuan', '2321312312', 'Lô 34 đường số 10 KĐT Lê Hồng Phong', 'Tỉnh Khánh Hòa', 'Thành phố Nha Trang', 'Phường Phước Hải', 1, 1),
+(6, 'Nguyễn Phan Anh Tuấn', '0838940955', '580AB Nguyen Oanh', 'Thành phố Hồ Chí Minh', 'Quận Gò Vấp', 'Phường 17', 1, 6),
+(7, 'Ho', '8584449394', '149X/23 Tô Hiến Thành', 'Thành phố Hồ Chí Minh', 'Quận 11', 'Phường 05', 0, 6);
 
 -- --------------------------------------------------------
 
@@ -188,7 +217,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `password`, `email`, `phone_number`, `gender`, `birthday`, `level`, `created_at`) VALUES
-(1, 'Admin Tuấn', '123456', 'admin@admin.com', '', 'Nam', '1975-01-01', 0, '2022-10-09 04:26:34'),
+(1, 'Admin Tuấn', '123456', 'admin@admin.com', '9094123312', 'Nữ', '2022-11-03', 0, '2022-10-09 04:26:34'),
 (5, 'Mai Linh', '123456', 'mailinh@gmail.com', '0123456789', 'Nam', '2002-01-12', 1, '2022-10-09 22:41:01'),
 (6, 'Nguyễn Phan Anh Tuấn', '123456', 'tuan@gmail.com', '0941974458', 'Nam', '1975-01-01', 1, '2022-11-15 07:36:56'),
 (7, 'Hoàng', '123456', 'hoang@gmail.com', NULL, 'Nam', '1975-01-01', 1, '2022-11-25 12:33:32'),
@@ -197,6 +226,13 @@ INSERT INTO `users` (`id`, `name`, `password`, `email`, `phone_number`, `gender`
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `addresses`
+--
+ALTER TABLE `addresses`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `books`
@@ -247,6 +283,12 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `addresses`
+--
+ALTER TABLE `addresses`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
@@ -285,6 +327,12 @@ ALTER TABLE `users`
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Constraints for table `addresses`
+--
+ALTER TABLE `addresses`
+  ADD CONSTRAINT `addresses_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
 
 --
 -- Constraints for table `books`
