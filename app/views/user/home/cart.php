@@ -428,8 +428,10 @@
                         </div>
                         <div class="checkout-type-button-cart" style="text-align: center;">
                             <div class="method-button-cart">
-                                <button type="button" title="Thanh toán" class="button btn-proceed-checkout btn-checkout" <?php if ($paymentCheck == false) echo "disabled" ?>>Thanh toán
-                                </button>
+                                <a href="/Fahasa/onestepcheckout">
+                                    <button type="button" title="Thanh toán" class="button btn-proceed-checkout btn-checkout" <?php if ($paymentCheck == false) echo "disabled" ?>>Thanh toán
+                                    </button>
+                                </a>
                                 <div class="retail-note"><a href="https://www.fahasa.com/chinh-sach-khach-si/" target="_blank">(Giảm giá trên web chỉ áp dụng cho bán lẻ)</a></div>
                             </div>
                         </div>

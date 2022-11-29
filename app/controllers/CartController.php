@@ -1,6 +1,8 @@
 <?php
 require_once('./app/models/Cart.php');
 require_once('./app/models/Book.php');
+require_once('./app/models/Address.php');
+
 class CartController
 {
     public function index()
@@ -82,5 +84,12 @@ class CartController
     {
         $id = $_POST['id'];
         unset($_SESSION['cart'][$id]);
+    }
+
+    public function checkout()
+    {
+        $addresses = Address::getByUserID($_SESSION['id']);
+        $cart = $_SESSION['cart'];
+        require("./app/views/user/home/checkout.php");
     }
 }

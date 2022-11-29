@@ -26,6 +26,10 @@ $router->add('cart/checkall', ['controller' => 'CartController', 'action' => 'ch
 $router->add('cart/add', ['controller' => 'CartController', 'action' => 'addQuantity']);
 $router->add('cart/subtract', ['controller' => 'CartController', 'action' => 'subtractQuantity']);
 $router->add('cart/delete', ['controller' => 'CartController', 'action' => 'deleteItem']);
+
+// Checkout
+$router->add('onestepcheckout', ['controller' => 'CartController', 'action' => 'checkout']);
+
 // Login
 
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);
