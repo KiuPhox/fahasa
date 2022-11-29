@@ -126,12 +126,7 @@
                         <li class="current"><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
                         <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
                         <li><a href="https://www.fahasa.com/sales/order/history/">Đơn hàng của tôi</a></li>
-                        <li><a href="https://www.fahasa.com/tryout/voucher/">Ví voucher</a></li>
-                        <li><a href="https://www.fahasa.com/tryout/seriesbook/">Sách theo bộ</a></li>
-                        <li><a href="https://www.fahasa.com/tryout/history/">Tài Khoản F-point / Freeship</a></li>
                         <li><a href="https://www.fahasa.com/review/customer/">Nhận xét của tôi</a></li>
-                        <li><a href="https://www.fahasa.com/customer/notification/">Thông Báo</a></li>
-                        <li><a href="https://www.fahasa.com/newsletter/manage/">Đăng ký nhận tin điện tử</a></li>
                     </ul>
                 </div>
             </div>
