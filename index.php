@@ -29,7 +29,7 @@ $router->add('cart/delete', ['controller' => 'CartController', 'action' => 'dele
 
 // Checkout
 $router->add('onestepcheckout', ['controller' => 'CartController', 'action' => 'checkout']);
-
+$router->add('checkout/confirm', ['controller' => 'CartController', 'action' => 'confirm']);
 // Login
 
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);

@@ -179,38 +179,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="">
-                                <td>103044812</td>
-                                <td><span class="nobr">24/11/2022</span></td>
-                                <td>Tuấn Nguyễn Phan Anh</td>
-                                <td>
-                                    <span class="price">114.000</span>
-                                </td>
-                                <td>Hoàn tất</td>
-                                <td class="a-center last">
-                                    <span class="nobr">
-                                        <a href="">Xem</a>
-                                        <span class="separator">|</span>
-                                        <a href="" class="link-reorder">Đặt hàng lại</a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr class="">
-                                <td>103044811</td>
-                                <td><span class="nobr">24/11/2022</span></td>
-                                <td>Tuấn Nguyễn Phan Anh</td>
-                                <td>
-                                    <span class="price">95.000</span>
-                                </td>
-                                <td>Bị hủy</td>
-                                <td class="a-center last">
-                                    <span class="nobr">
-                                        <a href="">Xem</a>
-                                        <span class="separator">|</span> <a href="" class="link-reorder">Đặt hàng lại</a>
-                                    </span>
-                                </td>
-                            </tr>
-
+                            <?php foreach ($orders as $order) { ?>
+                                <tr class="">
+                                    <td><?php echo $order['id'] ?></td>
+                                    <td><span class="nobr"><?php echo date_format(date_create($order['created_at']), "d/m/Y")  ?></span></td>
+                                    <td><?php echo $order['name'] ?></td>
+                                    <td>
+                                        <span class="price"><?php echo number_format($order['total'], 0, '.', '.') ?></span>
+                                    </td>
+                                    <td>Chờ</td>
+                                    <td class="a-center last">
+                                        <span class="nobr">
+                                            <a href="/Fahasa/customer/order/<?php echo $order['id'] ?>">Xem</a>
+                                            <span class="separator">|</span>
+                                            <a href="" class="link-reorder">Đặt hàng lại</a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>
@@ -237,19 +223,21 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="">
-                                <td><span class="nobr">24/11/2022</span></td>
-                                <td>Shin - Cậu Bé Bút Chì - Tập 45 (Tái Bản 2019)</td>
-                                <td>
-                                    <span class="price">66666</span>
-                                </td>
-                                <td>ĐỌC CŨNG ĐƯỢC, KHÔNG ĐỌC CŨNG ĐƯỢC. Biết đến Sh...</td>
-                                <td class="a-center last">
-                                    <span class="nobr">
-                                        <a href="">Xem</a>
-                                    </span>
-                                </td>
-                            </tr>
+                            <?php foreach ($ratings as $rating) { ?>
+                                <tr class="">
+                                    <td><span class="nobr"><?php echo date_format(date_create($rating['created_at']), "d/m/Y")  ?></span></td>
+                                    <td>Shin - Cậu Bé Bút Chì - Tập 45 (Tái Bản 2019)</td>
+                                    <td>
+                                        <span class="price"><?php echo $rating['rating'] ?></span>
+                                    </td>
+                                    <td><?php echo mb_substr($rating['comment'], 0, 100) ?>...</td>
+                                    <td class="a-center last">
+                                        <span class="nobr">
+                                            <a href="/Fahasa/product/<?php echo $rating['book_id'] ?>">Xem</a>
+                                        </span>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </tbody>
                     </table>
                 </div>

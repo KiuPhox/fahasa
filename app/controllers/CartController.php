@@ -2,6 +2,7 @@
 require_once('./app/models/Cart.php');
 require_once('./app/models/Book.php');
 require_once('./app/models/Address.php');
+require_once('./app/models/Order.php');
 
 class CartController
 {
@@ -90,6 +91,27 @@ class CartController
     {
         $addresses = Address::getByUserID($_SESSION['id']);
         $cart = $_SESSION['cart'];
+        $total = 0;
         require("./app/views/user/home/checkout.php");
+    }
+
+    public function confirm()
+    {
+        if (isset($_SESSION['id'])) {
+            $address_id = $_POST['address_id'];
+            $address = Address::getByID($address_id);
+
+            Order::store(
+                $address['name'],
+                $address['phone_number'],
+                $address['address'],
+                $address['city'],
+                $address['district'],
+                $address['ward'],
+                $_POST['total'],
+                $_SESSION['id'],
+                $_SESSION['cart']
+            );
+        }
     }
 }

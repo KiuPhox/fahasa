@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 29, 2022 at 05:57 PM
+-- Generation Time: Nov 30, 2022 at 10:27 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -44,7 +44,7 @@ CREATE TABLE `addresses` (
 --
 
 INSERT INTO `addresses` (`id`, `name`, `phone_number`, `address`, `city`, `district`, `ward`, `is_default`, `user_id`) VALUES
-(1, 'Nguyễn Phan Anh Tuấn', '0941974458', '221 Lê Văn Việt', 'Tỉnh Hưng Yên', 'Thành phố Hưng Yên', 'Xã Tân Hưng', 1, 1),
+(1, 'Kiu', '0941974458', '221 Lê Văn Việt', 'Tỉnh Hưng Yên', 'Thành phố Hưng Yên', 'Xã Tân Hưng', 1, 1),
 (3, 'Nguyễn Phan Anh Tuấn', '0941974458', '691 Lê Văn Việt', 'Tỉnh Bắc Ninh', 'Thành phố Bắc Ninh', 'Phường Khắc Niệm', 0, 1),
 (5, 'Anh Tuan', '2321312312', 'Lô 34 đường số 10 KĐT Lê Hồng Phong', 'Tỉnh Khánh Hòa', 'Thành phố Nha Trang', 'Phường Phước Hải', 0, 1),
 (6, 'Nguyễn Phan Anh Tuấn', '0838940955', '580AB Nguyen Oanh', 'Thành phố Hồ Chí Minh', 'Quận Gò Vấp', 'Phường 17', 1, 6),
@@ -108,6 +108,59 @@ INSERT INTO `categories` (`id`, `name`) VALUES
 (1, 'Văn học'),
 (2, 'Sách thiếu nhi'),
 (3, 'Kinh tế');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `orders`
+--
+
+CREATE TABLE `orders` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone_number` varchar(50) NOT NULL,
+  `address` varchar(200) NOT NULL,
+  `city` varchar(50) NOT NULL,
+  `district` varchar(50) NOT NULL,
+  `ward` varchar(50) NOT NULL,
+  `total` int(10) UNSIGNED NOT NULL,
+  `status` tinyint(4) NOT NULL DEFAULT 0,
+  `user_id` bigint(20) NOT NULL DEFAULT -1,
+  `created_at` timestamp NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `phone_number`, `address`, `city`, `district`, `ward`, `total`, `status`, `user_id`, `created_at`) VALUES
+(11, 'Nguyễn Phan Anh Tuấn', '0941974458', '691 Lê Văn Việt', 'Tỉnh Bắc Ninh', 'Thành phố Bắc Ninh', 'Phường Khắc Niệm', 197320, 0, 1, '2022-11-30 09:00:31'),
+(12, 'Anh Tuan', '2321312312', 'Lô 34 đường số 10 KĐT Lê Hồng Phong', 'Tỉnh Khánh Hòa', 'Thành phố Nha Trang', 'Phường Phước Hải', 376740, 0, 1, '2022-11-30 09:01:35'),
+(13, 'Kiu', '0941974458', '221 Lê Văn Việt', 'Tỉnh Hưng Yên', 'Thành phố Hưng Yên', 'Xã Tân Hưng', 197320, 0, 1, '2022-11-30 09:25:53');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `order_details`
+--
+
+CREATE TABLE `order_details` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `order_id` bigint(20) UNSIGNED NOT NULL,
+  `book_id` bigint(20) UNSIGNED NOT NULL,
+  `quantity` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `order_id`, `book_id`, `quantity`) VALUES
+(8, 11, 11, 2),
+(9, 11, 2, 1),
+(10, 12, 9, 3),
+(11, 13, 11, 2),
+(12, 13, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -250,6 +303,20 @@ ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `orders`
+--
+ALTER TABLE `orders`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `book_id` (`book_id`);
+
+--
 -- Indexes for table `publishers`
 --
 ALTER TABLE `publishers`
@@ -301,6 +368,18 @@ ALTER TABLE `categories`
   MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `orders`
+--
+ALTER TABLE `orders`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `order_details`
+--
+ALTER TABLE `order_details`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
 -- AUTO_INCREMENT for table `publishers`
 --
 ALTER TABLE `publishers`
@@ -341,6 +420,13 @@ ALTER TABLE `books`
   ADD CONSTRAINT `books_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   ADD CONSTRAINT `books_ibfk_2` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`),
   ADD CONSTRAINT `books_publisher_id_foreign` FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`id`);
+
+--
+-- Constraints for table `order_details`
+--
+ALTER TABLE `order_details`
+  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
+  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `books` (`id`);
 
 --
 -- Constraints for table `ratings`

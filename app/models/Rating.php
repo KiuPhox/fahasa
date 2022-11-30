@@ -4,6 +4,15 @@ require_once('./core/model.php');
 
 class Rating extends Model
 {
+    public static function getByUserID($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+
+        $sql = "SELECT * from ratings WHERE user_id = $id";
+        return mysqli_query($conn, $sql);
+    }
+
     public static function getAllByBookID($id)
     {
         $conn = mysqli_connect("localhost", "root", "", "Fahasa");

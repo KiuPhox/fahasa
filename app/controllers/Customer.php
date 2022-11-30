@@ -2,12 +2,15 @@
 
 require_once('./app/models/User.php');
 require_once('./app/models/Address.php');
-
+require_once('./app/models/Order.php');
+require_once('./app/models/Rating.php');
 class Customer
 {
     public function account()
     {
         if (isset($_SESSION['id'])) {
+            $orders = Order::getByUserID($_SESSION['id']);
+            $ratings = Rating::getByUserID($_SESSION['id']);
             require("./app/views/user/customer/account.php");
         } else {
             header("Location:/Fahasa/");

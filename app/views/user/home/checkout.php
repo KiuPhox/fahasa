@@ -185,6 +185,75 @@
             color: #BFBFBF;
             text-decoration: line-through;
         }
+
+        .bsidebar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 999;
+            width: 100%;
+            background-color: white;
+            padding: 16px 0px;
+            box-shadow: 0px -4px 10px -4px rgb(0 0 0 / 66%);
+        }
+
+        .bsidebar-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 83%;
+            margin: auto;
+        }
+
+        .bsidebar-top {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border-bottom: 1px solid #ced4da;
+        }
+
+        .bsidebar-top>div {
+            padding-bottom: 4px;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-end;
+            font-size: 1.2em;
+        }
+
+        .bsidebar-top>div>div:last-of-type {
+            flex-basis: 15%;
+            text-align: right;
+        }
+
+        .bsidebar-total>div:first-of-type {
+            font-weight: 600;
+        }
+
+        .bsidebar-total>div:last-of-type {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: #F39801;
+        }
+
+        .bsidebar-bottom {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        #btn-order-confirm {
+            user-select: none;
+            height: 44px;
+            padding: 0px 40px;
+            font-weight: 700;
+            font-size: 19.6px;
+            color: white;
+            background: #C92127;
+            border: none;
+            border-radius: 8px;
+        }
     </style>
 </head>
 
@@ -199,7 +268,7 @@
                     <li class="checkout-address-item">
                         <div style="flex-basis: 70%">
                             <label class="radio" style="margin-top: 2px;"> <?php echo $address['name'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['address'] . ", " . $address['ward'] . ", " . $address['district'] . ", " . $address['city'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['phone_number'] ?>
-                                <input type="radio" name="checkout-block-address-list-item-option" <?php if ($address['is_default']) echo "checked" ?>>
+                                <input type="radio" id="<?php echo $address['id'] ?>" name="checkout-block-address-list-item-option" <?php if ($address['is_default']) echo "checked" ?>>
                                 <span class="radiomark"></span>
                             </label>
                         </div>
@@ -238,11 +307,45 @@
                                 </div>
                                 <div class="checkout-books-item-qty"><?php echo $book['quantity'] ?></div>
                                 <div class="checkout-books-item-total"><?php $subtotal =  $book['price'] * (1 - $book['discount'] / 100) * $book['quantity'];
-                                                                        echo number_format($subtotal, 0, '.', '.') ?> đ</div>
+                                                                        echo number_format($subtotal, 0, '.', '.');
+                                                                        $total += $subtotal ?> đ</div>
                             </div>
                         </div>
                 <?php }
                 } ?>
+            </div>
+        </div>
+    </div>
+
+    <div class="bsidebar">
+        <div class="bsidebar-content">
+            <div class="bsidebar-top">
+                <div class="bsidebar-subtotal">
+                    <div>Thành tiền</div>
+                    <div><?php echo number_format($total, 0, '.', '.') ?> đ</div>
+                </div>
+                <div class="bsidebar-shipping">
+                    <div>Phí vận chuyển (Giao hàng tiêu chuẩn)</div>
+                    <div>0.000 đ</div>
+                </div>
+                <div class="bsidebar-total">
+                    <div>Tổng Số Tiền (gồm VAT)
+                    </div>
+                    <div><?php echo number_format($total, 0, '.', '.') ?> đ</div>
+                </div>
+            </div>
+            <div class="bsidebar-bottom">
+                <div class="bsidebar-back-to-cart">
+                    <a href="/Fahasa/checkout/cart">
+                        <span style="padding-right: 8px;">
+                            <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/btn_back.svg?q=101680">
+                        </span>
+                        <span style="color: #555555; font-weight: 600; font-size: 14px;">Quay về giỏ hàng</span>
+                    </a>
+                </div>
+                <button type="button" title="Xác nhận thanh toán" id="btn-order-confirm">
+                    Xác nhận thanh toán
+                </button>
             </div>
         </div>
     </div>
@@ -257,65 +360,27 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        function toggleCheckBook(id) {
-            $.ajax({
-                url: "/Fahasa/cart/check",
-                type: 'post',
-                data: {
-                    id: id,
-                }
-            }).done(function(respone) {
-                location.reload();
-            });
-        }
+        const address_input = document.querySelectorAll(".checkout-address-list input")
 
-        function addQuantity(id) {
-            $.ajax({
-                url: "/Fahasa/cart/add",
-                type: 'post',
-                data: {
-                    id: id,
+        $('#btn-order-confirm').click(function() {
+            var address_id;
+            address_input.forEach(element => {
+                if (element.checked) {
+                    address_id = element.id;
                 }
-            }).done(function(respone) {
-                location.reload();
-            });
-        }
+            })
 
-        function subtractQuantity(id) {
             $.ajax({
-                url: "/Fahasa/cart/subtract",
+                url: "/Fahasa/checkout/confirm",
                 type: 'post',
                 data: {
-                    id: id,
+                    address_id: address_id,
+                    total: <?php echo $total ?>
                 }
             }).done(function(respone) {
-                location.reload();
+                window.location.href = "/Fahasa";
             });
-        }
-
-        function checkAll() {
-            $.ajax({
-                url: "/Fahasa/cart/checkall",
-                type: 'post',
-                data: {
-                    check: document.getElementById("checkbox-all-books").checked,
-                }
-            }).done(function(respone) {
-                location.reload();
-            });
-        }
-
-        function deleteItem(id) {
-            $.ajax({
-                url: "/Fahasa/cart/delete",
-                type: 'post',
-                data: {
-                    id: id,
-                }
-            }).done(function(respone) {
-                location.reload();
-            });
-        }
+        })
     </script>
 </body>
 
