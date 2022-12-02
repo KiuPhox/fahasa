@@ -113,7 +113,7 @@
                         </a>
                         <div class="login-nav">
                             <?php if ($_SESSION['level'] == 0) { ?>
-                                <a href="">
+                                <a href="/Fahasa/dashboard">
                                     <i class="fa-solid fa-chart-line"></i>
                                     <span>Dashboard</span>
                                 </a>

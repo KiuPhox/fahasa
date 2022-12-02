@@ -51,4 +51,7 @@ $router->add('customer/address/delete/{id:\d+}', ['controller' => 'Customer', 'a
 // Rating
 $router->add('product/rating', ['controller' => 'Home', 'action' => 'rating']);
 
+// Admin
+$router->add('dashboard', ['controller' => 'Admin', 'action' => 'index']);
+$router->add('dashboard/books', ['controller' => 'Admin', 'action' => 'books']);
 $router->dispatch($_SERVER['QUERY_STRING']);
