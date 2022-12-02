@@ -104,16 +104,16 @@
                                                 <input type="date" class="form-control" id="publication_date" name="publication_date">
                                             </div>
                                         </div>
-                                        <div class=" form-group">
-                                            <label>File upload</label>
-                                            <input type="file" name="img[]" class="file-upload-default">
-                                            <div class="input-group col-xs-12">
-                                                <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
-                                                <span class="input-group-append">
-                                                    <button class="file-upload-browse btn btn-primary" type="button">Upload</button>
-                                                </span>
+                                        <div class="row">
+                                            <div class="col">
+                                                <img width="50px" src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_217480.jpg">
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="image">Link ảnh</label>
+                                                <input type="text" class="form-control" id="image" name="image" placeholder="https://cdn0.fahasa.com/media/catalog/product/i/m/image_217480.jpg">
                                             </div>
                                         </div>
+
                                         <div class="row">
                                             <div class="form-group col">
                                                 <label for="price">Giá</label>
