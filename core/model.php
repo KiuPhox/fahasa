@@ -16,6 +16,15 @@ abstract class Model
         }
     }
 
+    public static function destroy($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $table_name = self::pluralize(get_called_class());
+        $sql = "DELETE from " . $table_name . " WHERE id = $id";
+        return mysqli_query($conn, $sql);
+    }
+
     public static function getAll()
     {
         $conn = mysqli_connect("localhost", "root", "", "Fahasa");

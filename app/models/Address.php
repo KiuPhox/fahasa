@@ -13,15 +13,6 @@ class Address extends Model
         return mysqli_query($conn, $sql);
     }
 
-    public static function destroy($id)
-    {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-
-        $sql = "DELETE FROM addresses WHERE id = $id";
-        return mysqli_query($conn, $sql);
-    }
-
     public static function update($id, $name, $phone_number, $address, $city, $district, $ward, $default)
     {
         $conn = mysqli_connect("localhost", "root", "", "Fahasa");

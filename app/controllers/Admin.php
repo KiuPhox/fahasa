@@ -2,6 +2,7 @@
 require_once('./app/models/Book.php');
 require_once('./app/models/Publisher.php');
 require_once('./app/models/Supplier.php');
+require_once('./app/models/Category.php');
 class Admin
 {
     public function index()
@@ -19,6 +20,7 @@ class Admin
             $books = Book::getAll();
             $publishers = Publisher::getAll();
             $suppliers = Supplier::getAll();
+            $categories = Category::getAll();
             require("./app/views/admin/book/index.php");
         } else {
             header("Location:/Fahasa/");

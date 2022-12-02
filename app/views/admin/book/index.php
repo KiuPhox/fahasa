@@ -58,7 +58,9 @@
                                                         <td><?php echo $book['author'] ?></td>
                                                         <td><?php echo $book['price'] ?></td>
                                                         <td><?php echo $book['quantity'] ?></td>
-                                                        <td><button class="btn btn-primary mr-2">Sửa</button><button class="btn btn-danger">Xoá</button></td>
+                                                        <td><button onclick="changeForm('edit', '<?php echo base64_encode(json_encode($book, JSON_UNESCAPED_UNICODE)); ?>');" class="btn btn-primary mr-2">Sửa</button>
+                                                            <button onclick="deleteBook(<?php echo $book['id'] ?>)" class="btn btn-danger">Xoá</button>
+                                                        </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
@@ -72,16 +74,27 @@
                         <div class="col-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Tạo sách</h4>
-                                    <form id="book-form" method="get" class="forms-sample">
-                                        <div class="form-group">
-                                            <label for="title">Tựa đề</label>
-                                            <input type="text" class="form-control" id="title" name="title" placeholder="Tựa đề">
+                                    <h4 id="form-title" class="card-title">Thêm sách</h4>
+                                    <form id="book-form" method="post" action="/Fahasa/dashboard/books/store" class="forms-sample">
+                                        <div class="row">
+                                            <div class="form-group col">
+                                                <label for="title">Tựa đề</label>
+                                                <input type="text" class="form-control" id="title" name="title" placeholder="Tựa đề" required>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="author">Tác giả</label>
+                                                <input type="text" class="form-control" id="author" name="author" placeholder="Tên tác giả" required>
+                                            </div>
+                                            <div class="form-group col">
+                                                <label for="category">Thể loại</label>
+                                                <select class="form-control" id="category" name="category_id">
+                                                    <?php foreach ($categories as $category) { ?>
+                                                        <option value="<?php echo $category['id'] ?>"><?php echo $category['name'] ?></option>
+                                                    <?php } ?>
+                                                </select>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="author">Tác giả</label>
-                                            <input type="text" class="form-control" id="author" name="author" placeholder="Tên tác giả">
-                                        </div>
+
                                         <div class="row">
                                             <div class="form-group col">
                                                 <label for="supplier">Nhà cung cấp</label>
@@ -101,39 +114,36 @@
                                             </div>
                                             <div class="form-group col">
                                                 <label for="publication_date">Ngày xuất bản</label>
-                                                <input type="date" class="form-control" id="publication_date" name="publication_date">
+                                                <input type="date" class="form-control" id="publication_date" name="publication_date" required>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col">
-                                                <img width="50px" src="https://cdn0.fahasa.com/media/catalog/product/i/m/image_217480.jpg">
-                                            </div>
-                                            <div class="form-group col">
-                                                <label for="image">Link ảnh</label>
-                                                <input type="text" class="form-control" id="image" name="image" placeholder="https://cdn0.fahasa.com/media/catalog/product/i/m/image_217480.jpg">
-                                            </div>
+
+                                        <div class="form-group">
+                                            <label for="image">Link ảnh</label>
+                                            <input type="text" class="form-control" id="image" name="image" placeholder="https://cdn0.fahasa.com/media/catalog/product/i/m/image_217480.jpg" required>
                                         </div>
+
 
                                         <div class="row">
                                             <div class="form-group col">
                                                 <label for="price">Giá</label>
-                                                <input type="number" class="form-control" id="price" name="price" placeholder="12000">
+                                                <input type="number" class="form-control" id="price" name="price" placeholder="12000" required>
                                             </div>
                                             <div class="form-group col">
                                                 <label for="discount">Giảm giá</label>
-                                                <input type="number" class="form-control" id="discount" name="discount" placeholder="50">
+                                                <input type="number" class="form-control" id="discount" name="discount" placeholder="50" required>
                                             </div>
                                             <div class="form-group col">
                                                 <label for="quantity">Tồn kho</label>
-                                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="200">
+                                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="200" required>
                                             </div>
                                             <div class="form-group col">
-                                                <label for="quantity">Số trang</label>
-                                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="200">
+                                                <label for="page_quantity">Số trang</label>
+                                                <input type="number" class="form-control" id="page_quantity" name="page_quantity" placeholder="200" required>
                                             </div>
                                             <div class="form-group col">
-                                                <label for="quantity">Mã sách</label>
-                                                <input type="number" class="form-control" id="quantity" name="quantity" placeholder="8935235226272">
+                                                <label for="book_code">Mã sách</label>
+                                                <input type="number" class="form-control" id="book_code" name="book_code" placeholder="8935235226272" required>
                                             </div>
                                         </div>
 
@@ -141,7 +151,10 @@
                                             <label for="exampleTextarea1">Mô tả</label>
                                             <textarea class="form-control" id="description" name="description" rows="4"></textarea>
                                         </div>
-                                        <button type="submit" class="btn btn-primary mr-2">Thêm</button>
+                                        <div class="row ml-2">
+                                            <button id="main-btn" type="submit" class="btn btn-primary mr-1">Thêm</button>
+                                            <button type="button" style="display: none;" onclick="changeForm('create', '')" id="cancel-btn" class="btn btn-danger">Huỷ</button>
+                                        </div>
                                     </form>
                                 </div>
                             </div>
@@ -173,13 +186,57 @@
     <script src="../public/js/todolist.js"></script>
     <!-- endinject -->
     <!-- Custom js for this page-->
-    <script src="../public/js/dashboard.js"></script>
-    <script src="../public/js/Chart.roundedBarCharts.js"></script>
     <!-- End custom js for this page-->
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
         })
+
+        function changeForm(action, json) {
+            if (action == 'edit') {
+                var book = JSON.parse(decodeURIComponent(escape(window.atob(json))));
+
+                $('#form-title').text('Sửa sách');
+
+                $('#book-form').attr('action', '/Fahasa/dashboard/books/update/' + book['id']);
+                $('#title').val(book['title']);
+                $('#author').val(book['author']);
+                $('#category').val(book['category_id']);
+                $('#supplier').val(book['supplier_id']);
+                $('#publisher').val(book['publisher_id']);
+                $('#publication_date').val(book['publication_date'].substring(0, 10));
+                $('#image').val(book['image']);
+                $('#price').val(book['price']);
+                $('#discount').val(book['discount']);
+                $('#quantity').val(book['quantity']);
+                $('#page_quantity').val(book['page_quantity']);
+                $('#book_code').val(book['book_code']);
+                $('#description').val(book['description']);
+
+                $('#main-btn').text('Sửa');
+                $('#cancel-btn').css('display', 'block');
+
+            } else if (action == 'create') {
+                $('#form-title').text('Thêm sách');
+                $('#book-form').trigger("reset");
+                $('#book-form').attr('action', '/Fahasa/dashboard/books/store/');
+
+                $('#main-btn').text('Thêm');
+                $('#cancel-btn').css('display', 'none');
+            }
+            $([document.documentElement, document.body]).animate({
+                scrollTop: $("#form-title").offset().top
+            }, 500);
+        }
+
+        function deleteBook(id) {
+            $.ajax({
+                url: "/Fahasa/dashboard/books/destroy/" + id,
+                success: function(response) {
+                    window.location.reload();
+                }
+            })
+        }
     </script>
 </body>
 

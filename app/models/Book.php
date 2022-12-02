@@ -4,6 +4,46 @@ require_once('./core/model.php');
 
 class Book extends Model
 {
+
+    public static function store($title, $author, $category_id, $supplier_id, $publisher_id, $publication_date, $image, $description, $price, $discount, $quantity, $page_quantity, $book_code)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+
+        $sql = "INSERT INTO books 
+        (title, author, category_id, supplier_id, publisher_id, publication_date, image, description, price, discount, quantity, page_quantity, book_code)
+        VALUES('$title', '$author', $category_id, $supplier_id, $publisher_id, '$publication_date', '$image', '$description', $price, $discount, $quantity, $page_quantity, '$book_code')";
+
+        mysqli_query($conn, $sql);
+    }
+
+    public static function update($id, $title, $author, $category_id, $supplier_id, $publisher_id, $publication_date, $image, $description, $price, $discount, $quantity, $page_quantity, $book_code)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+
+        $sql = "UPDATE books 
+        SET title = '$title', 
+        author = '$author', 
+        category_id = $category_id, 
+        supplier_id = $supplier_id, 
+        publisher_id = $publisher_id, 
+        publication_date = '$publication_date', 
+        image = '$image', 
+        description = '$description', price = $price, 
+        discount = $discount, quantity = $quantity, page_quantity = $page_quantity, book_code = '$book_code'
+        WHERE id = $id";
+        mysqli_query($conn, $sql);
+    }
+
+    public static function destroy($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $sql = "DELETE FROM books WHERE id = $id";
+        mysqli_query($conn, $sql);
+    }
+
     public function getSpecialPrice()
     {
         echo $this->discount;
@@ -41,10 +81,6 @@ class Book extends Model
                 }
             }
         }
-
-
-
-
         return mysqli_query($conn, $sql);
     }
 }

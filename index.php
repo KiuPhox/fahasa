@@ -54,4 +54,8 @@ $router->add('product/rating', ['controller' => 'Home', 'action' => 'rating']);
 // Admin
 $router->add('dashboard', ['controller' => 'Admin', 'action' => 'index']);
 $router->add('dashboard/books', ['controller' => 'Admin', 'action' => 'books']);
+$router->add('dashboard/books/store', ['controller' => 'BookController', 'action' => 'store']);
+$router->add('dashboard/books/update/{id:\d+}', ['controller' => 'BookController', 'action' => 'update']);
+$router->add('dashboard/books/destroy/{id:\d+}', ['controller' => 'BookController', 'action' => 'destroy']);
+
 $router->dispatch($_SERVER['QUERY_STRING']);
