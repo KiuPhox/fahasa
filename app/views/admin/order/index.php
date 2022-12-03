@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Tài khoản</title>
+    <title>Đơn hàng</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="../vendors/feather/feather.css">
     <link rel="stylesheet" href="../vendors/ti-icons/css/themify-icons.css">
@@ -35,38 +35,46 @@
                         <div class="col-lg-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Quản lý tài khoản</h4>
+                                    <h4 class="card-title">Quản lý đơn hàng</h4>
                                     <div class="table-responsive">
                                         <table id="myTable" class="table table-striped table-hover">
                                             <thead>
                                                 <tr>
-                                                    <th>Id</th>
+                                                    <th>Mã đơn</th>
                                                     <th>Tên</th>
-                                                    <th>Email</th>
-                                                    <th>Số điện thoại</th>
-                                                    <th>Trạng thái</th>
+                                                    <th>SĐT</th>
+                                                    <th>Địa chỉ</th>
+                                                    <th>
+                                                        Trạng thái
+                                                    </th>
+                                                    <th>
+                                                        Ngày tạo
+                                                    </th>
                                                     <th>
                                                     </th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php foreach ($users as $user) { ?>
+                                                <?php foreach ($orders as $order) { ?>
                                                     <tr>
-                                                        <td><?php echo $user['id'] ?></td>
-                                                        <td><?php echo $user['name'] ?></td>
-                                                        <td><?php echo $user['email'] ?></td>
-                                                        <td><?php echo $user['phone_number'] ?></td>
+                                                        <td><?php echo $order['id'] ?></td>
+                                                        <td><?php echo $order['name'] ?></td>
+                                                        <td><?php echo $order['phone_number'] ?></td>
+                                                        <td><?php echo $order['address'] ?></td>
                                                         <td class="font-weight-medium">
-                                                            <?php if ($user['is_verified'] == 1) { ?>
-                                                                <div class="badge badge-success">Đã xác nhận</div>
+                                                            <?php if ($order['status'] == 1) { ?>
+                                                                <div class="badge badge-success">Đã kiểm duyệt</div>
                                                             <?php } else { ?>
-                                                                <div class="badge badge-warning">Chờ xác nhận</div>
+                                                                <div class="badge badge-warning">Chờ kiểm duyệt</div>
                                                             <?php }  ?>
                                                         </td>
 
-                                                        <td><?php if ($user['level'] == 1) { ?>
-                                                                <button onclick="deleteUser(<?php echo $user['id'] ?>)" class="btn btn-danger">Xoá</button>
-                                                            <?php } ?>
+                                                        <td>
+                                                            <?php echo $order['created_at'] ?>
+                                                        </td>
+                                                        <td>
+                                                            <button onclick="approveRating(<?php echo $rating['id'] ?>)" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-check"></i></button>
+                                                            <button onclick="deleteRating(<?php echo $rating['id'] ?>)" class="btn btn-sm btn-outline-danger"><i class="mdi mdi-window-close"></i></button>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
@@ -109,9 +117,18 @@
             $('#myTable').DataTable();
         })
 
-        function deleteUser(id) {
+        function deleteRating(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/users/destroy/" + id,
+                url: "/Fahasa/dashboard/ratings/destroy/" + id,
+                success: function(response) {
+                    window.location.reload();
+                }
+            })
+        }
+
+        function approveRating(id) {
+            $.ajax({
+                url: "/Fahasa/dashboard/ratings/approve/" + id,
                 success: function(response) {
                     window.location.reload();
                 }

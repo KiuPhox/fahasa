@@ -42,4 +42,22 @@ abstract class Model
         $sql = "SELECT * from " . $table_name . " WHERE id = " . $id;
         return mysqli_fetch_array(mysqli_query($conn, $sql));
     }
+
+    public static function getByUserID($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $table_name = self::pluralize(get_called_class());
+        $sql = "SELECT * from " . $table_name . " WHERE user_id = " . $id;
+        return mysqli_query($conn, $sql);
+    }
+
+    public static function deleteByUserID($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $table_name = self::pluralize(get_called_class());
+        $sql = "DELETE from " . $table_name . " WHERE user_id = " . $id;
+        return mysqli_query($conn, $sql);
+    }
 }

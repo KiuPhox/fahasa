@@ -4,6 +4,8 @@ require_once('./app/models/Publisher.php');
 require_once('./app/models/Supplier.php');
 require_once('./app/models/Category.php');
 require_once('./app/models/User.php');
+require_once('./app/models/Rating.php');
+require_once('./app/models/Order.php');
 class Admin
 {
     public function index()
@@ -33,6 +35,26 @@ class Admin
         if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
             $users = User::getAll();
             require("./app/views/admin/user/index.php");
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function ratings()
+    {
+        if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
+            $ratings = Rating::getAll();
+            require("./app/views/admin/rating/index.php");
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function orders()
+    {
+        if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
+            $orders = Order::getAll();
+            require("./app/views/admin/order/index.php");
         } else {
             header("Location:/Fahasa/");
         }

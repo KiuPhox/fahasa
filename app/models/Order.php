@@ -34,4 +34,14 @@ class Order extends Model
         $sql = "SELECT * from orders WHERE user_id = $id ORDER BY id DESC";
         return mysqli_query($conn, $sql);
     }
+
+    public static function destroy($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $sql = "DELETE from order_details WHERE order_id = $id";
+        mysqli_query($conn, $sql);
+        $sql = "DELETE from order WHERE id = $id";
+        mysqli_query($conn, $sql);
+    }
 }

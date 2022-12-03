@@ -4,15 +4,6 @@ require_once('./core/model.php');
 
 class Address extends Model
 {
-    public static function getByUserID($id)
-    {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-
-        $sql = "SELECT * from addresses WHERE user_id = $id";
-        return mysqli_query($conn, $sql);
-    }
-
     public static function update($id, $name, $phone_number, $address, $city, $district, $ward, $default)
     {
         $conn = mysqli_connect("localhost", "root", "", "Fahasa");

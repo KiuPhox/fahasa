@@ -20,7 +20,9 @@ class Home
         $reviews = [0, 0, 0, 0, 0];
         $progress = [0, 0, 0, 0, 0];
         foreach ($ratings as $rating) {
-            $reviews[$rating['rating'] - 1]++;
+            if ($rating['is_approved'] == 1) {
+                $reviews[$rating['rating'] - 1]++;
+            }
         }
         $total_reviews = array_sum($reviews);
 

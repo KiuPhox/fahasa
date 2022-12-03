@@ -36,14 +36,6 @@ class Book extends Model
         mysqli_query($conn, $sql);
     }
 
-    public static function destroy($id)
-    {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-        $sql = "DELETE FROM books WHERE id = $id";
-        mysqli_query($conn, $sql);
-    }
-
     public function getSpecialPrice()
     {
         echo $this->discount;

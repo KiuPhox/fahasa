@@ -10,7 +10,6 @@ if (!isset($_SESSION['cart'])) {
     $_SESSION['cart'] = [];
 }
 
-
 $router = new Router();
 
 // Home
@@ -63,5 +62,15 @@ $router->add('dashboard/books/destroy/{id:\d+}', ['controller' => 'BookControlle
 
 // Users
 $router->add('dashboard/users', ['controller' => 'Admin', 'action' => 'users']);
+$router->add('dashboard/users/destroy/{id:\d+}', ['controller' => 'UserController', 'action' => 'destroy']);
+
+// Ratings
+$router->add('dashboard/ratings', ['controller' => 'Admin', 'action' => 'ratings']);
+$router->add('dashboard/ratings/destroy/{id:\d+}', ['controller' => 'RatingController', 'action' => 'destroy']);
+$router->add('dashboard/ratings/approve/{id:\d+}', ['controller' => 'RatingController', 'action' => 'approve']);
+
+// Orders
+$router->add('dashboard/orders', ['controller' => 'Admin', 'action' => 'orders']);
+
 
 $router->dispatch($_SERVER['QUERY_STRING']);

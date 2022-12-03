@@ -37,11 +37,11 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Quản lý sách</h4>
                                     <div class="table-responsive">
-                                        <table id="myTable" class="table table-striped table-hover">
+                                        <table id="myTable" class="table table-hover">
                                             <thead>
                                                 <tr>
                                                     <th>Mã sách</th>
-                                                    <th>Tựa đề</th>
+                                                    <th>Sách</th>
                                                     <th>Tác giả</th>
                                                     <th>Giá gốc</th>
                                                     <th>Số lượng</th>
@@ -54,7 +54,7 @@
                                                 <?php foreach ($books as $book) { ?>
                                                     <tr>
                                                         <td><?php echo $book['book_code'] ?></td>
-                                                        <td><a href="/Fahasa/product/<?php echo $book['id'] ?>"><?php echo $book['title'] ?></a></td>
+                                                        <td><img style="border-radius: 0px" class="mr-2" src="<?php echo $book['image'] ?>"><a href="/Fahasa/product/<?php echo $book['id'] ?>"><?php echo $book['title'] ?></a></td>
                                                         <td><?php echo $book['author'] ?></td>
                                                         <td><?php echo $book['price'] ?></td>
                                                         <td><?php echo $book['quantity'] ?></td>
