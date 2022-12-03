@@ -254,6 +254,38 @@
             border: none;
             border-radius: 8px;
         }
+
+        #form-account-info .row {
+            margin: 0;
+            align-items: center;
+        }
+
+        #form-account-info label {
+            width: 150px;
+            font-weight: normal;
+            color: #555555;
+        }
+
+        #form-account-info input,
+        #form-account-info select {
+            height: 30px;
+            font-weight: 600;
+            font-size: 1em;
+            width: 70%;
+            padding: 0 1.1em;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+        }
+
+
+
+        #form-account-info .form-check-input {
+            height: initial;
+            width: initial;
+        }
     </style>
 </head>
 
@@ -263,29 +295,53 @@
     <div class="checkout-block">
         <div class="checkout-block-title">Địa chỉ giao hàng</div>
         <div class="checkout-block-content">
-            <ul class="checkout-address-list">
-                <?php foreach ($addresses as $address) { ?>
-                    <li class="checkout-address-item">
-                        <div style="flex-basis: 70%">
-                            <label class="radio" style="margin-top: 2px;"> <?php echo $address['name'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['address'] . ", " . $address['ward'] . ", " . $address['district'] . ", " . $address['city'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['phone_number'] ?>
-                                <input type="radio" id="<?php echo $address['id'] ?>" name="checkout-block-address-list-item-option" <?php if ($address['is_default']) echo "checked" ?>>
-                                <span class="radiomark"></span>
-                            </label>
-                        </div>
-                        <div>
-                            <span> Sửa </span>
-                            <span style="<?php if ($address['is_default']) echo "visibility: hidden" ?>"> Xoá
-                            </span>
-                        </div>
-                    </li>
-                <?php } ?>
-                <li class="checkout-address-item">
-                    <div style="flex-basis: 70%">
-                        <span style="padding: 0;"><img width="20px" src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/ico_add_circle_red.svg?q=101680"></span>
-                        <span style="padding-left: 5px; font-weight: normal; color: black">Giao hàng đến địa chỉ khác</span>
+            <?php if (!empty($addresses)) { ?>
+                <ul class="checkout-address-list">
+                    <?php foreach ($addresses as $address) { ?>
+                        <li class="checkout-address-item">
+                            <div style="flex-basis: 70%">
+                                <label class="radio" style="margin-top: 2px;"> <?php echo $address['name'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['address'] . ", " . $address['ward'] . ", " . $address['district'] . ", " . $address['city'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['phone_number'] ?>
+                                    <input type="radio" id="<?php echo $address['id'] ?>" name="checkout-block-address-list-item-option" <?php if ($address['is_default']) echo "checked" ?>>
+                                    <span class="radiomark"></span>
+                                </label>
+                            </div>
+                        </li>
+                    <?php } ?>
+                </ul>
+            <?php } else { ?>
+                <form id="form-account-info">
+                    <div class="row align-items-center justify-content-center my-3">
+                        <label for="name" class="form-label">Tên</label>
+                        <input name="name" id="name" class="form-control" placeholder="Nhập tên" value="">
                     </div>
-                </li>
-            </ul>
+                    <div class="row align-items-center justify-content-center my-3">
+                        <label for="phone_number" class="form-label">Số điện thoại</label>
+                        <input name="phone_number" id="phone_number" class="form-control" placeholder="Nhập số điện thoại" value="">
+                    </div>
+                    <div class="row align-items-center justify-content-center my-3">
+                        <label for="address" class="form-label">Địa chỉ</label>
+                        <input name="address" id="address" class="form-control" placeholder="Nhập địa chỉ" value="">
+                    </div>
+                    <div class="row align-items-center justify-content-center my-3">
+                        <label for="city" class="form-label">Tỉnh/Thành phố</label>
+                        <select id="city" name="city" class="form-select" aria-label="Default select example">
+                            <option selected>Vui lòng chọn</option>
+                        </select>
+                    </div>
+                    <div class="row align-items-center justify-content-center my-3">
+                        <label for="district" class="form-label">Quận/Huyện</label>
+                        <select id="district" name="district" class="form-select" aria-label="Default select example">
+                            <option selected>Vui lòng chọn</option>
+                        </select>
+                    </div>
+                    <div class="row align-items-center justify-content-center my-3">
+                        <label for="ward" class="form-label">Xã/Phường</label>
+                        <select id="ward" name="ward" class="form-select" aria-label="Default select example">
+                            <option selected>Vui lòng chọn</option>
+                        </select>
+                    </div>
+                </form>
+            <?php } ?>
         </div>
     </div>
 
@@ -352,35 +408,103 @@
 
     <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
 
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
-        const address_input = document.querySelectorAll(".checkout-address-list input")
+        <?php if (isset($_SESSION['id'])) { ?>
+            const address_input = document.querySelectorAll(".checkout-address-list input")
+            $('#btn-order-confirm').click(function() {
+                var address_id;
+                address_input.forEach(element => {
+                    if (element.checked) {
+                        address_id = element.id;
+                    }
+                })
 
-        $('#btn-order-confirm').click(function() {
-            var address_id;
-            address_input.forEach(element => {
-                if (element.checked) {
-                    address_id = element.id;
-                }
+                $.ajax({
+                    url: "/Fahasa/checkout/confirm",
+                    type: 'post',
+                    data: {
+                        address_id: address_id,
+                        total: <?php echo $total ?>
+                    }
+                }).done(function(respone) {
+                    window.location.href = "/Fahasa";
+                });
+            })
+        <?php } else { ?>
+
+            $('#btn-order-confirm').click(function() {
+                $.ajax({
+                    url: "/Fahasa/checkout/confirm",
+                    type: 'post',
+                    data: {
+                        name: $('#name').val(),
+                        phone_number: $('#phone_number').val(),
+                        address: $('#address').val(),
+                        city: $('#city').val(),
+                        district: $('#district').val(),
+                        ward: $('#ward').val(),
+                        total: <?php echo $total ?>,
+                    }
+                }).done(function(respone) {
+                    window.location.href = "/Fahasa";
+                });
             })
 
-            $.ajax({
-                url: "/Fahasa/checkout/confirm",
-                type: 'post',
-                data: {
-                    address_id: address_id,
-                    total: <?php echo $total ?>
-                }
-            }).done(function(respone) {
-                window.location.href = "/Fahasa";
+            var cities = document.getElementById("city");
+            var districts = document.getElementById("district");
+            var wards = document.getElementById("ward");
+
+            var firstDistrict = 0;
+
+            var Parameter = {
+                url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
+                method: "GET",
+                responseType: "application/json",
+            };
+
+            var promise = axios(Parameter);
+            promise.then(function(result) {
+                renderCity(result.data);
             });
-        })
+
+            function renderCity(data) {
+
+                for (const x of data) {
+                    cities.options[cities.options.length] = new Option(x.Name, x.Name);
+                }
+
+                cities.onchange = function() {
+                    districts.length = 1;
+                    wards.length = 1;
+                    if (cities.value != "") {
+                        const result = data.filter(n => n.Name === cities.value);
+
+                        for (const k of result[0].Districts) {
+                            districts.options[districts.options.length] = new Option(k.Name, k.Name);
+                        }
+                    }
+                };
+
+                districts.onchange = function() {
+                    wards.length = 1;
+                    const dataCity = data.filter((n) => n.Name === cities.value);
+                    if (district.value != "") {
+                        const dataWards = dataCity[0].Districts.filter(n => n.Name === district.value)[0].Wards;
+
+                        for (const w of dataWards) {
+                            wards.options[wards.options.length] = new Option(w.Name, w.Name);
+                        }
+                    }
+                };
+            }
+        <?php } ?>
     </script>
 </body>
 

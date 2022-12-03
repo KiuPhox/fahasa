@@ -8,8 +8,14 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="/Fahasa/dashboard/books">
-        <i class="icon-grid menu-icon mdi mdi-book-open-page-variant"></i>
+        <i class="menu-icon mdi mdi-book-open-page-variant"></i>
         <span class="menu-title">Sách</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/Fahasa/dashboard/users">
+        <i class="menu-icon mdi mdi-account-outline"></i>
+        <span class="menu-title">Người dùng</span>
       </a>
     </li>
     <!-- <li class="nav-item">

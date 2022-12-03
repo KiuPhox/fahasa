@@ -34,6 +34,7 @@ $router->add('checkout/confirm', ['controller' => 'CartController', 'action' => 
 
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);
 $router->add('login/login_process', ['controller' => 'Login', 'action' => 'login']);
+$router->add('login/register_process', ['controller' => 'Login', 'action' => 'register']);
 $router->add('login/logout_process', ['controller' => 'Login', 'action' => 'logout']);
 
 // Customer

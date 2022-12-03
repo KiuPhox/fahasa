@@ -52,8 +52,23 @@ class Home
         require("./app/views/user/home/category.php");
     }
 
+    public function resultToArray($result)
+    {
+        $rows = array();
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
+        }
+        return $rows;
+    }
+
     public function index()
     {
+        $books_sql = Book::getAll();
+        $books = array();
+        while ($book = $books_sql->fetch_assoc()) {
+            $books[] = $book;
+        }
+        $categories = Category::getAll();
         require("./app/views/user/home/index.php");
     }
 }

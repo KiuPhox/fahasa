@@ -89,7 +89,9 @@ class CartController
 
     public function checkout()
     {
-        $addresses = Address::getByUserID($_SESSION['id']);
+        if (isset($_SESSION['id'])) {
+            $addresses = Address::getByUserID($_SESSION['id']);
+        }
         $cart = $_SESSION['cart'];
         $total = 0;
         require("./app/views/user/home/checkout.php");
@@ -110,6 +112,18 @@ class CartController
                 $address['ward'],
                 $_POST['total'],
                 $_SESSION['id'],
+                $_SESSION['cart']
+            );
+        } else {
+            Order::store(
+                $_POST['name'],
+                $_POST['phone_number'],
+                $_POST['address'],
+                $_POST['city'],
+                $_POST['district'],
+                $_POST['ward'],
+                $_POST['total'],
+                0,
                 $_SESSION['cart']
             );
         }

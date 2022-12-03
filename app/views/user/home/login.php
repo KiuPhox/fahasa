@@ -179,33 +179,30 @@
                     </form>
                 </div>
                 <div class="tab-pane log-container" id="register-container">
-                    <form action="">
+                    <form action="/Fahasa/login/register_process" method="post">
                         <div style="margin-top: 15px;">
                             <label for="email">Email</label>
                             <div class="input-group">
                                 <input name="email" class="form-control" type="text" id="email-2" placeholder="Nhập email">
-                                <span class="OTP">Gửi mã OTP</span>
                             </div>
-                        </div>
-                        <div style="margin-top: 10px;">
-                            <label for="otp">Mã xác nhận OTP</label>
-                            <br>
-                            <input class="form-control" type="text" id="otp" placeholder="6 kí tự">
                         </div>
                         <label class="mt-3" for="matkhau">Mật khẩu</label>
                         <div class="input-group">
-                            <input class="form-control" type="password" id="password-2" placeholder="Nhập mật khẩu">
-                            <span class="show-regis">Hiện</span>
+                            <input class="form-control" type="password" name="password" id="password-2" placeholder="Nhập mật khẩu">
                         </div>
-
+                        <label class="mt-3" for="matkhau">Xác nhận mật khẩu</label>
+                        <div class="input-group">
+                            <input class="form-control" type="password" name="password-confirm" id="password-confirm-2" placeholder="Nhập lại mật khẩu">
+                        </div>
+                        <div class="group-button">
+                            <div class="login-button-group"><button type="button" id="register-button" class="login-button">Đăng Kí</button></div>
+                            <div style="font-size: 12px; margin-top: 10px;">
+                                <div>Bằng việc đăng ký, bạn đã đồng ý với Fahasa.com về</div>
+                                <div><a style="text-decoration: none;" href="">Điều khoản dịch vụ </a>&#38;<a style="text-decoration: none;" href=""> Chính sách bảo mật</a></div>
+                            </div>
+                        </div>
                     </form>
-                    <div class="group-button">
-                        <div class="login-button-group"><button type="button" class="login-button">Đăng Kí</button></div>
-                        <div style="font-size: 12px; margin-top: 10px;">
-                            <div>Bằng việc đăng ký, bạn đã đồng ý với Fahasa.com về</div>
-                            <div><a style="text-decoration: none;" href="">Điều khoản dịch vụ </a>&#38;<a style="text-decoration: none;" href=""> Chính sách bảo mật</a></div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -224,15 +221,22 @@
     <script>
         const login_email_input = document.getElementById('email-1');
         const login_password_input = document.getElementById('password-1');
+        const login_button = document.getElementById('login-button');
+
         const register_email_input = document.getElementById('email-2');
         const register_password_input = document.getElementById('password-2');
-        const login_button = document.getElementById('login-button');
+        const register_password_confirm_input = document.getElementById('password-confirm-2');
+        const register_button = document.getElementById('register-button');
 
         const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         const passwordPattern = /^.{6,}$/
 
         $("#email-1").on('change paste input', LoginValidation)
-        $("#password-1").on('changepaste input', LoginValidation)
+        $("#password-1").on('change paste input', LoginValidation)
+
+        $("#email-2").on('change paste input', RegisterValidation)
+        $("#password-2").on('change paste input', RegisterValidation)
+        $("#password-confirm-2").on('change paste input', RegisterValidation)
 
         function LoginValidation() {
             if (emailPattern.test(login_email_input.value) && passwordPattern.test(login_password_input.value)) {
@@ -246,6 +250,24 @@
                 login_button.style.background = "linear-gradient(90deg, rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 100%)";
                 login_button.style.cursor = "default";
                 login_button.setAttribute('type', "button");
+            }
+        }
+
+        function RegisterValidation() {
+            if (emailPattern.test(register_email_input.value) &&
+                passwordPattern.test(register_password_input.value) &&
+                passwordPattern.test(register_password_confirm_input.value) &&
+                register_password_input.value == register_password_confirm_input.value) {
+
+                register_button.style.color = "white";
+                register_button.style.background = "#C92127";
+                register_button.style.cursor = "pointer";
+                register_button.setAttribute('type', "submit");
+            } else {
+                register_button.style.color = "#636363";
+                register_button.style.background = "linear-gradient(90deg, rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 100%)";
+                register_button.style.cursor = "default";
+                register_button.setAttribute('type', "button");
             }
         }
     </script>
