@@ -167,10 +167,10 @@
                     <div class="col-left-content">
                         <div class="col-left-block">
                             <p>Thể loại</p>
-                            <?php
+                            <?php $pages = ceil(count($books) / 8);
                             foreach ($categories as $category) { ?>
-                                <a href="<?php echo '?c=' . $category['name']; ?>">
-                                    <li><?php echo $category['name']; ?></li>
+                                <a onclick="appendCategory('<?php echo $category['name'] ?>')">
+                                    <li style="cursor: pointer;"><?php echo $category['name']; ?></li>
                                 </a>
                             <?php }
                             ?>
@@ -198,41 +198,73 @@
                         </div>
                     </div>
                     <div class="products-grid">
-                        <?php foreach ($books as $book) { ?>
-                            <li>
-                                <div class="product-inner">
-                                    <?php if ($book['discount'] > 0) { ?>
-                                        <div class="product-sale-label">
-                                            <span><?php echo $book['discount']; ?>%</span>
-                                        </div>
-                                    <?php } ?>
+                        <?php $start = 0;
+                        if (isset($_GET['p']) && $_GET['p'] != '') {
+                            $start = 8 * $_GET['p'];
+                        } ?>
+                        <?php for ($i = $start; $i < $start + 8; $i++) {
+                            if ($i < count($books)) { ?>
+                                <li>
+                                    <div class="product-inner">
+                                        <?php if ($books[$i]['discount'] > 0) { ?>
+                                            <div class="product-sale-label">
+                                                <span><?php echo $books[$i]['discount']; ?>%</span>
+                                            </div>
+                                        <?php } ?>
 
-                                    <div class="product-content">
-                                        <div class="product-image">
-                                            <a href="product/<?php echo $book['id'] ?>"><img src="<?php echo $book['image'] ?>"></a>
-                                        </div>
-                                        <a href="product/<?php echo $book['id'] ?>">
-                                            <h2 class="product-name"><?php echo $book['title'] ?></h2>
-                                        </a>
-                                        <div class="price-label">
-                                            <div class="product-price">
-                                                <?php if ($book['discount'] > 0) { ?>
-                                                    <p class="special-price"><?php echo number_format($book['price'] * (1 - $book['discount'] / 100), 0, '.', '.') ?> đ</p>
-                                                    <p class="old-price"><?php echo number_format($book['price'], 0, '.', '.'); ?> đ</p>
-                                                <?php } else { ?>
-                                                    <p class="special-price"><?php echo $book['price'] ?>.000đ</p>
-                                                <?php } ?>
+                                        <div class="product-content">
+                                            <div class="product-image">
+                                                <a href="product/<?php echo $books[$i]['id'] ?>"><img src="<?php echo $books[$i]['image'] ?>"></a>
+                                            </div>
+                                            <a href="product/<?php echo $books[$i]['id'] ?>">
+                                                <h2 class="product-name"><?php echo $books[$i]['title'] ?></h2>
+                                            </a>
+                                            <div class="price-label">
+                                                <div class="product-price">
+                                                    <?php if ($books[$i]['discount'] > 0) { ?>
+                                                        <p class="special-price"><?php echo number_format($books[$i]['price'] * (1 - $books[$i]['discount'] / 100), 0, '.', '.') ?> đ</p>
+                                                        <p class="old-price"><?php echo number_format($books[$i]['price'], 0, '.', '.'); ?> đ</p>
+                                                    <?php } else { ?>
+                                                        <p class="special-price"><?php echo $books[$i]['price'] ?>.000đ</p>
+                                                    <?php } ?>
+                                                </div>
+                                            </div>
+                                            <div style="display:flex; align-items: center;" class="ratings">
+                                                <div class="rating-box mr-1">
+                                                    <?php $rating = floor(Book::getRating($books[$i]['id']));
+                                                    for ($r = 0; $r < 5; $r++) {
+                                                        if ($r < $rating) { ?>
+                                                            <i class="fas fa-star" style="color: #F7941E;"></i>
+                                                        <?php } else { ?>
+                                                            <i class="fas fa-star" style="color: gray;"></i>
+                                                    <?php }
+                                                    } ?>
+                                                </div>
+                                                <div class="amount">(<?php echo Rating::getAllByBookID($books[$i]['id'])->num_rows ?>)</div>
                                             </div>
                                         </div>
-                                        <div class="ratings">
-                                            <div class="rating-box"></div>
-                                            <div class="amount">(<?php echo Rating::getAllByBookID($book['id'])->num_rows ?>)</div>
-                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        <?php } ?>
+                                </li>
+                        <?php }
+                        } ?>
                     </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-center">
+                            <?php $p = 0;
+                            if (isset($_GET['p']) && $_GET['p'] != '') $p = $_GET['p'] ?>
+                            <li <?php if ($p == 0) echo 'class="page-item disabled"';
+                                else echo 'class="page-item" style="cursor: pointer;" onclick="appendPage(' .  $p - 1 . ')"'; ?>>
+                                <a class="page-link">Previous</a>
+                            </li>
+                            <?php for ($i = 0; $i < $pages; $i++) { ?>
+                                <li <?php if ($i == $p) echo 'aria-current="page"' ?>style="cursor: pointer" onclick="appendPage(<?php echo $i ?>)" class="page-item <?php if ($i == $p) echo "active" ?>"><a class="page-link"><?php echo $i + 1 ?></a></li>
+                            <?php } ?>
+                            <li <?php if ($p == $pages - 1) echo 'class="page-item disabled"';
+                                else echo 'class="page-item" style="cursor: pointer;" onclick="appendPage(' .  $p + 1 . ')"'; ?>>
+                                <a class=" page-link">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
@@ -246,6 +278,28 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function appendCategory(category) {
+            if (url.searchParams.get('c') != '') {
+                url.searchParams.set('c', category);
+            } else {
+                url.searchParams.append('c', category);
+            }
+            appendPage(0);
+            window.location.href = url;
+        }
+
+        function appendPage(page) {
+            if (url.searchParams.get('p') != '') {
+                url.searchParams.set('p', page);
+            } else {
+                url.searchParams.append('p', page);
+            }
+            window.location.href = url;
+        }
+    </script>
+
 </body>
 
 </html>

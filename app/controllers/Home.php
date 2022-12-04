@@ -49,7 +49,12 @@ class Home
     public function category()
     {
         $categories = Category::getAll();
-        $books = Book::getAll();
+        $books_sql = Book::getAll();
+
+        $books = array();
+        while ($book = $books_sql->fetch_assoc()) {
+            $books[] = $book;
+        }
 
         require("./app/views/user/home/category.php");
     }

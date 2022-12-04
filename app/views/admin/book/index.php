@@ -157,84 +157,124 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 id="form-title" class="card-title">Thêm thể loại</h4>
+                                    <form id="category-form" method="post" action="/Fahasa/dashboard/books/addCategory" class="forms-sample">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="category" name="category" required>
+                                        </div>
+                                        <button class="btn btn-primary">Thêm</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 id="form-title" class="card-title">Thêm nhà cung cấp</h4>
+                                    <form id="supplier-form" method="post" action="/Fahasa/dashboard/books/addSupplier" class="forms-sample">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="supplier" name="supplier" required>
+                                        </div>
+                                        <button class="btn btn-primary">Thêm</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 id="form-title" class="card-title">Thêm nhà xuất bản</h4>
+                                    <form id="publisher-form" method="post" action="/Fahasa/dashboard/books/addPublisher" class="forms-sample">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="publisher" name="publisher" required>
+                                        </div>
+                                        <button class="btn btn-primary">Thêm</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <?php include(dirname(__FILE__) . '/' . '../../layouts/_footer.php'); ?>
+                    <?php include(dirname(__FILE__) . '/' . '../../layouts/_footer.php'); ?>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- container-scroller -->
+        <!-- container-scroller -->
 
-    <!-- plugins:js -->
-    <script src="../vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <script src="../vendors/chart.js/Chart.min.js"></script>
-    <script src="../vendors/datatables.net/jquery.dataTables.js"></script>
-    <script src="../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
-    <script src="../public/js/dataTables.select.min.js"></script>
+        <!-- plugins:js -->
+        <script src="../vendors/js/vendor.bundle.base.js"></script>
+        <!-- endinject -->
+        <!-- Plugin js for this page -->
+        <script src="../vendors/chart.js/Chart.min.js"></script>
+        <script src="../vendors/datatables.net/jquery.dataTables.js"></script>
+        <script src="../vendors/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+        <script src="../public/js/dataTables.select.min.js"></script>
 
-    <!-- End plugin js for this page -->
-    <!-- inject:js -->
-    <script src="../public/js/off-canvas.js"></script>
-    <script src="../public/js/hoverable-collapse.js"></script>
-    <script src="../public/js/template.js"></script>
-    <script src="../public/js/settings.js"></script>
-    <script src="../public/js/todolist.js"></script>
-    <!-- endinject -->
-    <!-- Custom js for this page-->
-    <!-- End custom js for this page-->
-    <script>
-        $(document).ready(function() {
-            $('#myTable').DataTable();
-        })
-
-        function changeForm(action, json) {
-            if (action == 'edit') {
-                var book = JSON.parse(decodeURIComponent(escape(window.atob(json))));
-
-                $('#form-title').text('Sửa sách');
-
-                $('#book-form').attr('action', '/Fahasa/dashboard/books/update/' + book['id']);
-                $('#title').val(book['title']);
-                $('#author').val(book['author']);
-                $('#category').val(book['category_id']);
-                $('#supplier').val(book['supplier_id']);
-                $('#publisher').val(book['publisher_id']);
-                $('#publication_date').val(book['publication_date'].substring(0, 10));
-                $('#image').val(book['image']);
-                $('#price').val(book['price']);
-                $('#discount').val(book['discount']);
-                $('#quantity').val(book['quantity']);
-                $('#page_quantity').val(book['page_quantity']);
-                $('#book_code').val(book['book_code']);
-                $('#description').val(book['description']);
-
-                $('#main-btn').text('Sửa');
-                $('#cancel-btn').css('display', 'block');
-
-            } else if (action == 'create') {
-                $('#form-title').text('Thêm sách');
-                $('#book-form').trigger("reset");
-                $('#book-form').attr('action', '/Fahasa/dashboard/books/store/');
-
-                $('#main-btn').text('Thêm');
-                $('#cancel-btn').css('display', 'none');
-            }
-            $([document.documentElement, document.body]).animate({
-                scrollTop: $("#form-title").offset().top
-            }, 500);
-        }
-
-        function deleteBook(id) {
-            $.ajax({
-                url: "/Fahasa/dashboard/books/destroy/" + id,
-                success: function(response) {
-                    window.location.reload();
-                }
+        <!-- End plugin js for this page -->
+        <!-- inject:js -->
+        <script src="../public/js/off-canvas.js"></script>
+        <script src="../public/js/hoverable-collapse.js"></script>
+        <script src="../public/js/template.js"></script>
+        <script src="../public/js/settings.js"></script>
+        <script src="../public/js/todolist.js"></script>
+        <!-- endinject -->
+        <!-- Custom js for this page-->
+        <!-- End custom js for this page-->
+        <script>
+            $(document).ready(function() {
+                $('#myTable').DataTable();
             })
-        }
-    </script>
+
+            function changeForm(action, json) {
+                if (action == 'edit') {
+                    var book = JSON.parse(decodeURIComponent(escape(window.atob(json))));
+
+                    $('#form-title').text('Sửa sách');
+
+                    $('#book-form').attr('action', '/Fahasa/dashboard/books/update/' + book['id']);
+                    $('#title').val(book['title']);
+                    $('#author').val(book['author']);
+                    $('#category').val(book['category_id']);
+                    $('#supplier').val(book['supplier_id']);
+                    $('#publisher').val(book['publisher_id']);
+                    $('#publication_date').val(book['publication_date'].substring(0, 10));
+                    $('#image').val(book['image']);
+                    $('#price').val(book['price']);
+                    $('#discount').val(book['discount']);
+                    $('#quantity').val(book['quantity']);
+                    $('#page_quantity').val(book['page_quantity']);
+                    $('#book_code').val(book['book_code']);
+                    $('#description').val(book['description']);
+
+                    $('#main-btn').text('Sửa');
+                    $('#cancel-btn').css('display', 'block');
+
+                } else if (action == 'create') {
+                    $('#form-title').text('Thêm sách');
+                    $('#book-form').trigger("reset");
+                    $('#book-form').attr('action', '/Fahasa/dashboard/books/store/');
+
+                    $('#main-btn').text('Thêm');
+                    $('#cancel-btn').css('display', 'none');
+                }
+                $([document.documentElement, document.body]).animate({
+                    scrollTop: $("#form-title").offset().top
+                }, 500);
+            }
+
+            function deleteBook(id) {
+                $.ajax({
+                    url: "/Fahasa/dashboard/books/destroy/" + id,
+                    success: function(response) {
+                        window.location.reload();
+                    }
+                })
+            }
+        </script>
 </body>
 
 </html>

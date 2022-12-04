@@ -56,24 +56,28 @@
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($orders as $order) { ?>
-                                                    <tr>
+                                                    <tr style="cursor: pointer;">
                                                         <td><?php echo $order['id'] ?></td>
                                                         <td><?php echo $order['name'] ?></td>
                                                         <td><?php echo $order['phone_number'] ?></td>
                                                         <td><?php echo wordwrap($order['address'] . ", " . $order['ward'] . "," . $order['district'] . ", " . $order['city'], 50, "<br><br>") ?></td>
                                                         <td class="font-weight-medium">
                                                             <?php if ($order['status'] == 1) { ?>
-                                                                <div class="badge badge-success">Đã kiểm duyệt</div>
-                                                            <?php } else { ?>
-                                                                <div class="badge badge-warning">Chờ kiểm duyệt</div>
-                                                            <?php }  ?>
+                                                                <div class="badge badge-success">Đã xác nhận</div>
+                                                            <?php } else if ($order['status'] == 0) { ?>
+                                                                <div class="badge badge-warning">Chờ xác nhận</div>
+                                                            <?php } else if ($order['status'] == 2) { ?>
+                                                                <div class="badge badge-danger">Đã huỷ</div>
+                                                            <?php } ?>
                                                         </td>
 
                                                         <td>
                                                             <?php echo $order['created_at'] ?>
                                                         </td>
                                                         <td>
-                                                            <button onclick="confirmOrder(<?php echo $order['id'] ?>)" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-check"></i></button>
+                                                            <?php if ($order['status'] == 0) { ?>
+                                                                <button onclick="confirmOrder(<?php echo $order['id'] ?>)" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-check"></i></button>
+                                                            <?php } ?>
                                                             <button onclick="deleteOrder(<?php echo $order['id'] ?>)" class="btn btn-sm btn-outline-danger"><i class="mdi mdi-window-close"></i></button>
                                                         </td>
                                                     </tr>
@@ -133,27 +137,22 @@
             $('#myTable').DataTable();
         })
 
-        function deleteRating(id) {
+        function deleteOrder(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/ratings/destroy/" + id,
+                url: "/Fahasa/dashboard/orders/destroy/" + id,
                 success: function(response) {
                     window.location.reload();
                 }
             })
         }
 
-        function approveRating(id) {
+        function confirmOrder(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/ratings/approve/" + id,
+                url: "/Fahasa/dashboard/orders/confirm/" + id,
                 success: function(response) {
                     window.location.reload();
                 }
             })
-
-
-            function confirmOrder(id) {
-
-            }
         }
     </script>
 </body>

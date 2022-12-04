@@ -127,8 +127,8 @@
                         <li><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
                         <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
                         <li class="current"><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="https://www.fahasa.com/sales/order/history/">Đơn hàng của tôi</a></li>
-                        <li><a href="https://www.fahasa.com/review/customer/">Nhận xét của tôi</a></li>
+                        <li><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
+                        <li><a href="/Fahasa/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>

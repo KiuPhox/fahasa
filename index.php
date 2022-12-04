@@ -42,6 +42,10 @@ $router->add('customer/account', ['controller' => 'Customer', 'action' => 'accou
 $router->add('customer/account/edit', ['controller' => 'Customer', 'action' => 'accountEdit']);
 $router->add('customer/account/editPost', ['controller' => 'Customer', 'action' => 'accountEditPost']);
 $router->add('customer/account/updatePassword', ['controller' => 'Customer', 'action' => 'accountUpdatePaswword']);
+$router->add('customer/order', ['controller' => 'Customer', 'action' => 'order']);
+$router->add('customer/order/cancel/{id:\d+}', ['controller' => 'OrderController', 'action' => 'cancel']);
+$router->add('customer/order/view/{id:\d+}', ['controller' => 'Customer', 'action' => 'orderDetail']);
+$router->add('customer/rating', ['controller' => 'Customer', 'action' => 'rating']);
 
 $router->add('customer/address', ['controller' => 'Customer', 'action' => 'address']);
 $router->add('customer/address/new', ['controller' => 'Customer', 'action' => 'addressNew']);
@@ -49,6 +53,7 @@ $router->add('customer/address/newPost', ['controller' => 'Customer', 'action' =
 $router->add('customer/address/edit/{id:\d+}', ['controller' => 'Customer', 'action' => 'addressEdit']);
 $router->add('customer/address/editPost/{id:\d+}', ['controller' => 'Customer', 'action' => 'addressEditPost']);
 $router->add('customer/address/delete/{id:\d+}', ['controller' => 'Customer', 'action' => 'addressDelete']);
+
 // Rating
 $router->add('product/rating', ['controller' => 'Home', 'action' => 'rating']);
 
@@ -59,8 +64,9 @@ $router->add('dashboard/books', ['controller' => 'Admin', 'action' => 'books']);
 $router->add('dashboard/books/store', ['controller' => 'BookController', 'action' => 'store']);
 $router->add('dashboard/books/update/{id:\d+}', ['controller' => 'BookController', 'action' => 'update']);
 $router->add('dashboard/books/destroy/{id:\d+}', ['controller' => 'BookController', 'action' => 'destroy']);
-
-
+$router->add('dashboard/books/addCategory', ['controller' => 'BookController', 'action' => 'addCategory']);
+$router->add('dashboard/books/addSupplier', ['controller' => 'BookController', 'action' => 'addSupplier']);
+$router->add('dashboard/books/addPublisher', ['controller' => 'BookController', 'action' => 'addPublisher']);
 // Users
 $router->add('dashboard/users', ['controller' => 'Admin', 'action' => 'users']);
 $router->add('dashboard/users/destroy/{id:\d+}', ['controller' => 'UserController', 'action' => 'destroy']);
@@ -72,6 +78,7 @@ $router->add('dashboard/ratings/approve/{id:\d+}', ['controller' => 'RatingContr
 
 // Orders
 $router->add('dashboard/orders', ['controller' => 'Admin', 'action' => 'orders']);
-
+$router->add('dashboard/orders/destroy/{id:\d+}', ['controller' => 'OrderController', 'action' => 'destroy']);
+$router->add('dashboard/orders/confirm/{id:\d+}', ['controller' => 'OrderController', 'action' => 'confirm']);
 
 $router->dispatch($_SERVER['QUERY_STRING']);

@@ -62,7 +62,14 @@
                                                             <a href="/Fahasa/product/<?php echo $rating['book_id'] ?>"><?php echo $book['title'] ?></a>
                                                         </td>
                                                         <td><?php echo User::getByID($rating['user_id'])['name'] ?></td>
-                                                        <td><?php echo $rating['rating'] ?></td>
+                                                        <td><?php for ($r = 0; $r < 5; $r++) {
+                                                                if ($r < $rating['rating']) { ?>
+                                                                    <i class="mdi mdi-star" style="color: #F7941E;"></i>
+                                                                <?php } else { ?>
+                                                                    <i class="mdi mdi-star" style="color: gray;"></i>
+                                                            <?php }
+                                                            } ?>
+                                                        </td>
                                                         <td><?php echo wordwrap($rating['comment'], 100, "<br><br>") ?>
                                                         </td>
                                                         <td class="font-weight-medium">

@@ -531,22 +531,24 @@
                     if ($total_reviews > 0) {
                     ?>
                         <ul class="comment-list">
-                            <?php foreach ($ratings as $rating) { ?>
-                                <li>
-                                    <div class="comment-left">
-                                        <p class="user-name"><?php $user_id = $rating['user_id'];
-                                                                echo mysqli_fetch_array(mysqli_query($conn, "SELECT * from users WHERE id = $user_id"))['name'] ?></p>
-                                        <span class="comment-date"><?php echo date_format(date_create($rating['created_at']), "d/m/Y") ?></span>
-                                    </div>
-                                    <div class="comment-right">
-                                        <div class="rating-icons">
-                                            <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
-                                            <span class="two" style="background: linear-gradient(to right, #f6a500 <?php echo $rating['rating'] / 5 * 100 ?>%, transparent 0%)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                            <?php foreach ($ratings as $rating) {
+                                if ($rating['is_approved'] == 1) { ?>
+                                    <li>
+                                        <div class="comment-left">
+                                            <p class="user-name"><?php $user_id = $rating['user_id'];
+                                                                    echo mysqli_fetch_array(mysqli_query($conn, "SELECT * from users WHERE id = $user_id"))['name'] ?></p>
+                                            <span class="comment-date"><?php echo date_format(date_create($rating['created_at']), "d/m/Y") ?></span>
                                         </div>
-                                        <span class="comment-right-content"><?php echo $rating['comment'] ?></span>
-                                    </div>
-                                </li>
-                            <?php } ?>
+                                        <div class="comment-right">
+                                            <div class="rating-icons">
+                                                <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                                <span class="two" style="background: linear-gradient(to right, #f6a500 <?php echo $rating['rating'] / 5 * 100 ?>%, transparent 0%)"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                            </div>
+                                            <span class="comment-right-content"><?php echo $rating['comment'] ?></span>
+                                        </div>
+                                    </li>
+                            <?php }
+                            } ?>
                         </ul>
                     <?php } ?>
                 </div>
@@ -650,29 +652,35 @@
 
         function subtractQty() {
             qty.value--;
-            if (qty.value < 1) {
+            if (qty.value < 1 && qty.value > <?php echo $book['quantity'] ?>) {
                 qty.value = 1;
             }
         }
 
         function addQty() {
             qty.value++;
+            if (qty.value < 1 && qty.value > <?php echo $book['quantity'] ?>) {
+                qty.value = <?php echo $book['quantity'] ?>;
+            }
         }
 
         function addToCart(quantity = 1) {
-            quantity = qty.value;
+            if (qty.value > 0 && qty.value < <?php echo $book['quantity'] ?>) {
+                quantity = qty.value;
 
-            $.ajax({
-                url: "/Fahasa/cart/addtocart",
-                type: 'post',
-                data: {
-                    id: <?php echo $book['id'] ?>,
-                    checked: false,
-                    quantity: quantity,
-                }
-            }).done(function(respone) {
-                location.reload();
-            });
+                $.ajax({
+                    url: "/Fahasa/cart/addtocart",
+                    type: 'post',
+                    data: {
+                        id: <?php echo $book['id'] ?>,
+                        checked: false,
+                        quantity: quantity,
+                    }
+                }).done(function(respone) {
+                    location.reload();
+                });
+            }
+
         }
     </script>
 </body>

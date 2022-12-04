@@ -204,14 +204,14 @@
 
     <body>
         <ul class="carousel-indicators">
-            <li data-target="#sanpham" data-slide-to="0" class="active"></li>
+            <li data-target="#main-ads" data-slide-to="0" class="active"></li>
             <?php $carousel_items = ceil(count($books) / 5);
             for ($i = 1; $i < $carousel_items; $i++) { ?>
-                <li data-target="#sanpham" data-slide-to="<?php echo $i ?>"></li>
+                <li data-target="#main-ads" data-slide-to="<?php echo $i ?>"></li>
             <?php } ?>
-            <li data-target="#sanpham" data-slide-to="3"></li>
+            <li data-target="#main-ads" data-slide-to="3"></li>
         </ul>
-        <div id="sanpham" class="carousel slide" data-ride="carousel" style="padding:2rem; border-radius: 8px; width: 83%; margin: auto; background-color: white">
+        <div id="kinhte" class="carousel slide my-4" data-ride="carousel" style="padding:2rem; border-radius: 8px; width: 83%; margin: auto; background-color: white">
             <div class="carousel-inner">
                 <div class="container-title">Kinh tế</div>
                 <div class="carousel-item active">
@@ -234,11 +234,14 @@
                                     </p>
                                     <div style="display: flex;">
                                         <div>
-                                            <i class="fas fa-star" style="color: yellow;"></i>
-                                            <i class="fas fa-star" style="color: yellow;"></i>
-                                            <i class="fas fa-star" style="color: yellow;"></i>
-                                            <i class="fas fa-star" style="color: yellow;"></i>
-                                            <i class="fas fa-star" style="color: gray;"></i>
+                                            <?php $rating = floor(Book::getRating($books[$i]['id']));
+                                            for ($r = 0; $r < 5; $r++) {
+                                                if ($r < $rating) { ?>
+                                                    <i class="fas fa-star" style="color: #F7941E;"></i>
+                                                <?php } else { ?>
+                                                    <i class="fas fa-star" style="color: gray;"></i>
+                                            <?php }
+                                            } ?>
                                         </div>
                                         <div style="color: orange; margin-left: 10px;">(<?php echo Rating::getAllByBookID($books[$i]['id'])->num_rows ?>)</div>
                                     </div>
@@ -269,11 +272,14 @@
                                         <p style="color: gray;opacity: 0.8;text-decoration: line-through;"><?php echo number_format($books[$i * 5 + $j]['price'], 0, '.', '.'); ?> đ</p>
                                         <div style="display: flex;">
                                             <div>
-                                                <i class="fas fa-star" style="color: yellow;"></i>
-                                                <i class="fas fa-star" style="color: yellow;"></i>
-                                                <i class="fas fa-star" style="color: yellow;"></i>
-                                                <i class="fas fa-star" style="color: yellow;"></i>
-                                                <i class="fas fa-star" style="color: gray;"></i>
+                                                <?php $rating = floor(Book::getRating($books[$i * 5 + $j]['id']));
+                                                for ($r = 0; $r < 5; $r++) {
+                                                    if ($r < $rating) { ?>
+                                                        <i class="fas fa-star" style="color: #F7941E;"></i>
+                                                    <?php } else { ?>
+                                                        <i class="fas fa-star" style="color: gray;"></i>
+                                                <?php }
+                                                } ?>
                                             </div>
                                             <div style="color: orange; margin-left: 10px;">(<?php echo Rating::getAllByBookID($books[$i * 5 + $j]['id'])->num_rows ?>)</div>
                                         </div>
@@ -284,10 +290,98 @@
                     </div>
                 <?php } ?>
             </div>
-            <a class="carousel-control-prev" href="#sanpham" data-slide="prev">
+            <a class="carousel-control-prev" href="#kinhte" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#sanpham" data-slide="next">
+            <a class="carousel-control-next" href="#kinhte" data-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </a>
+
+        </div>
+
+        <div id="vanhoa" class="carousel slide my-4" data-ride="carousel" style="padding:2rem; border-radius: 8px; width: 83%; margin: auto; background-color: white">
+            <div class="carousel-inner">
+                <div class="container-title">Kinh tế</div>
+                <div class="carousel-item active">
+                    <div class="truyen" style="display: flex;justify-content: center;">
+                        <?php for ($i = 0; $i < 5; $i++) { ?>
+                            <div class="book-item">
+                                <a href="/Fahasa/product/<?php echo $books[$i]['id'] ?>">
+                                    <img src="<?php echo $books[$i]['image'] ?>" width="100%" alt=""></a>
+                                <div style="display: flex;width: 80%;flex-direction: column;margin-top: 10px;">
+                                    <p><?php echo $books[$i]['title'] ?></p>
+                                    <div style="display: flex; margin: unset;">
+                                        <h4 style="justify-self: flex-start;color: brown;font-weight: bold;">
+                                            <?php echo number_format($books[$i]['price'] * (1 - $books[$i]['discount'] / 100), 0, '.', '.') ?> đ
+                                        </h4>
+                                        <div style="margin-left: 10px;border-radius: 10%; background-color: brown;color: white;padding: 3px;">
+                                            -<?php echo $books[$i]['discount'] ?>%</div>
+                                    </div>
+                                    <p style="color: gray;opacity: 0.8;text-decoration: line-through;">
+                                        <?php echo number_format($books[$i]['price'], 0, '.', '.'); ?> đ
+                                    </p>
+                                    <div style="display: flex;">
+                                        <div>
+                                            <?php $rating = floor(Book::getRating($books[$i]['id']));
+                                            for ($r = 0; $r < 5; $r++) {
+                                                if ($r < $rating) { ?>
+                                                    <i class="fas fa-star" style="color: #F7941E;"></i>
+                                                <?php } else { ?>
+                                                    <i class="fas fa-star" style="color: gray;"></i>
+                                            <?php }
+                                            } ?>
+                                        </div>
+                                        <div style="color: orange; margin-left: 10px;">(<?php echo Rating::getAllByBookID($books[$i]['id'])->num_rows ?>)</div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                        <!-- end item -->
+                    </div>
+                </div>
+                <?php
+                for ($i = 1; $i < $carousel_items; $i++) { ?>
+                    <div class="carousel-item">
+                        <div class="truyen" style="display: flex; justify-content: center; ">
+                            <?php for ($j = 0; $j < 5 && $i * 5 + $j < count($books); $j++) { ?>
+                                <div class="book-item">
+                                    <a href="/Fahasa/product/<?php echo $books[$i * 5 + $j]['id'] ?>">
+                                        <img src="<?php echo $books[$i * 5 + $j]['image'] ?>" width="100%" alt="">
+                                    </a>
+                                    <div style="display: flex; width: 80%;flex-direction: column;margin-top: 10px;">
+                                        <p><?php echo $books[$i * 5 + $j]['title'] ?></p>
+                                        <div style="display: flex; margin: unset;">
+                                            <h4 style="justify-self: flex-start;color: brown;font-weight: bold;">
+                                                <?php echo number_format($books[$i * 5 + $j]['price'] * (1 - $books[$i * 5 + $j]['discount'] / 100), 0, '.', '.') ?> đ
+                                            </h4>
+                                            <div style="margin-left: 10px;border-radius: 10%; background-color: brown;color: white;padding: 3px;">
+                                                -<?php echo $books[$i * 5 + $j]['discount'] ?>%</div>
+                                        </div>
+                                        <p style="color: gray;opacity: 0.8;text-decoration: line-through;"><?php echo number_format($books[$i * 5 + $j]['price'], 0, '.', '.'); ?> đ</p>
+                                        <div style="display: flex;">
+                                            <div>
+                                                <?php $rating = floor(Book::getRating($books[$i * 5 + $j]['id']));
+                                                for ($r = 0; $r < 5; $r++) {
+                                                    if ($r < $rating) { ?>
+                                                        <i class="fas fa-star" style="color: #F7941E;"></i>
+                                                    <?php } else { ?>
+                                                        <i class="fas fa-star" style="color: gray;"></i>
+                                                <?php }
+                                                } ?>
+                                            </div>
+                                            <div style="color: orange; margin-left: 10px;">(<?php echo Rating::getAllByBookID($books[$i * 5 + $j]['id'])->num_rows ?>)</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php } ?>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+            <a class="carousel-control-prev" href="#vanhoa" data-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </a>
+            <a class="carousel-control-next" href="#vanhoa" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
 

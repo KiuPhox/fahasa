@@ -1,5 +1,6 @@
 <?php
 require_once('./app/models/Book.php');
+require_once('./app/models/Category.php');
 require_once('./app/models/Publisher.php');
 require_once('./app/models/Supplier.php');
 class BookController
@@ -55,6 +56,41 @@ class BookController
 
     public function destroy($id)
     {
-        Book::destroy($id);
+        if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
+            Book::destroy($id);
+            header("Location:/Fahasa/dashboard/books");
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function addCategory()
+    {
+        if (isset($_SESSION['level']) && $_SESSION['level'] == 0 && isset($_POST['category'])) {
+            Category::create($_POST['category']);
+            header("Location:/Fahasa/dashboard/books");
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function addSupplier()
+    {
+        if (isset($_SESSION['level']) && $_SESSION['level'] == 0 && isset($_POST['supplier'])) {
+            Supplier::create($_POST['supplier']);
+            header("Location:/Fahasa/dashboard/books");
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function addPublisher()
+    {
+        if (isset($_SESSION['level']) && $_SESSION['level'] == 0 && isset($_POST['publisher'])) {
+            Publisher::create($_POST['publisher']);
+            header("Location:/Fahasa/dashboard/books");
+        } else {
+            header("Location:/Fahasa/");
+        }
     }
 }

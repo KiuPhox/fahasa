@@ -3,7 +3,9 @@
 require_once('./app/models/User.php');
 require_once('./app/models/Address.php');
 require_once('./app/models/Order.php');
+require_once('./app/models/Order_Detail.php');
 require_once('./app/models/Rating.php');
+require_once('./app/models/Book.php');
 class Customer
 {
     public function account()
@@ -134,6 +136,49 @@ class Customer
         if (isset($_SESSION['id'])) {
             Address::destroy($id);
             header("Location:/Fahasa/customer/address");
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function rating()
+    {
+        if (isset($_SESSION['id'])) {
+            $ratings = Rating::getByUserID($_SESSION['id']);
+            require('./app/views/user/customer/rating.php');
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function order()
+    {
+        if (isset($_SESSION['id'])) {
+            $orders = Order::getByUserID($_SESSION['id']);
+            require('./app/views/user/customer/order.php');
+        } else {
+            header("Location:/Fahasa/");
+        }
+    }
+
+    public function orderDetail($id)
+    {
+        if (isset($_SESSION['id'])) {
+            $order = Order::getByID($id);
+
+            if ($order['user_id'] == $_SESSION['id']) {
+                $order_details = Order_Detail::getByOrderID($id);
+
+                $order_quantity = 0;
+
+                foreach ($order_details as $order_detail) {
+                    $order_quantity += $order_detail['quantity'];
+                }
+
+                require('./app/views/user/customer/order_detail.php');
+            } else {
+                header("Location:/Fahasa/");
+            }
         } else {
             header("Location:/Fahasa/");
         }

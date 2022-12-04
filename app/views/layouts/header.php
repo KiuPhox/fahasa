@@ -17,14 +17,13 @@
                 <a href="/Fahasa/category"><i class="fa-solid fa-list-ul"></i></a>
 
             </div>
-            <form class="search-form" action="/Fahasa/category">
-                <input class="search" name="q" type="text" placeholder="Tìm kiếm sản phẩm mong muốn...">
+            <form onsubmit="appendSearch(event)" class="search-form">
+                <input id="search-input" class="search" name="q" type="text" placeholder="Tìm kiếm sản phẩm mong muốn...">
                 <a href="#" class="search-button-container">
-                    <button type="submit" class="search-button">
+                    <button type="buttonm" class="search-button">
                         <i class="fas fa-search"></i>
                     </button>
                 </a>
-
             </form>
             <div class="notice cover-icon">
                 <a href="#" class="notice-button" style="flex-direction: column;">
@@ -118,8 +117,8 @@
                                     <span>Dashboard</span>
                                 </a>
                             <?php } ?>
-                            <a href="">
-                                <i class="fa-regular fa-clipboard"></i>
+                            <a href="/Fahasa/customer/order">
+                                <i class=" fa-regular fa-clipboard"></i>
                                 <span>Đơn hàng của tôi</span>
                             </a>
                             <a href="/Fahasa/login/logout_process">
@@ -815,6 +814,20 @@
     const login_dropdown = document.getElementById('login-dropdown');
     const cart_dropdown = document.getElementById('cart-dropdown');
 
+    let url = new URL(window.location.href);
+
+    function appendSearch(event) {
+        event.preventDefault();
+        search = $('#search-input').val();
+        if (search != '') {
+            if (url.searchParams.get('q') != '') {
+                url.searchParams.set('q', search);
+            } else {
+                url.searchParams.append('q', search);
+            }
+            window.location.href = url;
+        }
+    }
 
     cart_icon.addEventListener("mouseover", function() {
         cart_dropdown.style.display = 'block';

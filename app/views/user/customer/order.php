@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tài khoản</title>
+    <title>Đơn hàng của tôi</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="../public/css/style.css">
@@ -139,10 +139,10 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li class="current"><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
                         <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
                         <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
+                        <li class="current"><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
                         <li><a href="/Fahasa/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
@@ -150,13 +150,12 @@
         </div>
 
         <div class="col-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
-            <div class="my-account">
+            <div class="my-account mb-4">
                 <div class="page-title">
-                    <h1>Bảng điều khiển của khách hàng</h1>
+                    <h1>Đơn hàng của tôi</h1>
                 </div>
                 <div class="box-account box-recent">
                     <div class="box-head">
-                        <h2>Những đơn hàng gần đây</h2>
                         <a href="/Fahasa/customer/order">Xem tất cả</a>
                     </div>
                     <table class="data-table table-striped account-order-history" id="my-orders-table">
@@ -196,57 +195,13 @@
                                         <span class="nobr">
                                             <a href="/Fahasa/customer/order/view/<?php echo $order['id'] ?>">Xem</a>
                                             <span class="separator">|</span>
-                                            <?php if ($order['status'] != 2) { ?>
+                                            <?php if ($order['status'] == 0) { ?>
                                                 <a href="/Fahasa/customer/order/cancel/<?php echo $order['id'] ?>" class="link-reorder">Huỷ</a>
                                             <?php } ?>
-                                    </td>
-                                    </span>
+                                        </span>
                                     </td>
                                 </tr>
                             <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="box-account box-recent">
-                    <div class="box-head">
-                        <h2>Nhận xét gần đây</h2>
-                        <a href="/Fahasa/customer/rating">Xem tất cả</a>
-                    </div>
-                    <table class="data-table table-striped account-order-history" id="my-orders-table">
-                        <colgroup>
-                            <col width="1">
-                            <col width="">
-                            <col width="1">
-                            <col width="">
-                            <col width="">
-                        </colgroup>
-                        <thead>
-                            <tr class="first last">
-                                <th>Ngày</th>
-                                <th>Sách</th>
-                                <th>Đánh giá</th>
-                                <th>Bình luận</th>
-                                <th>&nbsp;</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($ratings as $rating) {
-                                if ($rating['is_approved'] == 1) { ?>
-                                    <tr class="">
-                                        <td><span class="nobr"><?php echo date_format(date_create($rating['created_at']), "d/m/Y")  ?></span></td>
-                                        <td>Shin - Cậu Bé Bút Chì - Tập 45 (Tái Bản 2019)</td>
-                                        <td>
-                                            <span class="price"><?php echo $rating['rating'] ?></span>
-                                        </td>
-                                        <td><?php echo mb_substr($rating['comment'], 0, 100) ?>...</td>
-                                        <td class="a-center last">
-                                            <span class="nobr">
-                                                <a href="/Fahasa/product/<?php echo $rating['book_id'] ?>">Xem</a>
-                                            </span>
-                                        </td>
-                                    </tr>
-                            <?php }
-                            } ?>
                         </tbody>
                     </table>
                 </div>
@@ -256,13 +211,16 @@
 
     <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+    </script>
 </body>
 
 </html>

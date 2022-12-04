@@ -41,7 +41,23 @@ class Order extends Model
         mysqli_set_charset($conn, 'utf8');
         $sql = "DELETE from order_details WHERE order_id = $id";
         mysqli_query($conn, $sql);
-        $sql = "DELETE from order WHERE id = $id";
+        $sql = "DELETE from orders WHERE id = $id";
+        mysqli_query($conn, $sql);
+    }
+
+    public static function cancel($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $sql = "UPDATE orders SET status = 2 WHERE id = $id";
+        mysqli_query($conn, $sql);
+    }
+
+    public static function confirm($id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $sql = "UPDATE orders SET status = 1 WHERE id = $id";
         mysqli_query($conn, $sql);
     }
 }

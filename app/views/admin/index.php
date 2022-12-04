@@ -62,17 +62,19 @@
                                 <div class="col-md-4 mb-4 stretch-card transparent">
                                     <div class="card card-tale">
                                         <div class="card-body">
-                                            <p class="mb-4">Đơn mới hôm nay</p>
-                                            <p class="fs-30 mb-2">4006</p>
+                                            <p class="mb-4">Tổng số đơn</p>
+                                            <p class="fs-30 mb-2"><?php echo $orders->num_rows ?></p>
+                                            <p><?php echo $new_orders ?> đơn mới hôm nay</p>
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="col-md-4 mb-4 stretch-card transparent">
                                     <div class="card card-dark-blue">
                                         <div class="card-body">
-                                            <p class="mb-4">Total Bookings</p>
-                                            <p class="fs-30 mb-2">61344</p>
-                                            <p>22.00% (30 days)</p>
+                                            <p class="mb-4">Tổng số khách hàng</p>
+                                            <p class="fs-30 mb-2"><?php echo $users->num_rows ?></p>
+                                            <p><?php echo $new_users ?> khách hàng mới hôm nay</p>
                                         </div>
                                     </div>
                                 </div>

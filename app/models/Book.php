@@ -1,6 +1,7 @@
 <?php
 
 require_once('./core/model.php');
+require_once('./app/models/Rating.php');
 
 class Book extends Model
 {
@@ -39,6 +40,24 @@ class Book extends Model
     public function getSpecialPrice()
     {
         echo $this->discount;
+    }
+
+    public static function getRating($id)
+    {
+        $ratings = Rating::getAllByBookID($id);
+
+        if ($ratings->num_rows == 0) {
+            return 0;
+        }
+
+        $total_rating = 0;
+
+
+        foreach ($ratings as $rating) {
+            $total_rating += $rating['rating'];
+        }
+
+        return $total_rating / $ratings->num_rows;
     }
 
     public static function getAll()

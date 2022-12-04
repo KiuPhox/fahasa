@@ -11,6 +11,22 @@ class Admin
     public function index()
     {
         if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
+            $users = User::getAll();
+            $orders = Order::getAll();
+            $new_orders = 0;
+            $new_users = 0;
+
+            foreach ($users as $user) {
+                if (date('Ymd') == date('Ymd', strtotime($user['created_at'])))
+                    $new_users++;
+            }
+
+            foreach ($orders as $order) {
+                if (date('Ymd') == date('Ymd', strtotime($order['created_at'])))
+                    $new_orders++;
+            }
+
+
             require("./app/views/admin/index.php");
         } else {
             header("Location:/Fahasa/");
