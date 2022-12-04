@@ -21,16 +21,24 @@ class Login
 
             if (User::checkUser($email, $password)) {
                 if (User::checkVerification($email, $password)) {
-                    header("Location:/Fahasa/");
+                    echo "Đăng nhập thành công";
                 } else {
-                    header("Location:/Fahasa/login?error=Vui lòng xác nhận email");
+                    echo "Vui lòng xác nhận email";
                 }
             } else {
-                header("Location:/Fahasa/login?error=Email hoặc mật khẩu sai");
+                echo "Email hoặc mật khẩu sai";
             }
         } else {
-            header("Location:/Fahasa/");
+            echo "Vui lòng nhập mật khẩu và email";
         }
+    }
+
+    public function verify()
+    {
+        if (isset($_GET['token'])) {
+            User::verifyToken($_GET['token']);
+        }
+        header("Location:/Fahasa/");
     }
 
     public function register()
@@ -43,13 +51,13 @@ class Login
             $password = $_POST['password'];
 
             if (User::checkEmailExists($email)) {
-                return "Email đã được sử dụng";
+                echo "Email đã được sử dụng";
             } else {
                 User::create($email, $password);
-                return "Vui lòng xác nhận email để đăng nhập";
+                echo "Vui lòng xác nhận email để đăng nhập";
             }
         } else {
-            header("Location:/Fahasa/");
+            echo "Vui lòng nhập email và mật khẩu";
         }
     }
 

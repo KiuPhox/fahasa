@@ -160,7 +160,7 @@
             <!-- Tab panes -->
             <div class="tab-content">
                 <div class="tab-pane active log-container" id="login-container">
-                    <form action="login/login_process" method="post" style="margin-top: 15px;">
+                    <form onsubmit="loginSubmit(event);" style="margin-top: 15px;">
                         <div class="mb-3">
                             <label for="email">Email</label>
                             <input maxlength="200" class="form-control" id="email-1" type="email" name="email" placeholder="Nhập email">
@@ -179,7 +179,7 @@
                     </form>
                 </div>
                 <div class="tab-pane log-container" id="register-container">
-                    <form action="/Fahasa/login/register_process" method="post">
+                    <form onsubmit="registerSubmit(event)">
                         <div style="margin-top: 15px;">
                             <label for="email">Email</label>
                             <div class="input-group">
@@ -208,6 +208,8 @@
         </div>
     </div>
 
+    <div style="position: fixed; top: 2rem; right: 2rem" id="liveAlertPlaceholder"></div>
+
     <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
@@ -230,6 +232,19 @@
 
         const emailPattern = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
         const passwordPattern = /^.{6,}$/
+
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+        const alert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+        }
 
         $("#email-1").on('change paste input', LoginValidation)
         $("#password-1").on('change paste input', LoginValidation)
@@ -269,6 +284,43 @@
                 register_button.style.cursor = "default";
                 register_button.setAttribute('type', "button");
             }
+        }
+
+        function loginSubmit(event) {
+            event.preventDefault();
+            $.ajax({
+                type: "post",
+                url: "/Fahasa/login/login_process",
+                data: {
+                    "email": $("#email-1").val(),
+                    "password": $("#password-1").val(),
+                },
+                success: function(response) {
+                    if (response == "Đăng nhập thành công") {
+                        window.location.href = "/Fahasa"
+                    }
+                    alert(response, "danger");
+                }
+            });
+        }
+
+        function registerSubmit(event) {
+            event.preventDefault();
+            alert("Vui lòng xác nhận email để đăng nhập", "warning");
+            $.ajax({
+                type: "post",
+                url: "/Fahasa/login/register_process",
+                data: {
+                    "email": $("#email-2").val(),
+                    "password": $("#password-2").val(),
+                    "password-confirm": $("#password-confirm-2").val(),
+                },
+                success: function(response) {
+                    if (respone == "Email đã được sử dụng" || respone == "Vui lòng xác nhận email để đăng nhập") {
+                        alert(response, "warning");
+                    }
+                }
+            });
         }
     </script>
 </body>

@@ -35,6 +35,7 @@ $router->add('login', ['controller' => 'Login', 'action' => 'index']);
 $router->add('login/login_process', ['controller' => 'Login', 'action' => 'login']);
 $router->add('login/register_process', ['controller' => 'Login', 'action' => 'register']);
 $router->add('login/logout_process', ['controller' => 'Login', 'action' => 'logout']);
+$router->add('verify', ['controller' => 'Login', 'action' => 'verify']);
 
 // Customer
 $router->add('customer/account', ['controller' => 'Customer', 'action' => 'account']);

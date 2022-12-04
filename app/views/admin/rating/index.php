@@ -63,7 +63,8 @@
                                                         </td>
                                                         <td><?php echo User::getByID($rating['user_id'])['name'] ?></td>
                                                         <td><?php echo $rating['rating'] ?></td>
-                                                        <td><?php echo mb_substr($rating['comment'], 0, 50) ?> ...</td>
+                                                        <td><?php echo wordwrap($rating['comment'], 100, "<br><br>") ?>
+                                                        </td>
                                                         <td class="font-weight-medium">
                                                             <?php if ($rating['is_approved'] == 1) { ?>
                                                                 <div class="badge badge-success">Đã kiểm duyệt</div>

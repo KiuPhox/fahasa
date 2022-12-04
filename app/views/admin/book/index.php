@@ -77,15 +77,15 @@
                                     <h4 id="form-title" class="card-title">Thêm sách</h4>
                                     <form id="book-form" method="post" action="/Fahasa/dashboard/books/store" class="forms-sample">
                                         <div class="row">
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-4 col-md-6">
                                                 <label for="title">Tựa đề</label>
                                                 <input type="text" class="form-control" id="title" name="title" placeholder="Tựa đề" required>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-4 col-md-6">
                                                 <label for="author">Tác giả</label>
                                                 <input type="text" class="form-control" id="author" name="author" placeholder="Tên tác giả" required>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-4 col-md-6">
                                                 <label for="category">Thể loại</label>
                                                 <select class="form-control" id="category" name="category_id">
                                                     <?php foreach ($categories as $category) { ?>
@@ -93,10 +93,7 @@
                                                     <?php } ?>
                                                 </select>
                                             </div>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-4 col-md-6">
                                                 <label for="supplier">Nhà cung cấp</label>
                                                 <select class="form-control" id="supplier" name="supplier_id">
                                                     <?php foreach ($suppliers as $supplier) { ?>
@@ -104,7 +101,7 @@
                                                     <?php } ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-4 col-md-6">
                                                 <label for="publisher">Nhà xuất bản</label>
                                                 <select class="form-control" id="publisher" name="publisher_id">
                                                     <?php foreach ($publishers as $publisher) { ?>
@@ -112,7 +109,7 @@
                                                     <?php } ?>
                                                 </select>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-4 col-md-6">
                                                 <label for="publication_date">Ngày xuất bản</label>
                                                 <input type="date" class="form-control" id="publication_date" name="publication_date" required>
                                             </div>
@@ -125,23 +122,23 @@
 
 
                                         <div class="row">
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-2 col-md-4">
                                                 <label for="price">Giá</label>
                                                 <input type="number" class="form-control" id="price" name="price" placeholder="12000" required>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-2 col-md-4">
                                                 <label for="discount">Giảm giá</label>
                                                 <input type="number" class="form-control" id="discount" name="discount" placeholder="50" required>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-2 col-md-4">
                                                 <label for="quantity">Tồn kho</label>
                                                 <input type="number" class="form-control" id="quantity" name="quantity" placeholder="200" required>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-2 col-md-6">
                                                 <label for="page_quantity">Số trang</label>
                                                 <input type="number" class="form-control" id="page_quantity" name="page_quantity" placeholder="200" required>
                                             </div>
-                                            <div class="form-group col">
+                                            <div class="form-group col-lg-4 col-md-6">
                                                 <label for="book_code">Mã sách</label>
                                                 <input type="number" class="form-control" id="book_code" name="book_code" placeholder="8935235226272" required>
                                             </div>

@@ -198,8 +198,11 @@
                     </div>
                 </form>
             </div>
+
         </div>
     </div>
+
+    <div style="position: fixed; top: 2rem; right: 2rem" id="liveAlertPlaceholder"></div>
 
     <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
@@ -210,6 +213,33 @@
 
     <!-- Latest compiled JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        let phoneNumberRegex = /^(0?)(3[2-9]|5[6|8|9]|7[0|6-9]|8[0-6|8|9]|9[0-4|6-9])[0-9]{7}$/;
+
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+        const alert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+        }
+
+        $("#btn-save-account").click(function(event) {
+            if ($("#phone_number").val() != "") {
+                if (phoneNumberRegex.test($("#phone_number").val())) {
+
+                } else {
+                    event.preventDefault();
+                    alert('Số điện thoại không đúng', 'danger');
+                }
+            }
+        })
+    </script>
 </body>
 
 </html>

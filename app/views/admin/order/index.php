@@ -60,7 +60,7 @@
                                                         <td><?php echo $order['id'] ?></td>
                                                         <td><?php echo $order['name'] ?></td>
                                                         <td><?php echo $order['phone_number'] ?></td>
-                                                        <td><?php echo $order['address'] ?></td>
+                                                        <td><?php echo wordwrap($order['address'] . ", " . $order['ward'] . "," . $order['district'] . ", " . $order['city'], 50, "<br><br>") ?></td>
                                                         <td class="font-weight-medium">
                                                             <?php if ($order['status'] == 1) { ?>
                                                                 <div class="badge badge-success">Đã kiểm duyệt</div>
@@ -73,14 +73,30 @@
                                                             <?php echo $order['created_at'] ?>
                                                         </td>
                                                         <td>
-                                                            <button onclick="approveRating(<?php echo $rating['id'] ?>)" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-check"></i></button>
-                                                            <button onclick="deleteRating(<?php echo $rating['id'] ?>)" class="btn btn-sm btn-outline-danger"><i class="mdi mdi-window-close"></i></button>
+                                                            <button onclick="confirmOrder(<?php echo $order['id'] ?>)" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-check"></i></button>
+                                                            <button onclick="deleteOrder(<?php echo $order['id'] ?>)" class="btn btn-sm btn-outline-danger"><i class="mdi mdi-window-close"></i></button>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
                                         </table>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-7 col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Chi tiết đơn hàng</h4>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-md-12 grid-margin stretch-card">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Chi tiết đơn hàng</h4>
                                 </div>
                             </div>
                         </div>
@@ -133,6 +149,11 @@
                     window.location.reload();
                 }
             })
+
+
+            function confirmOrder(id) {
+
+            }
         }
     </script>
 </body>
