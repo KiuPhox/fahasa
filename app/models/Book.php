@@ -37,6 +37,14 @@ class Book extends Model
         mysqli_query($conn, $sql);
     }
 
+    public static function updateQuantity($quantity, $id)
+    {
+        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
+        mysqli_set_charset($conn, 'utf8');
+        $sql = "UPDATE books SET quantity = $quantity WHERE id = $id";
+        mysqli_query($conn, $sql);
+    }
+
     public function getSpecialPrice()
     {
         echo $this->discount;

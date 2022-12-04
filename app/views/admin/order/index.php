@@ -56,7 +56,7 @@
                                             </thead>
                                             <tbody>
                                                 <?php foreach ($orders as $order) { ?>
-                                                    <tr style="cursor: pointer;">
+                                                    <tr onclick="ShowOrderDetails(<?php echo $order['id'] ?>)" style="cursor: pointer;">
                                                         <td><?php echo $order['id'] ?></td>
                                                         <td><?php echo $order['name'] ?></td>
                                                         <td><?php echo $order['phone_number'] ?></td>
@@ -90,20 +90,27 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-7 col-md-12 grid-margin stretch-card">
+                        <div class="col-lg-12 col-md-12 grid-margin stretch-card">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Chi tiết đơn hàng</h4>
+                                    <table id="myTable" class="table table-striped table-hover mb-4">
+                                        <thead>
+                                            <tr>
+                                                <th>Sách</th>
+                                                <th>Đơn giá</th>
+                                                <th>Số lượng</th>
+                                                <th>Thành tiền</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="order_details_tbody">
+                                        </tbody>
+                                    </table>
+                                    <h4 id="total" class="card-title">Tổng tiền: </h4>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-5 col-md-12 grid-margin stretch-card">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Chi tiết đơn hàng</h4>
-                                </div>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
 
@@ -136,6 +143,28 @@
         $(document).ready(function() {
             $('#myTable').DataTable();
         })
+
+        function ShowOrderDetails(id) {
+            $.ajax({
+                url: "/Fahasa/dashboard/orders/view/" + id,
+                success: function(response) {
+                    var books = JSON.parse(response);
+                    $("#order_details_tbody").html("");
+                    var total = 0;
+                    for (var i in books) {
+                        console.log(books[i]);
+                        total += books[i]['price'] * books[i]['quantity'] * (1 - books[i]['discount'] / 100);
+                        var row = document.createElement('tr');
+
+                        row.innerHTML = `<td><a href="/Fahasa/product/` + books[i]['id'] + `"><img src="` + books[i]['image'] + `">` + books[i]['title'] + `</td>` +
+                            `<td>` + books[i]['price'] * (1 - books[i]['discount'] / 100) + `</td>` + `<td>` + books[i]['quantity'] + `</td>` + `<td>` + books[i]['price'] * books[i]['quantity'] * (1 - books[i]['discount'] / 100) + `</td>`;
+
+                        $("#order_details_tbody").append(row);
+                    }
+                    $("#total").html("Tổng tiền: " + total);
+                }
+            })
+        }
 
         function deleteOrder(id) {
             $.ajax({

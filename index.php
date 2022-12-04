@@ -78,6 +78,7 @@ $router->add('dashboard/ratings/approve/{id:\d+}', ['controller' => 'RatingContr
 
 // Orders
 $router->add('dashboard/orders', ['controller' => 'Admin', 'action' => 'orders']);
+$router->add('dashboard/orders/view/{id:\d+}', ['controller' => 'Admin', 'action' => 'order_details']);
 $router->add('dashboard/orders/destroy/{id:\d+}', ['controller' => 'OrderController', 'action' => 'destroy']);
 $router->add('dashboard/orders/confirm/{id:\d+}', ['controller' => 'OrderController', 'action' => 'confirm']);
 

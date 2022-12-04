@@ -6,6 +6,7 @@ require_once('./app/models/Category.php');
 require_once('./app/models/User.php');
 require_once('./app/models/Rating.php');
 require_once('./app/models/Order.php');
+require_once('./app/models/Order_Detail.php');
 class Admin
 {
     public function index()
@@ -73,6 +74,27 @@ class Admin
             require("./app/views/admin/order/index.php");
         } else {
             header("Location:/Fahasa/");
+        }
+    }
+
+    public function order_details($id)
+    {
+        if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
+            $order_details = Order_Detail::getByOrderID($id);
+
+            $i = 0;
+
+            foreach ($order_details as $order_detail) {
+                $book = Book::getByID($order_detail['book_id']);
+                $respone[$i]['id'] = $book['id'];
+                $respone[$i]['title'] = $book['title'];
+                $respone[$i]['image'] = $book['image'];
+                $respone[$i]['price'] = $book['price'];
+                $respone[$i]['discount'] = $book['discount'];
+                $respone[$i]['quantity'] = $order_detail['quantity'];
+                $i++;
+            }
+            echo json_encode($respone);
         }
     }
 }

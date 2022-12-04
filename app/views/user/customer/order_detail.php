@@ -181,6 +181,14 @@
                             <div class="order-view-status" style="background:#B6F1B6;color:#2ED62E;border-color:#B6F1B6;">
                                 Đã xác nhận
                             </div>
+                        <?php } else if ($order['status'] == 0) { ?>
+                            <div class="order-view-status" style="background: #FCDAB0;color: #F7941E;border-color: #FCDAB0;">
+                                Chờ xác nhận
+                            </div>
+                        <?php } else if ($order['status'] == 2) { ?>
+                            <div class="order-view-status" style="background: #F3B4AF;color: #A90000;border-color: #F3B4AF;">
+                                Đã huỷ
+                            </div>
                         <?php } ?>
                         <div class="order-view-id"><span>Mã đơn hàng: </span><span><?php echo $order['id'] ?></span></div>
                         <div class="order-view-date"><span>Ngày mua: </span><span><?php echo  date_format(date_create($order['created_at']), "d/m/Y"); ?></span></div>
