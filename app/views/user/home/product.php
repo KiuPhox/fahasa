@@ -19,6 +19,7 @@
     <style>
         .product-essential {
             display: flex;
+            justify-content: center;
         }
 
         .product-essential-media {
@@ -80,7 +81,7 @@
         }
 
         .btn-buy-now {
-            margin-left: 10px;
+            /* margin-left: 10px; */
         }
 
         .product-essential-detail h1 {
@@ -413,8 +414,8 @@
     <?php include(__DIR__ . '/' . '../../layouts/header.php'); ?>
     <form class="product-form bg-white mt-4" action="" method="post">
         <div class="product-view">
-            <div class="product-essential p-4">
-                <div class="product-essential-media">
+            <div class="product-essential p-4 row">
+                <div class="product-essential-media col-lg-6 col-md-6">
                     <div class="product-view-image">
                         <img src="<?php echo $book['image'] ?>" alt="">
                     </div>
@@ -423,7 +424,7 @@
                         <button class="btn-buy-now">Mua ngay</button>
                     </div>
                 </div>
-                <div class="product-essential-detail">
+                <div class="product-essential-detail col-lg-6 col-md-6">
                     <h1><?php echo $book['title'] ?></h1>
                     <div class="product-view-sa">
                         <div class="product-view-sa-supplier">Nhà cung cấp: <b><?php echo $supplier['name'] ?></b></div>
@@ -499,8 +500,8 @@
     <div id="product-view-review" class="container">
         <div class="product-view-content-title mb-3">Đánh giá sản phẩm</div>
         <div class="product-view-tab-content-review">
-            <div class="product-view-tab-content-rating">
-                <div class="global">
+            <div class="product-view-tab-content-rating row">
+                <div class="global col-lg-2 col-md-2">
                     <span class="global-value"><?php echo number_format($rating_value, 1, '.', ''); ?></span>
                     <div class="rating-icons">
                         <span class="one"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
@@ -508,7 +509,7 @@
                     </div>
                     <span class="total-reviews">(<?php echo $total_reviews ?> đánh giá)</span>
                 </div>
-                <div class="chart">
+                <div class="chart col-lg-4 col-md-4">
                     <?php for ($i = 5; $i > 0; $i--) { ?>
                         <div class="rate-box">
                             <span class="value"><?php echo $i ?> sao</span>
@@ -520,9 +521,9 @@
                     <?php } ?>
                 </div>
                 <?php if (isset($_SESSION['id'])) { ?>
-                    <button type="button" id="review-write-btn"><i class="fa-solid fa-pencil"></i> Viết đánh giá</button>
+                    <button class="col-lg-2 col-md-2" type="button" id="review-write-btn"><i class="fa-solid fa-pencil"></i> Viết đánh giá</button>
                 <?php } else { ?>
-                    <span style="margin: auto;">Chỉ có thành viên mới có thể viết nhận xét. Vui lòng đăng nhập hoặc đăng ký.</span>
+                    <span class="col-lg-2 col-md-2" style="margin: auto;">Chỉ có thành viên mới có thể viết nhận xét. Vui lòng đăng nhập hoặc đăng ký.</span>
                 <?php } ?>
             </div>
             <div class="product-view-tab-content-comment">

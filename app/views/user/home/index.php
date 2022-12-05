@@ -35,7 +35,6 @@
             width: 83%;
             margin: auto;
             font-size: 12px;
-            height: 115px;
             margin-top: 10px;
             margin-bottom: 10px;
         }
@@ -86,32 +85,27 @@
             </div>
         </div>
     </div>
-    <div class="home-banner">
-        <div class="banner mr-2">
-            <a href="">
-                <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/bigsale_t11_voucher_310x210.jpg" alt="">
-            </a>
+    <div class="home-banner row">
+        <div class="row">
+            <div class="banner col-lg-3 col-md-6">
+                <img width="100%" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/bigsale_t11_voucher_310x210.jpg" alt="">
+            </div>
+            <div class="banner col-lg-3 col-md-6">
+                <img width="100%" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/ThienLong11_310x210.jpg" alt="">
+            </div>
+            <div class="banner col-lg-3 col-md-6">
+                <img width="100%" src="https://cdn0.fahasa.com/media/wysiwyg/Duy-VHDT/VPP_Main_banner_T10_310x210.jpg" alt="">
+            </div>
+            <div class="banner col-lg-3 col-md-6">
+                <img width="100%" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/Megasale_Banner_giaidoan01_Smallbanner_310x210.jpg" alt="">
+            </div>
         </div>
-        <div class="banner mr-2">
-            <a href="">
-                <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/ThienLong11_310x210.jpg" alt="">
-            </a>
-        </div>
-        <div class="banner mr-2">
-            <a href="">
-                <img src="https://cdn0.fahasa.com/media/wysiwyg/Duy-VHDT/VPP_Main_banner_T10_310x210.jpg" alt="">
-            </a>
-        </div>
-        <div class="banner">
-            <a href="">
-                <img src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/Megasale_Banner_giaidoan01_Smallbanner_310x210.jpg" alt="">
-            </a>
-        </div>
+
     </div>
     </div>
     <!-- Son -->
 
-    <div id="menu" class="container bg-white">
+    <div id="menu" class="container bg-white row">
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
                 <a href="https://www.fahasa.com/ma-giam-gia?fhs_campaign=homepageicon"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_FlashSale_Hot_8px_1.png" class="center"></a>

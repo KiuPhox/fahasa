@@ -845,21 +845,21 @@
         cart_dropdown.style.display = 'none';
     });
 
-    list_menu_icon.addEventListener("mouseover", function() {
-        category.style.display = 'block';
-    });
+    // list_menu_icon.addEventListener("mouseover", function() {
+    //     category.style.display = 'block';
+    // });
 
-    list_menu_icon.addEventListener("mouseleave", function() {
-        category.style.display = 'none';
-    });
+    // list_menu_icon.addEventListener("mouseleave", function() {
+    //     category.style.display = 'none';
+    // });
 
-    category.addEventListener("mouseover", function() {
-        category.style.display = 'block';
-    })
+    // category.addEventListener("mouseover", function() {
+    //     category.style.display = 'block';
+    // })
 
-    category.addEventListener("mouseleave", function() {
-        category.style.display = 'none';
-    })
+    // category.addEventListener("mouseleave", function() {
+    //     category.style.display = 'none';
+    // })
 
     <?php if (isset($_SESSION['id'])) { ?>
         login_icon.addEventListener("mouseover", function() {

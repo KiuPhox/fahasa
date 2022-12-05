@@ -236,7 +236,7 @@ input.search:focus-visible {
 
 
 .slide-image {
-    width: 78%;
+    width: 100%;
 }
 
 
@@ -284,7 +284,6 @@ a.product {
 .home-banner {
     margin: auto;
     width: 80%;
-    height: 210px;
     display: flex;
     justify-content: space-between;
 }

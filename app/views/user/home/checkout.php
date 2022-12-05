@@ -312,31 +312,31 @@
                 <form id="form-account-info">
                     <div class="row align-items-center justify-content-center my-3">
                         <label for="name" class="form-label">Tên</label>
-                        <input name="name" id="name" class="form-control" placeholder="Nhập tên" value="">
+                        <input name="name" id="name" class="form-control" placeholder="Nhập tên" value="" required>
                     </div>
                     <div class="row align-items-center justify-content-center my-3">
                         <label for="phone_number" class="form-label">Số điện thoại</label>
-                        <input name="phone_number" id="phone_number" class="form-control" placeholder="Nhập số điện thoại" value="">
+                        <input name="phone_number" id="phone_number" class="form-control" placeholder="Nhập số điện thoại" value="" required>
                     </div>
                     <div class="row align-items-center justify-content-center my-3">
                         <label for="address" class="form-label">Địa chỉ</label>
-                        <input name="address" id="address" class="form-control" placeholder="Nhập địa chỉ" value="">
+                        <input name="address" id="address" class="form-control" placeholder="Nhập địa chỉ" value="" required>
                     </div>
                     <div class="row align-items-center justify-content-center my-3">
                         <label for="city" class="form-label">Tỉnh/Thành phố</label>
-                        <select id="city" name="city" class="form-select" aria-label="Default select example">
+                        <select id="city" name="city" class="form-select" aria-label="Default select example" required>
                             <option selected>Vui lòng chọn</option>
                         </select>
                     </div>
                     <div class="row align-items-center justify-content-center my-3">
                         <label for="district" class="form-label">Quận/Huyện</label>
-                        <select id="district" name="district" class="form-select" aria-label="Default select example">
+                        <select id="district" name="district" class="form-select" aria-label="Default select example" required>
                             <option selected>Vui lòng chọn</option>
                         </select>
                     </div>
                     <div class="row align-items-center justify-content-center my-3">
                         <label for="ward" class="form-label">Xã/Phường</label>
-                        <select id="ward" name="ward" class="form-select" aria-label="Default select example">
+                        <select id="ward" name="ward" class="form-select" aria-label="Default select example" required>
                             <option selected>Vui lòng chọn</option>
                         </select>
                     </div>
@@ -405,7 +405,7 @@
             </div>
         </div>
     </div>
-
+    <div style="position: fixed; top: 2rem; right: 2rem" id="liveAlertPlaceholder"></div>
     <?php include(dirname(__FILE__) . '/' . '../../layouts/footer.php'); ?>
     <!-- jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
@@ -416,6 +416,19 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script>
+        const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+        const alert = (message, type) => {
+            const wrapper = document.createElement('div')
+            wrapper.innerHTML = [
+                `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+                `   <div>${message}</div>`,
+                '</div>'
+            ].join('')
+
+            alertPlaceholder.append(wrapper)
+        }
+
         <?php if (isset($_SESSION['id'])) { ?>
             const address_input = document.querySelectorAll(".checkout-address-list input")
             $('#btn-order-confirm').click(function() {
@@ -440,21 +453,31 @@
         <?php } else { ?>
 
             $('#btn-order-confirm').click(function() {
-                $.ajax({
-                    url: "/Fahasa/checkout/confirm",
-                    type: 'post',
-                    data: {
-                        name: $('#name').val(),
-                        phone_number: $('#phone_number').val(),
-                        address: $('#address').val(),
-                        city: $('#city').val(),
-                        district: $('#district').val(),
-                        ward: $('#ward').val(),
-                        total: <?php echo $total ?>,
-                    }
-                }).done(function(respone) {
-                    window.location.href = "/Fahasa";
-                });
+                if ($('#name').val() != "" &&
+                    $('#phone_number').val() != "" &&
+                    $('#address').val() != "" &&
+                    $('#city').val() != "Vui lòng chọn" &&
+                    $('#district').val() != "Vui lòng chọn" &&
+                    $('#ward').val() != "Vui lòng chọn") {
+                    $.ajax({
+                        url: "/Fahasa/checkout/confirm",
+                        type: 'post',
+                        data: {
+                            name: $('#name').val(),
+                            phone_number: $('#phone_number').val(),
+                            address: $('#address').val(),
+                            city: $('#city').val(),
+                            district: $('#district').val(),
+                            ward: $('#ward').val(),
+                            total: <?php echo $total ?>,
+                        }
+                    }).done(function(respone) {
+                        window.location.href = "/Fahasa";
+                    });
+                } else {
+                    alert("Vui lòng nhập đầy đủ thông tin", "danger");
+                }
+
             })
 
             var cities = document.getElementById("city");

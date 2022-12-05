@@ -161,8 +161,8 @@
 
     ?>
     <div class="container" style="background: none;">
-        <div class="container-inner">
-            <div class="col-left col-lg-3 col-md-3 col-sm-12 col-xs-12 container">
+        <div class="container-inner row">
+            <div class="col-left col-lg-3 mb-3 container">
                 <div class="col-left-inner">
                     <div class="col-left-content">
                         <div class="col-left-block">
@@ -180,7 +180,7 @@
                 </div>
 
             </div>
-            <div class="col-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
+            <div class="col-main col-lg-8">
                 <div class="col-main-content">
                     <div class="page-title">
                         <?php if (isset($_GET["q"]) && !empty($_GET["q"])) { ?>

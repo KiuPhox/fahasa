@@ -343,7 +343,7 @@
                     <a href="/Fahasa/category"><button class="shopping-btn" type="button">Mua sắm ngay</button></a>
                 </div>
             <?php } else { ?>
-                <div class="col-sm-8 col-xs-12">
+                <div class="col-lg-8">
                     <div class="header-cart-item">
                         <div style="flex-basis: 8%;">
                             <input onclick="checkAll();" id="checkbox-all-books" class="checkbox-add-cart" type="checkbox" <?php if ($allChecked) echo "checked" ?>>
@@ -409,7 +409,7 @@
                         <?php } ?>
                     </div>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-lg-4">
                     <div class="block-total-cart">
                         <div class="block-totals-cart-page">
                             <div class="total-cart-page ">

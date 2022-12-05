@@ -116,8 +116,8 @@
 
 <body>
     <?php include(dirname(__FILE__) . '/' . '../../layouts/header.php'); ?>
-    <div class="account-container">
-        <div class="col-left col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 0;">
+    <div class="account-container row">
+        <div class="col-left col-lg-3" style="padding: 0;">
             <div class="block-account">
                 <div class="block-title">
                     Tài khoản
@@ -134,7 +134,7 @@
             </div>
         </div>
 
-        <div class="col-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
+        <div class="col-main col-lg-9">
             <div class="my-account mb-4">
                 <div class="page-title">
                     <h1>Sửa địa chỉ</h1>

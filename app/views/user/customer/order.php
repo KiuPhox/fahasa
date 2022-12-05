@@ -131,7 +131,7 @@
 
 <body>
     <?php include(dirname(__FILE__) . '/' . '../../layouts/header.php'); ?>
-    <div class="account-container">
+    <div class="account-container row">
         <div class="col-left col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 0;">
             <div class="block-account">
                 <div class="block-title">
@@ -158,7 +158,7 @@
                     <div class="box-head">
                         <a href="/Fahasa/customer/order">Xem tất cả</a>
                     </div>
-                    <table class="data-table table-striped account-order-history" id="my-orders-table">
+                    <table style="" class="data-table table-striped account-order-history" id="my-orders-table">
                         <colgroup>
                             <col width="1">
                             <col width="1">

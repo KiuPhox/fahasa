@@ -168,13 +168,10 @@
                         <label for="password">Mật khẩu</label>
                         <div class="input-group">
                             <input class="form-control" type="password" id="password-1" name="password" placeholder="Nhập mật khẩu">
-                            <span class="showpass">Hiện</span>
                         </div>
 
-                        <div class="forgot-pass mt-3"><span>Quên mật khẩu ?</span></div>
                         <div class="group-button">
                             <div class="login-button-group"><button type="button" id="login-button" class="login-button">Đăng Nhập</button></div>
-                            <div class="login-button-group"><button type="button" class="loginfb-button" style="white-space: nowrap;"><i class="fab fa-facebook"></i> Đăng nhập bằng Facebook</button></div>
                         </div>
                     </form>
                 </div>

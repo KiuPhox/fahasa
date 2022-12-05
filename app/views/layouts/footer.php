@@ -57,8 +57,8 @@
 </style>
 
 <div class="container px-4 pt-5" style="border-radius: 10px; margin-top: 25px;">
-    <div class="footer-content">
-        <div class="left-footer">
+    <div class="footer-content row">
+        <div class="left-footer col-lg-4">
             <div class="footer-logo mb-3">
                 <a href="">
                     <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo/fahasa_logo.png">
@@ -101,9 +101,9 @@
                 </a>
             </div>
         </div>
-        <div class="right-footer col-md-8" style="display: flex; flex-direction: column">
+        <div class="right-footer col-lg-8" style="display: flex; flex-direction: column">
             <div class="row">
-                <div class="footer-right-col col-sm-6 col-md-4 col-sms-6 col-smb-12">
+                <div class="footer-right-col col-sm-12 col-md-4 col-smb-12">
                     <h3>Dịch vụ</h3>
                     <a href="">
                         <p>Điều khoản sử dụng</p>
@@ -121,7 +121,7 @@
                         <p>Hệ thống trung tâm - nhà sách</p>
                     </a>
                 </div>
-                <div class="footer-right-col col-sm-6 col-md-4 col-sms-6 col-smb-12">
+                <div class="footer-right-col col-sm-12 col-md-4 col-smb-12">
                     <h3>Hỗ trợ</h3>
                     <a href="">
                         <p>Chính sách đổi - trả - hoàn tiền</p>
@@ -139,7 +139,7 @@
                         <p>Phương thức thanh toán và xuất HĐ</p>
                     </a>
                 </div>
-                <div class="footer-right-col col-sm-6 col-md-4 col-sms-6 col-smb-12">
+                <div class="footer-right-col col-sm-12 col-md-4 col-smb-12">
                     <h3>Tài khoản của tôi</h3>
                     <a href="">
                         <p>Đăng nhập/Tạo mới tài khoản</p>
