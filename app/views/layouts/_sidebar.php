@@ -7,12 +7,6 @@
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/Fahasa/dashboard/home">
-        <i class="menu-icon mdi mdi-home"></i>
-        <span class="menu-title">Trang chủ</span>
-      </a>
-    </li>
-    <li class="nav-item">
       <a class="nav-link" href="/Fahasa/dashboard/books">
         <i class="menu-icon mdi mdi-book-open-page-variant"></i>
         <span class="menu-title">Sách</span>

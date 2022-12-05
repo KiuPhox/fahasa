@@ -170,7 +170,8 @@
                             <?php $pages = ceil(count($books) / 8);
                             foreach ($categories as $category) { ?>
                                 <a onclick="appendCategory('<?php echo $category['name'] ?>')">
-                                    <li style="cursor: pointer;"><?php echo $category['name']; ?></li>
+                                    <li style="cursor: pointer;"><?php if (isset($_GET['c']) && $_GET['c'] == $category['name']) echo "<b>" . $category['name'] . "</b>";
+                                                                    else echo $category['name'] ?></li>
                                 </a>
                             <?php }
                             ?>

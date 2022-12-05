@@ -131,11 +131,11 @@ class User extends Model
         return mysqli_query($conn, $sql)->num_rows == 1;
     }
 
-    public static function updateInformation($id, $name, $phone_number, $email, $gender, $birthday)
+    public static function updateInformation($id, $name, $phone_number, $gender, $birthday)
     {
         $conn = mysqli_connect("localhost", "root", "", "Fahasa");
         mysqli_set_charset($conn, 'utf8');
-        $sql = "UPDATE users SET name = '$name', email = '$email', gender = '$gender', 
+        $sql = "UPDATE users SET name = '$name', gender = '$gender', 
         birthday = '$birthday', phone_number = '$phone_number' WHERE id = $id";
         mysqli_query($conn, $sql);
     }

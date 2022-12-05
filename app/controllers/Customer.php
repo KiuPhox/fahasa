@@ -36,7 +36,6 @@ class Customer
                 $_SESSION['id'],
                 $_POST['name'],
                 $_POST['phone_number'],
-                $_POST['email'],
                 $_POST['gender'],
                 $_POST['birthday']
             );

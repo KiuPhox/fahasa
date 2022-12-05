@@ -72,7 +72,18 @@ class Home
     {
         $books_sql = Book::getAll();
         $books = array();
+        $kt_books = array();
+        $vh_books = array();
+        $mg_books = array();
+
         while ($book = $books_sql->fetch_assoc()) {
+            if ($book['category_id'] == 3) {
+                $kt_books[] = $book;
+            } else if ($book['category_id'] == 1) {
+                $vh_books[] = $book;
+            } else if ($book['category_id'] == 4) {
+                $mg_books[] = $book;
+            }
             $books[] = $book;
         }
         $categories = Category::getAll();

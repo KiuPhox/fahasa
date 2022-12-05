@@ -138,19 +138,21 @@
                     <h1>Thông tin tài khoản</h1>
                 </div>
                 <form id="form-account-info" method="post" action="/Fahasa/customer/account/editPost">
-
                     <div class="row align-items-center my-3">
                         <label for="name" class="form-label">Tên</label>
                         <input name="name" id="name" class="form-control" placeholder="Nhập tên" value="<?php echo $user['name'] ?>">
                     </div>
+
                     <div class="row align-items-center my-3">
                         <label for="phone_number" class="form-label">Số điện thoại</label>
                         <input name="phone_number" id="phone_number" class="form-control" placeholder="Nhập số điện thoại" value="<?php echo $user['phone_number'] ?>">
                     </div>
-                    <div class="row align-items-center my-3">
-                        <label for="email" class="form-label">Email</label>
-                        <input name="email" id="email" class="form-control" placeholder="Nhập email" value="<?php echo $user['email'] ?>">
-                    </div>
+                    <fieldset disabled>
+                        <div class="row align-items-center my-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input name="email" id="email" class="form-control" placeholder="Nhập email" value="<?php echo $user['email'] ?>">
+                        </div>
+                    </fieldset>
                     <div class="row align-items-center my-3">
                         <label for="email" class="form-label">Giới tính</label>
                         <div class="form-check">

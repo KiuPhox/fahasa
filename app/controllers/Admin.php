@@ -14,8 +14,10 @@ class Admin
         if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
             $users = User::getAll();
             $orders = Order::getAll();
+            $total_orders = 0;
             $new_orders = 0;
             $new_users = 0;
+            $ratings = Rating::getAll();
 
             foreach ($users as $user) {
                 if (date('Ymd') == date('Ymd', strtotime($user['created_at'])))
@@ -23,6 +25,7 @@ class Admin
             }
 
             foreach ($orders as $order) {
+                $total_orders += $order['total'];
                 if (date('Ymd') == date('Ymd', strtotime($order['created_at'])))
                     $new_orders++;
             }
