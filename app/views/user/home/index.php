@@ -298,7 +298,7 @@
             </a>
 
         </div>
-        <?php $carousel_items = ceil(count($mg_books) / 5); ?>
+        <?php $carousel_items = ceil(count($vh_books) / 5); ?>
         <div id="vanhoa" class="carousel slide my-4" data-ride="carousel" style="padding:2rem; border-radius: 8px; width: 83%; margin: auto; background-color: white">
             <div class="carousel-inner">
                 <div class="container-title">Văn học</div>
@@ -378,10 +378,10 @@
                     </div>
                 <?php } ?>
             </div>
-            <a class="carousel-control-prev" href="#manga" data-slide="prev">
+            <a class="carousel-control-prev" href="#vanhoa" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#manga" data-slide="next">
+            <a class="carousel-control-next" href="#vanhoa" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
 
@@ -467,10 +467,10 @@
                     </div>
                 <?php } ?>
             </div>
-            <a class="carousel-control-prev" href="#vanhoa" data-slide="prev">
+            <a class="carousel-control-prev" href="#manga" data-slide="prev">
                 <span class="carousel-control-prev-icon"></span>
             </a>
-            <a class="carousel-control-next" href="#vanhoa" data-slide="next">
+            <a class="carousel-control-next" href="#manga" data-slide="next">
                 <span class="carousel-control-next-icon"></span>
             </a>
 
