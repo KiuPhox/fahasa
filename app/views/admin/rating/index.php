@@ -84,7 +84,9 @@
                                                             <?php echo $rating['created_at'] ?>
                                                         </td>
                                                         <td>
-                                                            <button onclick="approveRating(<?php echo $rating['id'] ?>)" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-check"></i></button>
+                                                            <?php if ($rating['is_approved'] == 0) { ?>
+                                                                <button onclick="approveRating(<?php echo $rating['id'] ?>)" class="btn btn-sm btn-outline-primary"><i class="mdi mdi-check"></i></button>
+                                                            <?php } ?>
                                                             <button onclick="deleteRating(<?php echo $rating['id'] ?>)" class="btn btn-sm btn-outline-danger"><i class="mdi mdi-window-close"></i></button>
                                                         </td>
                                                     </tr>

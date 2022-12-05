@@ -40,6 +40,18 @@
             padding: 0;
         }
 
+        @media only screen and (max-width: 800px) {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .products-grid>li {
             position: relative;
             font-size: 0.8em;

@@ -204,7 +204,7 @@
                         <div class="order-view-id"><span>Tel: </span><span><?php echo $order['phone_number'] ?></span></div>
                     </div>
                 </div>
-                <div class="box-account box-recent">
+                <div style="overflow-x:scroll;" class="box-account box-recent">
                     <table class="data-table table-striped account-order-history" id="my-orders-table">
                         <colgroup>
                             <col width="1">

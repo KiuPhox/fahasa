@@ -154,11 +154,11 @@
                 <div class="page-title">
                     <h1>Đơn hàng của tôi</h1>
                 </div>
-                <div class="box-account box-recent">
+                <div style="overflow-x:scroll;" class="box-account box-recent">
                     <div class="box-head">
                         <a href="/Fahasa/customer/order">Xem tất cả</a>
                     </div>
-                    <table style="" class="data-table table-striped account-order-history" id="my-orders-table">
+                    <table class="data-table table-striped account-order-history" id="my-orders-table">
                         <colgroup>
                             <col width="1">
                             <col width="1">

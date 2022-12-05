@@ -286,6 +286,8 @@
             height: initial;
             width: initial;
         }
+
+        @media only screen and (max-width: 800px) {}
     </style>
 </head>
 
@@ -299,7 +301,7 @@
                 <ul class="checkout-address-list">
                     <?php foreach ($addresses as $address) { ?>
                         <li class="checkout-address-item">
-                            <div style="flex-basis: 70%">
+                            <div style="flex-basis: 100%">
                                 <label class="radio" style="margin-top: 2px;"> <?php echo $address['name'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['address'] . ", " . $address['ward'] . ", " . $address['district'] . ", " . $address['city'] ?>&nbsp;&nbsp;|&nbsp;&nbsp;<?php echo $address['phone_number'] ?>
                                     <input type="radio" id="<?php echo $address['id'] ?>" name="checkout-block-address-list-item-option" <?php if ($address['is_default']) echo "checked" ?>>
                                     <span class="radiomark"></span>
@@ -353,18 +355,18 @@
                     if ($book['checked'] == "true") { ?>
                         <div class="checkout-books-item">
                             <div class="checkout-books-item-img"><img style="max-width: 100%" src="<?php echo $book['image'] ?>"></div>
-                            <div class="checkout-books-item-detail">
-                                <div class="checkout-books-item-name">
+                            <div class="checkout-books-item-detail row">
+                                <div class="checkout-books-item-name col-lg-3 col-sm-6">
                                     <div><?php echo $book['title'] ?></div>
                                 </div>
-                                <div class="checkout-books-item-price">
+                                <div class="checkout-books-item-price col-lg-3 col-sm-6">
                                     <div><?php echo number_format($book['price'] * (1 - $book['discount'] / 100), 0, '.', '.') ?> đ</div>
                                     <div class="checkout-books-item-old-price"><?php echo number_format($book['price'], 0, '.', '.'); ?> đ</div>
                                 </div>
-                                <div class="checkout-books-item-qty"><?php echo $book['quantity'] ?></div>
-                                <div class="checkout-books-item-total"><?php $subtotal =  $book['price'] * (1 - $book['discount'] / 100) * $book['quantity'];
-                                                                        echo number_format($subtotal, 0, '.', '.');
-                                                                        $total += $subtotal ?> đ</div>
+                                <div class="checkout-books-item-qty col-lg-3"><?php echo $book['quantity'] ?></div>
+                                <div class="checkout-books-item-total col-lg-3"><?php $subtotal =  $book['price'] * (1 - $book['discount'] / 100) * $book['quantity'];
+                                                                                echo number_format($subtotal, 0, '.', '.');
+                                                                                $total += $subtotal ?> đ</div>
                             </div>
                         </div>
                 <?php }

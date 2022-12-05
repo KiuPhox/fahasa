@@ -142,7 +142,7 @@
             <div class="my-account mb-4">
                 <div class="page-title">
                     <h1>Nhận xét của tôi</h1>
-                    <div class="box-account box-recent">
+                    <div style="overflow-x:scroll;" class="box-account box-recent">
                         <table class="data-table table-striped account-order-history" id="my-orders-table">
                             <colgroup>
                                 <col width="1">

@@ -154,7 +154,7 @@
                 <div class="page-title">
                     <h1>Bảng điều khiển của khách hàng</h1>
                 </div>
-                <div class="box-account box-recent">
+                <div style="overflow-x:scroll;" class="box-account box-recent">
                     <div class="box-head">
                         <h2>Những đơn hàng gần đây</h2>
                         <a href="/Fahasa/customer/order">Xem tất cả</a>
@@ -207,7 +207,7 @@
                         </tbody>
                     </table>
                 </div>
-                <div class="box-account box-recent">
+                <div style="overflow-x:scroll;" class="box-account box-recent">
                     <div class="box-head">
                         <h2>Nhận xét gần đây</h2>
                         <a href="/Fahasa/customer/rating">Xem tất cả</a>

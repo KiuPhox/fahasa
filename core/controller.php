@@ -4,13 +4,11 @@ abstract class Controller
 {
 
     /**
-     * Parameters from the matched route
      * @var array
      */
     protected $route_params = [];
 
     /**
-     * Class constructor
      *
      * @param array $route_params  Parameters from the route
      *
@@ -22,13 +20,9 @@ abstract class Controller
     }
 
     /**
-     * Magic method called when a non-existent or inaccessible method is
-     * called on an object of this class. Used to execute before and after
-     * filter methods on action methods. Action methods need to be named
-     * with an "Action" suffix, e.g. indexAction, showAction etc.
      *
-     * @param string $name  Method name
-     * @param array $args Arguments passed to the method
+     * @param string 
+     * @param array
      *
      * @return void
      */
@@ -49,8 +43,6 @@ abstract class Controller
 
 
     /**
-     * Before filter - called before an action method.
-     *
      * @return void
      */
     protected function before()
@@ -58,8 +50,6 @@ abstract class Controller
     }
 
     /**
-     * After filter - called after an action method.
-     *
      * @return void
      */
     protected function after()

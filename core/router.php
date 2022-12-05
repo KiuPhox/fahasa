@@ -4,45 +4,35 @@ class Router
 {
 
     /**
-     * Associative array of routes (the routing table)
      * @var array
      */
     protected $routes = [];
 
     /**
-     * Parameters from the matched route
      * @var array
      */
     protected $params = [];
 
     /**
-     * Add a route to the routing table
-     *
-     * @param string $route  The route URL
-     * @param array  $params Parameters (controller, action, etc.)
+     * @param string
+     * @param array 
      *
      * @return void
      */
     public function add($route, $params = [])
     {
-        // Convert the route to a regular expression: escape forward slashes
         $route = preg_replace('/\//', '\\/', $route);
 
-        // Convert variables e.g. {controller}
         $route = preg_replace('/\{([a-z]+)\}/', '(?P<\1>[a-z-]+)', $route);
 
-        // Convert variables with custom regular expressions e.g. {id:\d+}
         $route = preg_replace('/\{([a-z]+):([^\}]+)\}/', '(?P<\1>\2)', $route);
 
-        // Add start and end delimiters, and case insensitive flag
         $route = '/^' . $route . '$/i';
 
         $this->routes[$route] = $params;
     }
 
     /**
-     * Get all the routes from the routing table
-     *
      * @return array
      */
     public function getRoutes()
@@ -51,9 +41,6 @@ class Router
     }
 
     /**
-     * Match the route to the routes in the routing table, setting the $params
-     * property if a route is found.
-     *
      * @param string $url The route URL
      *
      * @return boolean  true if a match found, false otherwise
@@ -77,8 +64,7 @@ class Router
     }
 
     /**
-     * Get the currently matched parameters
-     *
+
      * @return array
      */
     public function getParams()
@@ -87,9 +73,6 @@ class Router
     }
 
     /**
-     * Dispatch the route, creating the controller object and running the
-     * action method
-     *
      * @param string $url The route URL
      *
      * @return void
@@ -101,8 +84,6 @@ class Router
         if ($this->match($url)) {
 
             $controller = $this->params['controller'];
-            // $controller = $this->convertToStudlyCaps($controller);
-            // $controller = $this->getNamespace() . $controller;
 
             if (file_exists("./app/controllers/" . $controller . ".php")) {
                 require_once("./app/controllers/" . $controller . ".php");
@@ -132,9 +113,6 @@ class Router
     }
 
     /**
-     * Convert the string with hyphens to StudlyCaps,
-     * e.g. post-authors => PostAuthors
-     *
      * @param string $string The string to convert
      *
      * @return string
@@ -145,10 +123,7 @@ class Router
     }
 
     /**
-     * Convert the string with hyphens to camelCase,
-     * e.g. add-new => addNew
-     *
-     * @param string $string The string to convert
+     * @param string
      *
      * @return string
      */
@@ -158,27 +133,9 @@ class Router
     }
 
     /**
-     * Remove the query string variables from the URL (if any). As the full
-     * query string is used for the route, any variables at the end will need
-     * to be removed before the route is matched to the routing table. For
-     * example:
+     * @param string
      *
-     *   URL                           $_SERVER['QUERY_STRING']  Route
-     *   -------------------------------------------------------------------
-     *   localhost                     ''                        ''
-     *   localhost/?                   ''                        ''
-     *   localhost/?page=1             page=1                    ''
-     *   localhost/posts?page=1        posts&page=1              posts
-     *   localhost/posts/index         posts/index               posts/index
-     *   localhost/posts/index?page=1  posts/index&page=1        posts/index
-     *
-     * A URL of the format localhost/?page (one variable name, no value) won't
-     * work however. (NB. The .htaccess file converts the first ? to a & when
-     * it's passed through to the $_SERVER variable).
-     *
-     * @param string $url The full URL
-     *
-     * @return string The URL with the query string variables removed
+     * @return string
      */
     protected function removeQueryStringVariables($url)
     {
@@ -196,10 +153,7 @@ class Router
     }
 
     /**
-     * Get the namespace for the controller class. The namespace defined in the
-     * route parameters is added if present.
-     *
-     * @return string The request URL
+     * @return string
      */
     protected function getNamespace()
     {

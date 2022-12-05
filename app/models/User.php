@@ -105,11 +105,14 @@ class User extends Model
 
         $result = mysqli_fetch_array(mysqli_query($conn, $sql));
 
-        if (password_verify($password, $result['password'])) {
-            return true;
-        } else {
-            return false;
+        if ($result != null) {
+            if (password_verify($password, $result['password'])) {
+                return true;
+            } else {
+                return false;
+            }
         }
+        return false;
     }
 
     public static function checkEmailExists($email)
