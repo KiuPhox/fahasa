@@ -156,13 +156,13 @@
         </div>
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
-                <a href="/Fahasa/category?c=Manga"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_MangaCommic_8px_1.png" class="center"></a>
+                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/category?c=Manga"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/Icon_MangaCommic_8px_1.png" class="center"></a>
             </div>
             <div class="cms-icon-menu-item-name">Manga - Comic</div>
         </div>
         <div class="col-sms-3 col-sm-3 col-md-3">
             <div class="menu-info">
-                <a href="/Fahasa/category?c=Kinh Tế"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_kinhte.png" class="center"></a>
+                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/category?c=Kinh Tế"><img src="https://cdn0.fahasa.com/media/wysiwyg/icon-menu/ico_kinhte.png" class="center"></a>
             </div>
             <div class="cms-icon-menu-item-name">Kinh Tế</div>
         </div>
@@ -212,7 +212,7 @@
                     <div class="truyen" style="display: flex;justify-content: center;">
                         <?php for ($i = 0; $i < 5; $i++) { ?>
                             <div class="book-item">
-                                <a href="/Fahasa/product/<?php echo $kt_books[$i]['id'] ?>">
+                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $kt_books[$i]['id'] ?>">
                                     <img src="<?php echo $kt_books[$i]['image'] ?>" width="100%" alt=""></a>
                                 <div style="display: flex;width: 80%;flex-direction: column;margin-top: 10px;">
                                     <p><?php echo $kt_books[$i]['title'] ?></p>
@@ -251,7 +251,7 @@
                         <div class="truyen" style="display: flex; justify-content: center; ">
                             <?php for ($j = 0; $j < 5 && $i * 5 + $j < count($kt_books); $j++) { ?>
                                 <div class="book-item">
-                                    <a href="/Fahasa/product/<?php echo $kt_books[$i * 5 + $j]['id'] ?>">
+                                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $kt_books[$i * 5 + $j]['id'] ?>">
                                         <img src="<?php echo $kt_books[$i * 5 + $j]['image'] ?>" width="100%" alt="">
                                     </a>
                                     <div style="display: flex; width: 80%;flex-direction: column;margin-top: 10px;">
@@ -300,7 +300,7 @@
                     <div class="truyen" style="display: flex;justify-content: center;">
                         <?php for ($i = 0; $i < 5; $i++) { ?>
                             <div class="book-item">
-                                <a href="/Fahasa/product/<?php echo $vh_books[$i]['id'] ?>">
+                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $vh_books[$i]['id'] ?>">
                                     <img src="<?php echo $vh_books[$i]['image'] ?>" width="100%" alt=""></a>
                                 <div style="display: flex;width: 80%;flex-direction: column;margin-top: 10px;">
                                     <p><?php echo $vh_books[$i]['title'] ?></p>
@@ -339,7 +339,7 @@
                         <div class="truyen" style="display: flex; justify-content: center; ">
                             <?php for ($j = 0; $j < 5 && $i * 5 + $j < count($vh_books); $j++) { ?>
                                 <div class="book-item">
-                                    <a href="/Fahasa/product/<?php echo $vh_books[$i * 5 + $j]['id'] ?>">
+                                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $vh_books[$i * 5 + $j]['id'] ?>">
                                         <img src="<?php echo $vh_books[$i * 5 + $j]['image'] ?>" width="100%" alt="">
                                     </a>
                                     <div style="display: flex; width: 80%;flex-direction: column;margin-top: 10px;">
@@ -389,7 +389,7 @@
                     <div class="truyen" style="display: flex;justify-content: center;">
                         <?php for ($i = 0; $i < 5 && $i < count($mg_books); $i++) { ?>
                             <div class="book-item">
-                                <a href="/Fahasa/product/<?php echo $mg_books[$i]['id'] ?>">
+                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $mg_books[$i]['id'] ?>">
                                     <img src="<?php echo $mg_books[$i]['image'] ?>" width="100%" alt=""></a>
                                 <div style="display: flex;width: 80%;flex-direction: column;margin-top: 10px;">
                                     <p><?php echo $mg_books[$i]['title'] ?></p>
@@ -428,7 +428,7 @@
                         <div class="truyen" style="display: flex; justify-content: center; ">
                             <?php for ($j = 0; $j < 5 && $i * 5 + $j < count($mg_books); $j++) { ?>
                                 <div class="book-item">
-                                    <a href="/Fahasa/product/<?php echo $mg_books[$i * 5 + $j]['id'] ?>">
+                                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $mg_books[$i * 5 + $j]['id'] ?>">
                                         <img src="<?php echo $mg_books[$i * 5 + $j]['image'] ?>" width="100%" alt="">
                                     </a>
                                     <div style="display: flex; width: 80%;flex-direction: column;margin-top: 10px;">

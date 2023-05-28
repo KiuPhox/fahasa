@@ -340,7 +340,7 @@
             align-items: center;">
                     <img src="https://cdn0.fahasa.com/skin//frontend/ma_vanese/fahasa/images/checkout_cart/ico_emptycart.svg">
                     <p style="font-size: 14px; margin: 20px 0;">Chưa có sản phẩm trong giỏ hàng của bạn.</p>
-                    <a href="/Fahasa/category"><button class="shopping-btn" type="button">Mua sắm ngay</button></a>
+                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/category"><button class="shopping-btn" type="button">Mua sắm ngay</button></a>
                 </div>
             <?php } else { ?>
                 <div class="col-lg-8">
@@ -364,14 +364,14 @@
                             <div class="item-book-cart">
                                 <div class="checked-book-cart"><input onclick="toggleCheckBook(<?php echo $id ?>)" type="checkbox" name="checkbox_product_379652" class="checkbox-add-cart" <?php if ($book['checked'] == "true") echo "checked" ?>></div>
                                 <div class="img-book-cart">
-                                    <a class="book-image" href="/Fahasa/product/<?php echo $id ?>">
+                                    <a class="book-image" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $id ?>">
                                         <img src="<?php echo $book['image'] ?>" width="120" height="120">
                                     </a>
                                 </div>
                                 <div class="group-book-info">
                                     <div class="info-book-cart">
                                         <div>
-                                            <h2 class="book-name-full-text"><a href="/Fahasa/product/<?php echo $id ?>"><?php echo $book['title'] ?></a></h2>
+                                            <h2 class="book-name-full-text"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $id ?>"><?php echo $book['title'] ?></a></h2>
                                         </div>
                                         <div class="price-original">
                                             <div class="cart-price">
@@ -428,7 +428,7 @@
                         </div>
                         <div class="checkout-type-button-cart" style="text-align: center;">
                             <div class="method-button-cart">
-                                <a href="/Fahasa/onestepcheckout">
+                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/onestepcheckout">
                                     <button type="button" title="Thanh toán" class="button btn-proceed-checkout btn-checkout" <?php if ($paymentCheck == false) echo "disabled" ?>>Thanh toán
                                     </button>
                                 </a>
@@ -453,7 +453,7 @@
     <script>
         function toggleCheckBook(id) {
             $.ajax({
-                url: "/Fahasa/cart/check",
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/cart/check",
                 type: 'post',
                 data: {
                     id: id,
@@ -465,7 +465,7 @@
 
         function addQuantity(id) {
             $.ajax({
-                url: "/Fahasa/cart/add",
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/cart/add",
                 type: 'post',
                 data: {
                     id: id,
@@ -477,7 +477,7 @@
 
         function subtractQuantity(id) {
             $.ajax({
-                url: "/Fahasa/cart/subtract",
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/cart/subtract",
                 type: 'post',
                 data: {
                     id: id,
@@ -489,7 +489,7 @@
 
         function checkAll() {
             $.ajax({
-                url: "/Fahasa/cart/checkall",
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/cart/checkall",
                 type: 'post',
                 data: {
                     check: document.getElementById("checkbox-all-books").checked,
@@ -501,7 +501,7 @@
 
         function deleteItem(id) {
             $.ajax({
-                url: "/Fahasa/cart/delete",
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/cart/delete",
                 type: 'post',
                 data: {
                     id: id,

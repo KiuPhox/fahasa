@@ -287,14 +287,14 @@
             event.preventDefault();
             $.ajax({
                 type: "post",
-                url: "/Fahasa/login/login_process",
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/login/login_process",
                 data: {
                     "email": $("#email-1").val(),
                     "password": $("#password-1").val(),
                 },
                 success: function(response) {
                     if (response == "Đăng nhập thành công") {
-                        window.location.href = "/Fahasa"
+                        window.location.href = "<?php echo dirname($_SERVER['PHP_SELF']); ?>"
                     }
                     alert(response, "danger");
                 }
@@ -306,7 +306,7 @@
             alert("Vui lòng xác nhận email để đăng nhập", "warning");
             $.ajax({
                 type: "post",
-                url: "/Fahasa/login/register_process",
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/login/register_process",
                 data: {
                     "email": $("#email-2").val(),
                     "password": $("#password-2").val(),

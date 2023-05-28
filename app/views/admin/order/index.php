@@ -146,7 +146,7 @@
 
         function ShowOrderDetails(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/orders/view/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/orders/view/" + id,
                 success: function(response) {
                     var books = JSON.parse(response);
                     $("#order_details_tbody").html("");
@@ -156,7 +156,7 @@
                         total += books[i]['price'] * books[i]['quantity'] * (1 - books[i]['discount'] / 100);
                         var row = document.createElement('tr');
 
-                        row.innerHTML = `<td><a href="/Fahasa/product/` + books[i]['id'] + `"><img src="` + books[i]['image'] + `">` + books[i]['title'] + `</td>` +
+                        row.innerHTML = `<td><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/` + books[i]['id'] + `"><img src="` + books[i]['image'] + `">` + books[i]['title'] + `</td>` +
                             `<td>` + books[i]['price'] * (1 - books[i]['discount'] / 100) + `</td>` + `<td>` + books[i]['quantity'] + `</td>` + `<td>` + books[i]['price'] * books[i]['quantity'] * (1 - books[i]['discount'] / 100) + `</td>`;
 
                         $("#order_details_tbody").append(row);
@@ -168,7 +168,7 @@
 
         function deleteOrder(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/orders/destroy/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/orders/destroy/" + id,
                 success: function(response) {
                     window.location.reload();
                 }
@@ -177,7 +177,7 @@
 
         function confirmOrder(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/orders/confirm/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/orders/confirm/" + id,
                 success: function(response) {
                     window.location.reload();
                 }

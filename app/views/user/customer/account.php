@@ -139,11 +139,11 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li class="current"><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
-                        <li><a href="/Fahasa/customer/rating">Nhận xét của tôi</a></li>
+                        <li class="current"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address">Sổ địa chỉ</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Đơn hàng của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -157,7 +157,7 @@
                 <div style="overflow-x:scroll;" class="box-account box-recent">
                     <div class="box-head">
                         <h2>Những đơn hàng gần đây</h2>
-                        <a href="/Fahasa/customer/order">Xem tất cả</a>
+                        <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Xem tất cả</a>
                     </div>
                     <table class="data-table table-striped account-order-history" id="my-orders-table">
                         <colgroup>
@@ -194,10 +194,10 @@
                                     </td>
                                     <td class="a-center last">
                                         <span class="nobr">
-                                            <a href="/Fahasa/customer/order/view/<?php echo $order['id'] ?>">Xem</a>
+                                            <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order/view/<?php echo $order['id'] ?>">Xem</a>
                                             <span class="separator">|</span>
                                             <?php if ($order['status'] != 2) { ?>
-                                                <a href="/Fahasa/customer/order/cancel/<?php echo $order['id'] ?>" class="link-reorder">Huỷ</a>
+                                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order/cancel/<?php echo $order['id'] ?>" class="link-reorder">Huỷ</a>
                                             <?php } ?>
                                     </td>
                                     </span>
@@ -210,7 +210,7 @@
                 <div style="overflow-x:scroll;" class="box-account box-recent">
                     <div class="box-head">
                         <h2>Nhận xét gần đây</h2>
-                        <a href="/Fahasa/customer/rating">Xem tất cả</a>
+                        <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/rating">Xem tất cả</a>
                     </div>
                     <table class="data-table table-striped account-order-history" id="my-orders-table">
                         <colgroup>
@@ -241,7 +241,7 @@
                                         <td><?php echo mb_substr($rating['comment'], 0, 100) ?>...</td>
                                         <td class="a-center last">
                                             <span class="nobr">
-                                                <a href="/Fahasa/product/<?php echo $rating['book_id'] ?>">Xem</a>
+                                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $rating['book_id'] ?>">Xem</a>
                                             </span>
                                         </td>
                                     </tr>

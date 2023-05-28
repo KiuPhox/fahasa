@@ -124,11 +124,11 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li class="current"><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
-                        <li><a href="/Fahasa/customer/rating">Nhận xét của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li class="current"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address">Sổ địa chỉ</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Đơn hàng của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -139,7 +139,7 @@
                 <div class="page-title">
                     <h1>Sửa địa chỉ</h1>
                 </div>
-                <form id="form-account-info" method="post" action="/Fahasa/customer/address/editPost/<?php echo $address['id'] ?>">
+                <form id="form-account-info" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address/editPost/<?php echo $address['id'] ?>">
 
                     <div class="row align-items-center my-3">
                         <label for="name" class="form-label">Tên</label>

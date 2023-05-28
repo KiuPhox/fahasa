@@ -59,7 +59,7 @@
                                                     <tr>
                                                         <?php $book = Book::getByID($rating['book_id']) ?>
                                                         <td><img class="mr-2" src="<?php echo $book['image'] ?>">
-                                                            <a href="/Fahasa/product/<?php echo $rating['book_id'] ?>"><?php echo $book['title'] ?></a>
+                                                            <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $rating['book_id'] ?>"><?php echo $book['title'] ?></a>
                                                         </td>
                                                         <td><?php echo User::getByID($rating['user_id'])['name'] ?></td>
                                                         <td><?php for ($r = 0; $r < 5; $r++) {
@@ -132,7 +132,7 @@
 
         function deleteRating(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/ratings/destroy/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/ratings/destroy/" + id,
                 success: function(response) {
                     window.location.reload();
                 }
@@ -141,7 +141,7 @@
 
         function approveRating(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/ratings/approve/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/ratings/approve/" + id,
                 success: function(response) {
                     window.location.reload();
                 }

@@ -72,7 +72,7 @@
 
         function deleteOrder(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/orders/destroy/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/orders/destroy/" + id,
                 success: function(response) {
                     window.location.reload();
                 }
@@ -81,7 +81,7 @@
 
         function confirmOrder(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/orders/confirm/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/orders/confirm/" + id,
                 success: function(response) {
                     window.location.reload();
                 }

@@ -139,11 +139,11 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
-                        <li class="current"><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
-                        <li><a href="/Fahasa/customer/rating">Nhận xét của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address">Sổ địa chỉ</a></li>
+                        <li class="current"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Đơn hàng của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -156,7 +156,7 @@
                 </div>
                 <div style="overflow-x:scroll;" class="box-account box-recent">
                     <div class="box-head">
-                        <a href="/Fahasa/customer/order">Xem tất cả</a>
+                        <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Xem tất cả</a>
                     </div>
                     <table class="data-table table-striped account-order-history" id="my-orders-table">
                         <colgroup>
@@ -193,10 +193,10 @@
                                     </td>
                                     <td class="a-center last">
                                         <span class="nobr">
-                                            <a href="/Fahasa/customer/order/view/<?php echo $order['id'] ?>">Xem</a>
+                                            <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order/view/<?php echo $order['id'] ?>">Xem</a>
                                             <span class="separator">|</span>
                                             <?php if ($order['status'] == 0) { ?>
-                                                <a href="/Fahasa/customer/order/cancel/<?php echo $order['id'] ?>" class="link-reorder">Huỷ</a>
+                                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order/cancel/<?php echo $order['id'] ?>" class="link-reorder">Huỷ</a>
                                             <?php } ?>
                                         </span>
                                     </td>

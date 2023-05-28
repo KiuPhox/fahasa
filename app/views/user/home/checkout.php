@@ -394,7 +394,7 @@
             </div>
             <div class="bsidebar-bottom">
                 <div class="bsidebar-back-to-cart">
-                    <a href="/Fahasa/checkout/cart">
+                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/checkout/cart">
                         <span style="padding-right: 8px;">
                             <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/btn_back.svg?q=101680">
                         </span>
@@ -442,14 +442,14 @@
                 })
 
                 $.ajax({
-                    url: "/Fahasa/checkout/confirm",
+                    url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/checkout/confirm",
                     type: 'post',
                     data: {
                         address_id: address_id,
                         total: <?php echo $total ?>
                     }
                 }).done(function(respone) {
-                    window.location.href = "/Fahasa";
+                    window.location.href = "<?php echo dirname($_SERVER['PHP_SELF']); ?>";
                 });
             })
         <?php } else { ?>
@@ -462,7 +462,7 @@
                     $('#district').val() != "Vui lòng chọn" &&
                     $('#ward').val() != "Vui lòng chọn") {
                     $.ajax({
-                        url: "/Fahasa/checkout/confirm",
+                        url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/checkout/confirm",
                         type: 'post',
                         data: {
                             name: $('#name').val(),
@@ -474,7 +474,7 @@
                             total: <?php echo $total ?>,
                         }
                     }).done(function(respone) {
-                        window.location.href = "/Fahasa";
+                        window.location.href = "<?php echo dirname($_SERVER['PHP_SELF']); ?>";
                     });
                 } else {
                     alert("Vui lòng nhập đầy đủ thông tin", "danger");

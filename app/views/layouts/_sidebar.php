@@ -1,13 +1,13 @@
 <nav class="sidebar sidebar-offcanvas" id="sidebar">
   <ul class="nav">
     <li class="nav-item">
-      <a class="nav-link" href="/Fahasa/dashboard">
+      <a class="nav-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard">
         <i class="icon-grid menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/Fahasa/dashboard/books">
+      <a class="nav-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books">
         <i class="menu-icon mdi mdi-book-open-page-variant"></i>
         <span class="menu-title">Sách</span>
       </a>
@@ -20,13 +20,13 @@
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
-          <li class="nav-item"> <a class="nav-link" href="/Fahasa/dashboard/users">Tài khoản</a></li>
-          <li class="nav-item"> <a class="nav-link" href="/Fahasa/dashboard/ratings">Đánh giá</a></li>
+          <li class="nav-item"> <a class="nav-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/users">Tài khoản</a></li>
+          <li class="nav-item"> <a class="nav-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/ratings">Đánh giá</a></li>
         </ul>
       </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="/Fahasa/dashboard/orders">
+      <a class="nav-link" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/orders">
         <i class="menu-icon mdi mdi-cart"></i>
         <span class="menu-title">Đơn hàng</span>
       </a>

@@ -111,7 +111,7 @@
 
         function deleteUser(id) {
             $.ajax({
-                url: "/Fahasa/dashboard/users/destroy/" + id,
+                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/users/destroy/" + id,
                 success: function(response) {
                     window.location.reload();
                 }
