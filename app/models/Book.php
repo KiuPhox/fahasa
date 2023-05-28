@@ -8,47 +8,51 @@ class Book extends Model
 
     public static function store($title, $author, $category_id, $supplier_id, $publisher_id, $publication_date, $image, $description, $price, $discount, $quantity, $page_quantity, $book_code)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-
         $sql = "INSERT INTO books 
         (title, author, category_id, supplier_id, publisher_id, publication_date, image, description, price, discount, quantity, page_quantity, book_code)
-        VALUES('$title', '$author', $category_id, $supplier_id, $publisher_id, '$publication_date', '$image', '$description', $price, $discount, $quantity, $page_quantity, '$book_code')";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-        mysqli_query($conn, $sql);
+        $params = ['ssiiisssdiiss', $title, $author, $category_id, $supplier_id, $publisher_id, $publication_date, $image, $description, $price, $discount, $quantity, $page_quantity, $book_code];
+
+        self::executeQuery($sql, $params);
     }
 
     public static function update($id, $title, $author, $category_id, $supplier_id, $publisher_id, $publication_date, $image, $description, $price, $discount, $quantity, $page_quantity, $book_code)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-
         $sql = "UPDATE books 
-        SET title = '$title', 
-        author = '$author', 
-        category_id = $category_id, 
-        supplier_id = $supplier_id, 
-        publisher_id = $publisher_id, 
-        publication_date = '$publication_date', 
-        image = '$image', 
-        description = '$description', price = $price, 
-        discount = $discount, quantity = $quantity, page_quantity = $page_quantity, book_code = '$book_code'
-        WHERE id = $id";
-        mysqli_query($conn, $sql);
+        SET title = ?, 
+        author = ?, 
+        category_id = ?, 
+        supplier_id = ?, 
+        publisher_id = ?, 
+        publication_date = ?, 
+        image = ?, 
+        description = ?, 
+        price = ?, 
+        discount = ?, 
+        quantity = ?, 
+        page_quantity = ?, 
+        book_code = ?
+        WHERE id = ?";
+
+        $params = ['ssiiisssdiissi', $title, $author, $category_id, $supplier_id, $publisher_id, $publication_date, $image, $description, $price, $discount, $quantity, $page_quantity, $book_code, $id];
+
+        self::executeQuery($sql, $params);
     }
 
     public static function updateQuantity($quantity, $id)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-        $sql = "UPDATE books SET quantity = $quantity WHERE id = $id";
-        mysqli_query($conn, $sql);
+        $sql = "UPDATE books SET quantity = ? WHERE id = ?";
+
+        $params = ['ii', $quantity, $id];
+
+        self::executeQuery($sql, $params);
     }
 
-    public function getSpecialPrice()
-    {
-        echo $this->discount;
-    }
+    // public function getSpecialPrice()
+    // {
+    //     echo $this->discount;
+    // }
 
     public static function getRating($id)
     {
@@ -60,7 +64,6 @@ class Book extends Model
 
         $total_rating = 0;
 
-
         foreach ($ratings as $rating) {
             $total_rating += $rating['rating'];
         }
@@ -70,21 +73,23 @@ class Book extends Model
 
     public static function getAll()
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-
-        $sql = "SELECT * from books";
+        $sql = "SELECT * FROM books";
+        $params = [];
 
         if (isset($_GET["q"])) {
             $q = $_GET["q"];
-            $sql = "SELECT * from books WHERE title LIKE '%$q%'";
+            $sql .= " WHERE title LIKE ?";
+            $params = ['s', "%$q%"];
+
             if (isset($_GET["c"])) {
                 $c = $_GET["c"];
                 $categories = Category::getAll();
 
                 foreach ($categories as $category) {
                     if ($c == $category['name']) {
-                        $sql = "SELECT * from books WHERE title LIKE '%$q%' AND category_id = " . $category['id'];
+                        $sql .= " AND category_id = ?";
+                        $params = ['i', $category['id']];
+                        break;
                     }
                 }
             }
@@ -95,11 +100,13 @@ class Book extends Model
 
                 foreach ($categories as $category) {
                     if ($c == $category['name']) {
-                        $sql = "SELECT * from books WHERE category_id = " . $category['id'];
+                        $sql .= " WHERE category_id = ?";
+                        $params = ['i', $category['id']];
+                        break;
                     }
                 }
             }
         }
-        return mysqli_query($conn, $sql);
+        return self::executeQuery($sql, $params);
     }
 }

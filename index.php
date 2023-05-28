@@ -1,7 +1,11 @@
 <?php
+require_once __DIR__ . '/vendor/autoload.php';
 require_once('core/router.php');
 
-$conn = mysqli_connect("localhost", "root", "", "Fahasa");
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$conn = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], "", $_ENV['DB_DATABASE']);
 mysqli_set_charset($conn, 'utf8');
 session_start();
 

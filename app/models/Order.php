@@ -6,20 +6,22 @@ class Order extends Model
 {
     public static function store($name, $phone_number, $address, $city, $district, $ward, $total, $user_id, $cart)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
+        $conn = self::connect();
         $sql = "INSERT INTO orders (name, phone_number, address, city, district, ward, total, user_id)
-        VALUES ('$name', '$phone_number', '$address', '$city', '$district', '$ward', $total, $user_id)";
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $params = ['sssssssi', $name, $phone_number, $address, $city, $district, $ward, $total, $user_id];
 
-        mysqli_query($conn, $sql);
+        self::executeQuery($sql, $params);
         $order_id = mysqli_insert_id($conn);
 
         foreach ($cart as $book_id => $book) {
             if ($book['checked'] == "true") {
+                $conn = self::connect();
                 $quantity = $book['quantity'];
                 $sql = "INSERT INTO order_details (order_id, book_id, quantity)
-                VALUES ($order_id, $book_id, $quantity)";
-                mysqli_query($conn, $sql);
+                VALUES (?, ?, ?)";
+                $params = ['iii', $order_id, $book_id, $quantity];
+                self::executeQuery($sql, $params);
 
                 unset($_SESSION['cart'][$book_id]);
             }
@@ -28,36 +30,32 @@ class Order extends Model
 
     public static function getByUserID($id)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-
-        $sql = "SELECT * from orders WHERE user_id = $id ORDER BY id DESC";
-        return mysqli_query($conn, $sql);
+        $sql = "SELECT * from orders WHERE user_id = ? ORDER BY id DESC";
+        $params = ['i', $id];
+        return self::executeQuery($sql, $params);
     }
 
     public static function destroy($id)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-        $sql = "DELETE from order_details WHERE order_id = $id";
-        mysqli_query($conn, $sql);
+        $conn = self::connect();
+        $sql = "DELETE from order_details WHERE order_id = ?";
+        $params = ['i', $id];
+        self::executeQuery($sql, $params);
         $sql = "DELETE from orders WHERE id = $id";
         mysqli_query($conn, $sql);
     }
 
     public static function cancel($id)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-        $sql = "UPDATE orders SET status = 2 WHERE id = $id";
-        mysqli_query($conn, $sql);
+        $sql = "UPDATE orders SET status = 2 WHERE id = ?";
+        $params = ['i', $id];
+        self::executeQuery($sql, $params);
     }
 
     public static function confirm($id)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-        $sql = "UPDATE orders SET status = 1 WHERE id = $id";
-        mysqli_query($conn, $sql);
+        $sql = "UPDATE orders SET status = 1 WHERE id = ?";
+        $params = ['i', $id];
+        self::executeQuery($sql, $params);
     }
 }
