@@ -235,7 +235,7 @@
 
                     $('#form-title').text('Sửa sách');
 
-                    $('#book-form').attr('action', '<?php echo dirname($_SERVER['PHP_SELF']); ?>dashboard/books/update/' + book['id']);
+                    $('#book-form').attr('action', '<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books/update/' + book['id']);
                     $('#title').val(book['title']);
                     $('#author').val(book['author']);
                     $('#category').val(book['category_id']);

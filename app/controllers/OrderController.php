@@ -29,12 +29,12 @@ class OrderController
             $order = Order::getByID($id);
             if ($_SESSION['id'] == $order['user_id']) {
                 Order::cancel($id);
-                header("Location:/Fahasa/customer/account");
+                header("Location:" . dirname($_SERVER['PHP_SELF']) . "/customer/account");
             } else {
-                header("Location:/Fahasa/");
+                header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
             }
         } else {
-            header("Location:/Fahasa/");
+            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
         }
     }
 }

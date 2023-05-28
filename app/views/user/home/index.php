@@ -9,7 +9,7 @@
     <title>Nhà sách trực tuyến Fahasa</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="stylesheet" href="./public/icon/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./vendor/components/font-awesome/css/all.css">
     <style>
         div#menu {
             display: flex;

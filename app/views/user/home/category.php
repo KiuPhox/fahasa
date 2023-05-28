@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="./public/css/style.css">
-    <link rel="stylesheet" href="./public/icon/fontawesome/css/all.css">
+    <link rel="stylesheet" href="./vendor/components/font-awesome/css/all.css">
     <style>
         .page-title h1 {
             font-size: 20px;

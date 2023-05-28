@@ -7,7 +7,7 @@ class Login
     public function index()
     {
         if (isset($_SESSION['id'])) {
-            header("Location:/Fahasa/");
+            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
         } else {
             require("./app/views/user/home/login.php");
         }
@@ -38,7 +38,7 @@ class Login
         if (isset($_GET['token'])) {
             User::verifyToken($_GET['token']);
         }
-        header("Location:/Fahasa/");
+        header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
     }
 
     public function register()
