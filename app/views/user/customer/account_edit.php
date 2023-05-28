@@ -122,11 +122,11 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li class="current"><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
-                        <li><a href="/Fahasa/customer/rating">Nhận xét của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li class="current"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address">Sổ địa chỉ</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Đơn hàng của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -137,7 +137,7 @@
                 <div class="page-title">
                     <h1>Thông tin tài khoản</h1>
                 </div>
-                <form id="form-account-info" method="post" action="/Fahasa/customer/account/editPost">
+                <form id="form-account-info" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/editPost">
                     <div class="row align-items-center my-3">
                         <label for="name" class="form-label">Tên</label>
                         <input name="name" id="name" class="form-control" placeholder="Nhập tên" value="<?php echo $user['name'] ?>">
@@ -182,7 +182,7 @@
                 <div class="page-title">
                     <h1>Đổi mật khẩu</h1>
                 </div>
-                <form id="form-account-info" method="post" action="/Fahasa/customer/account/updatePassword">
+                <form id="form-account-info" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/updatePassword">
                     <div class="row align-items-center my-3">
                         <label for="current_password" class="form-label">Mật khẩu hiện tại</label>
                         <input type="password" name="current_password" id="name" class="form-control" placeholder="Mật khẩu hiện tại">

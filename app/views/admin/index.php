@@ -88,7 +88,7 @@
                                     <div class="card-body">
                                         <div class="d-flex justify-content-between">
                                             <p class="card-title">Đánh giá gần đây</p>
-                                            <a href="/Fahasa/dashboard/ratings" class="text-info">Xem tất cả</a>
+                                            <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/ratings" class="text-info">Xem tất cả</a>
                                         </div>
                                         <div class="table-responsive">
                                             <table id="myTable" class="table table-striped table-hover">
@@ -107,7 +107,7 @@
                                                             <tr>
                                                                 <?php $book = Book::getByID($rating['book_id']) ?>
                                                                 <td><img class="mr-2" src="<?php echo $book['image'] ?>">
-                                                                    <a href="/Fahasa/product/<?php echo $rating['book_id'] ?>"><?php echo $book['title'] ?></a>
+                                                                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $rating['book_id'] ?>"><?php echo $book['title'] ?></a>
                                                                 </td>
                                                                 <td><?php echo User::getByID($rating['user_id'])['name'] ?></td>
                                                                 <td><?php for ($r = 0; $r < 5; $r++) {

@@ -620,7 +620,7 @@
 
             function postRating() {
                 $.ajax({
-                    url: "/Fahasa/product/rating",
+                    url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/rating",
                     type: 'post',
                     data: {
                         book_id: <?php echo $book['id'] ?>,
@@ -670,7 +670,7 @@
                 quantity = qty.value;
 
                 $.ajax({
-                    url: "/Fahasa/cart/addtocart",
+                    url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/cart/addtocart",
                     type: 'post',
                     data: {
                         id: <?php echo $book['id'] ?>,

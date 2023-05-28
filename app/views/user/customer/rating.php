@@ -128,11 +128,11 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li><a href="/Fahasa/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="/Fahasa/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="/Fahasa/customer/order">Đơn hàng của tôi</a></li>
-                        <li class="current"><a href="/Fahasa/customer/rating">Nhận xét của tôi</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address">Sổ địa chỉ</a></li>
+                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Đơn hàng của tôi</a></li>
+                        <li class="current"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -172,7 +172,7 @@
                                             <td><?php echo mb_substr($rating['comment'], 0, 100) ?>...</td>
                                             <td class="a-center last">
                                                 <span class="nobr">
-                                                    <a href="/Fahasa/product/<?php echo $rating['book_id'] ?>">Xem</a>
+                                                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $rating['book_id'] ?>">Xem</a>
                                                 </span>
                                             </td>
                                         </tr>

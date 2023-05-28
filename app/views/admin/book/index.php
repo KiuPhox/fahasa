@@ -54,7 +54,7 @@
                                                 <?php foreach ($books as $book) { ?>
                                                     <tr>
                                                         <td><?php echo $book['book_code'] ?></td>
-                                                        <td><img style="border-radius: 0px" class="mr-2" src="<?php echo $book['image'] ?>"><a href="/Fahasa/product/<?php echo $book['id'] ?>"><?php echo $book['title'] ?></a></td>
+                                                        <td><img style="border-radius: 0px" class="mr-2" src="<?php echo $book['image'] ?>"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $book['id'] ?>"><?php echo $book['title'] ?></a></td>
                                                         <td><?php echo $book['author'] ?></td>
                                                         <td><?php echo $book['price'] ?></td>
                                                         <td><?php echo $book['quantity'] ?></td>
@@ -75,7 +75,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 id="form-title" class="card-title">Thêm sách</h4>
-                                    <form id="book-form" method="post" action="/Fahasa/dashboard/books/store" class="forms-sample">
+                                    <form id="book-form" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books/store" class="forms-sample">
                                         <div class="row">
                                             <div class="form-group col-lg-4 col-md-6">
                                                 <label for="title">Tựa đề</label>
@@ -162,7 +162,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 id="form-title" class="card-title">Thêm thể loại</h4>
-                                    <form id="category-form" method="post" action="/Fahasa/dashboard/books/addCategory" class="forms-sample">
+                                    <form id="category-form" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books/addCategory" class="forms-sample">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="category" name="category" required>
                                         </div>
@@ -175,7 +175,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 id="form-title" class="card-title">Thêm nhà cung cấp</h4>
-                                    <form id="supplier-form" method="post" action="/Fahasa/dashboard/books/addSupplier" class="forms-sample">
+                                    <form id="supplier-form" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books/addSupplier" class="forms-sample">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="supplier" name="supplier" required>
                                         </div>
@@ -188,7 +188,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 id="form-title" class="card-title">Thêm nhà xuất bản</h4>
-                                    <form id="publisher-form" method="post" action="/Fahasa/dashboard/books/addPublisher" class="forms-sample">
+                                    <form id="publisher-form" method="post" action="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books/addPublisher" class="forms-sample">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="publisher" name="publisher" required>
                                         </div>
@@ -235,7 +235,7 @@
 
                     $('#form-title').text('Sửa sách');
 
-                    $('#book-form').attr('action', '/Fahasa/dashboard/books/update/' + book['id']);
+                    $('#book-form').attr('action', '<?php echo dirname($_SERVER['PHP_SELF']); ?>dashboard/books/update/' + book['id']);
                     $('#title').val(book['title']);
                     $('#author').val(book['author']);
                     $('#category').val(book['category_id']);
@@ -256,7 +256,7 @@
                 } else if (action == 'create') {
                     $('#form-title').text('Thêm sách');
                     $('#book-form').trigger("reset");
-                    $('#book-form').attr('action', '/Fahasa/dashboard/books/store/');
+                    $('#book-form').attr('action', '<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books/store/');
 
                     $('#main-btn').text('Thêm');
                     $('#cancel-btn').css('display', 'none');
@@ -268,7 +268,7 @@
 
             function deleteBook(id) {
                 $.ajax({
-                    url: "/Fahasa/dashboard/books/destroy/" + id,
+                    url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard/books/destroy/" + id,
                     success: function(response) {
                         window.location.reload();
                     }
