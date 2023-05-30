@@ -15,9 +15,10 @@ composer install
 DB_HOST=localhost
 DB_USER=root
 DB_PASS=
-DB_DATABASE=Fahasa
+DB_DATABASE=fahasa
+DOMAIN=http://localhost/Fahasa
 PHPMAILER_USER=example@gmail.com
-PHPMAILER_PASS=pass
+PHPMAILER_PASS=mail_app_pass
 ```
 5. You can sign in using the default admin account with the email "admin@admin.com" and the password "123456".
 
