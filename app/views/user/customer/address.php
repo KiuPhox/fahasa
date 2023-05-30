@@ -131,11 +131,11 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li class="current"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Đơn hàng của tôi</a></li>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/rating">Nhận xét của tôi</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li class="current"><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/address">Sổ địa chỉ</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/order">Đơn hàng của tôi</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -145,7 +145,7 @@
             <div class="my-account">
                 <div class="page-title">
                     <h1>Sổ địa chỉ</h1>
-                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address/new"><button id="add-address-btn">Thêm địa chỉ mới</button></a>
+                    <a href="<?php echo $_ENV['DOMAIN']; ?>/customer/address/new"><button id="add-address-btn">Thêm địa chỉ mới</button></a>
                 </div>
                 <div class="addresses-list">
                     <div class="addresses-primary">
@@ -158,7 +158,7 @@
                                     <?php echo $address['ward'] . ", " . $address['district'] . ", " . $address["city"]; ?><br>
                                     Tel: <?php echo  $address['phone_number'] ?>
                                 </address>
-                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address/edit/<?php echo $address['id'] ?>">
+                                <a href="<?php echo $_ENV['DOMAIN']; ?>/customer/address/edit/<?php echo $address['id'] ?>">
                                     Thay đổi địa chỉ
                                 </a>
                         <?php break;
@@ -177,11 +177,11 @@
                                             <?php echo $address['ward'] . ", " . $address['district'] . ", " . $address["city"]; ?><br>
                                             Tel: <?php echo  $address['phone_number'] ?>
                                         </address>
-                                        <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address/edit/<?php echo $address['id'] ?>">
+                                        <a href="<?php echo $_ENV['DOMAIN']; ?>/customer/address/edit/<?php echo $address['id'] ?>">
                                             Sửa địa chỉ
                                         </a>
                                         <span>|</span>
-                                        <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address/delete/<?php echo $address['id'] ?>">
+                                        <a href="<?php echo $_ENV['DOMAIN']; ?>/customer/address/delete/<?php echo $address['id'] ?>">
                                             Xoá địa chỉ
                                         </a>
                                     </li>

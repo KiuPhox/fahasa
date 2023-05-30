@@ -5,7 +5,7 @@ require_once('core/router.php');
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$conn = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], "", $_ENV['DB_DATABASE']);
+$conn = mysqli_connect($_ENV['DB_HOST'], $_ENV['DB_USER'], $_ENV['DB_PASS'], $_ENV['DB_DATABASE']);
 mysqli_set_charset($conn, 'utf8');
 session_start();
 
@@ -36,7 +36,7 @@ $router->add('checkout/confirm', ['controller' => 'CartController', 'action' => 
 // Login
 
 $router->add('login', ['controller' => 'Login', 'action' => 'index']);
-$router->add('login/login_process', ['controller' => 'Login', 'action' => 'login']);
+$router->add('login/login_process', ['controller' => 'Login', 'action' => 'loginProcess']);
 $router->add('login/register_process', ['controller' => 'Login', 'action' => 'register']);
 $router->add('login/logout_process', ['controller' => 'Login', 'action' => 'logout']);
 $router->add('verify', ['controller' => 'Login', 'action' => 'verify']);

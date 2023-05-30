@@ -23,9 +23,9 @@ class BookController
                 $_POST['page_quantity'],
                 $_POST['book_code']
             );
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/dashboard/books");
+            header("Location:" . $_ENV['DOMAIN'] . "/dashboard/books");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -48,9 +48,9 @@ class BookController
                 $_POST['page_quantity'],
                 $_POST['book_code']
             );
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/dashboard/books");
+            header("Location:" . $_ENV['DOMAIN'] . "/dashboard/books");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -58,9 +58,9 @@ class BookController
     {
         if (isset($_SESSION['level']) && $_SESSION['level'] == 0) {
             Book::destroy($id);
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/dashboard/books");
+            header("Location:" . $_ENV['DOMAIN'] . "/dashboard/books");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -68,9 +68,9 @@ class BookController
     {
         if (isset($_SESSION['level']) && $_SESSION['level'] == 0 && isset($_POST['category'])) {
             Category::create($_POST['category']);
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/dashboard/books");
+            header("Location:" . $_ENV['DOMAIN'] . "/dashboard/books");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -78,9 +78,9 @@ class BookController
     {
         if (isset($_SESSION['level']) && $_SESSION['level'] == 0 && isset($_POST['supplier'])) {
             Supplier::create($_POST['supplier']);
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/dashboard/books");
+            header("Location:" . $_ENV['DOMAIN'] . "/dashboard/books");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -88,9 +88,9 @@ class BookController
     {
         if (isset($_SESSION['level']) && $_SESSION['level'] == 0 && isset($_POST['publisher'])) {
             Publisher::create($_POST['publisher']);
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/dashboard/books");
+            header("Location:" . $_ENV['DOMAIN'] . "/dashboard/books");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 }

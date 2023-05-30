@@ -252,7 +252,6 @@
 
         function LoginValidation() {
             if (emailPattern.test(login_email_input.value) && passwordPattern.test(login_password_input.value)) {
-                console.log("true");
                 login_button.style.color = "white";
                 login_button.style.background = "#C92127";
                 login_button.style.cursor = "pointer";
@@ -287,16 +286,18 @@
             event.preventDefault();
             $.ajax({
                 type: "post",
-                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/login/login_process",
+                url: "<?php echo $_ENV['DOMAIN']; ?>/login/login_process",
                 data: {
                     "email": $("#email-1").val(),
                     "password": $("#password-1").val(),
                 },
                 success: function(response) {
                     if (response == "Đăng nhập thành công") {
-                        window.location.href = "<?php echo dirname($_SERVER['PHP_SELF']); ?>"
+                        alert(response, "success");
+                        window.location.href = "<?php echo $_ENV['DOMAIN']; ?>"
+                    }else{
+                        alert(response, "danger");
                     }
-                    alert(response, "danger");
                 }
             });
         }
@@ -306,7 +307,7 @@
             alert("Vui lòng xác nhận email để đăng nhập", "warning");
             $.ajax({
                 type: "post",
-                url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/login/register_process",
+                url: "<?php echo $_ENV['DOMAIN']; ?>/login/register_process",
                 data: {
                     "email": $("#email-2").val(),
                     "password": $("#password-2").val(),

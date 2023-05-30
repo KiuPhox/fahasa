@@ -19,11 +19,11 @@ abstract class Model
         $last_letter = strtolower($singular[strlen($singular) - 1]);
         switch ($last_letter) {
             case 'y':
-                return substr($singular, 0, -1) . 'ies';
+                return strtolower(substr($singular, 0, -1) . 'ies');
             case 's':
-                return $singular . 'es';
+                return strtolower($singular . 'es');
             default:
-                return $singular . 's';
+                return strtolower($singular . 's');
         }
     }
 
@@ -60,6 +60,7 @@ abstract class Model
     public static function getAll()
     {
         $table_name = self::pluralize(get_called_class());
+        
         $sql = "SELECT * FROM $table_name";
         return self::executeQuery($sql);
     }

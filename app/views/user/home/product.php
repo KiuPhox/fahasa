@@ -1,5 +1,5 @@
 <?php
-
+require_once('./app/models/User.php');
 
 ?>
 
@@ -537,7 +537,7 @@
                                     <li>
                                         <div class="comment-left">
                                             <p class="user-name"><?php $user_id = $rating['user_id'];
-                                                                    echo mysqli_fetch_array(mysqli_query($conn, "SELECT * from users WHERE id = $user_id"))['name'] ?></p>
+                                                                    echo User::getByID($user_id)['name']; ?></p>
                                             <span class="comment-date"><?php echo date_format(date_create($rating['created_at']), "d/m/Y") ?></span>
                                         </div>
                                         <div class="comment-right">
@@ -620,7 +620,7 @@
 
             function postRating() {
                 $.ajax({
-                    url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/rating",
+                    url: "<?php echo $_ENV['DOMAIN']; ?>/product/rating",
                     type: 'post',
                     data: {
                         book_id: <?php echo $book['id'] ?>,
@@ -670,7 +670,7 @@
                 quantity = qty.value;
 
                 $.ajax({
-                    url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/cart/addtocart",
+                    url: "<?php echo $_ENV['DOMAIN']; ?>/cart/addtocart",
                     type: 'post',
                     data: {
                         id: <?php echo $book['id'] ?>,

@@ -9,9 +9,6 @@ class Home
 {
     public function product($id)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
-
         $book = Book::getByID($id);
         $publisher = Publisher::getByID($book['publisher_id']);
         $supplier = Supplier::getByID($book['supplier_id']);

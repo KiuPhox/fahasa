@@ -21,18 +21,19 @@ class User extends Model
 {
     public static function create($email, $password)
     {
-        $conn = mysqli_connect("localhost", "root", "", "Fahasa");
-        mysqli_set_charset($conn, 'utf8');
+        $conn = self::connect();
 
         $hash_password = password_hash($password, PASSWORD_DEFAULT);
         $email_verification_code = md5(microtime());
 
-        $sql = "INSERT INTO users (email, password, email_verification_code) VALUES('$email', '$hash_password', '$email_verification_code');";
-        mysqli_query($conn, $sql);
+        $sql = "INSERT INTO users (email, password, email_verification_code) VALUES(?, ?, ?);";
+        $params = ['sss', $email, $hash_password, $email_verification_code];
+        self::executeQuery($sql, $params);
         self::sendEmailVerification($email_verification_code, $email);
         $id = mysqli_insert_id($conn);
-        $sql = "UPDATE users SET name = 'User_" . $id . "' WHERE id = $id;";
-        mysqli_query($conn, $sql);
+        $sql = "UPDATE users SET name = 'User_" . $id . "' WHERE id = ?;";
+        $params = ['i', $id];
+        self::executeQuery($sql, $params);
     }
 
     public static function sendEmailVerification($email_verification_code, $email)
@@ -58,7 +59,7 @@ class User extends Model
             //Content
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Xác nhận đăng ký tài khoản Fahasa';
-            $mail->Body    = 'Nhấn vào link để xác nhận tài khoản Fahasa <a href="http://localhost/Fahasa/verify?token=' . $email_verification_code . '">' . 'http://localhost/Fahasa/verify?token=' . $email_verification_code . '</a>';
+            $mail->Body    = 'Nhấn vào link để xác nhận tài khoản Fahasa <a href="'.$_ENV['DOMAIN'].'/verify?token=' . $email_verification_code . '">' . $_ENV['DOMAIN'].'/verify?token=' . $email_verification_code . '</a>';
             $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
             $mail->send();
@@ -124,7 +125,7 @@ class User extends Model
 
     public static function updateInformation($id, $name, $phone_number, $gender, $birthday)
     {
-        $sql = "UPDATE users SET name = ?, gender = ?, birthday = ?, phone_number = ? WHERE id = ?";
+        $sql = "UPDATE users SET name = ?, phone_number = ?, gender = ?, birthday = ? WHERE id = ?";
         $params = ['ssssi', $name, $phone_number, $gender, $birthday, $id];
         self::executeQuery($sql, $params);
     }

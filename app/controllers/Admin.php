@@ -33,7 +33,7 @@ class Admin
 
             require("./app/views/admin/index.php");
         } else {
-            header("Location:/Fahasa/");
+            header("Location:/".$_ENV['DOMAIN']."/");
         }
     }
 
@@ -46,7 +46,7 @@ class Admin
             $categories = Category::getAll();
             require("./app/views/admin/book/index.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -56,7 +56,7 @@ class Admin
             $users = User::getAll();
             require("./app/views/admin/user/index.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -66,7 +66,7 @@ class Admin
             $ratings = Rating::getAll();
             require("./app/views/admin/rating/index.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -76,7 +76,7 @@ class Admin
             $orders = Order::getAll();
             require("./app/views/admin/order/index.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 

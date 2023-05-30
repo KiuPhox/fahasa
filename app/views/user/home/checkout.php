@@ -442,14 +442,14 @@
                 })
 
                 $.ajax({
-                    url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/checkout/confirm",
+                    url: "<?php echo $_ENV['DOMAIN']; ?>/checkout/confirm",
                     type: 'post',
                     data: {
                         address_id: address_id,
                         total: <?php echo $total ?>
                     }
                 }).done(function(respone) {
-                    window.location.href = "<?php echo dirname($_SERVER['PHP_SELF']); ?>";
+                    window.location.href = "<?php echo $_ENV['DOMAIN']; ?>";
                 });
             })
         <?php } else { ?>
@@ -462,7 +462,7 @@
                     $('#district').val() != "Vui lòng chọn" &&
                     $('#ward').val() != "Vui lòng chọn") {
                     $.ajax({
-                        url: "<?php echo dirname($_SERVER['PHP_SELF']); ?>/checkout/confirm",
+                        url: "<?php echo $_ENV['DOMAIN']; ?>/checkout/confirm",
                         type: 'post',
                         data: {
                             name: $('#name').val(),
@@ -474,7 +474,7 @@
                             total: <?php echo $total ?>,
                         }
                     }).done(function(respone) {
-                        window.location.href = "<?php echo dirname($_SERVER['PHP_SELF']); ?>";
+                        window.location.href = "<?php echo $_ENV['DOMAIN']; ?>";
                     });
                 } else {
                     alert("Vui lòng nhập đầy đủ thông tin", "danger");

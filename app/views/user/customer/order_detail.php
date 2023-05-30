@@ -159,11 +159,11 @@
                 </div>
                 <div class="block-content">
                     <ul>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/address">Sổ địa chỉ</a></li>
-                        <li class="current"><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">Đơn hàng của tôi</a></li>
-                        <li><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/rating">Nhận xét của tôi</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/account">Bảng điều khiển tài khoản</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/account/edit">Thông tin tài khoản</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/address">Sổ địa chỉ</a></li>
+                        <li class="current"><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/order">Đơn hàng của tôi</a></li>
+                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/rating">Nhận xét của tôi</a></li>
                     </ul>
                 </div>
             </div>
@@ -228,7 +228,7 @@
                                 $book = Book::getByID($order_detail['book_id']); ?>
                                 <tr class="">
                                     <td><img width="80px" src="<?php echo $book['image'] ?>"></td>
-                                    <td><a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $order_detail['book_id'] ?>"><?php echo $book['title'] ?></a></td>
+                                    <td><a href="<?php echo $_ENV['DOMAIN']; ?>/product/<?php echo $order_detail['book_id'] ?>"><?php echo $book['title'] ?></a></td>
                                     <td><?php echo $book['book_code'] ?></td>
                                     <td>
                                         <span class="price"><?php echo number_format($book['price'] * (1 - $book['discount'] / 100), 0, '', '.') ?> đ</span>

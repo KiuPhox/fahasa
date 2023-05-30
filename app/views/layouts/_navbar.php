@@ -1,7 +1,7 @@
 <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
   <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
-    <a class="navbar-brand brand-logo" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>"><img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo/fahasa_logo.png" alt="logo" /></a>
-    <a class="navbar-brand brand-logo-mini" href="<?php echo dirname($_SERVER['PHP_SELF']); ?>"><img src="https://www.fahasa.com/media/wysiwyg/Thang-10-2017/logo_mascot_200px.jpg" alt="logo" /></a>
+    <a class="navbar-brand brand-logo" href="<?php echo $_ENV['DOMAIN']; ?>"><img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo/fahasa_logo.png" alt="logo" /></a>
+    <a class="navbar-brand brand-logo-mini" href="<?php echo $_ENV['DOMAIN']; ?>"><img src="https://www.fahasa.com/media/wysiwyg/Thang-10-2017/logo_mascot_200px.jpg" alt="logo" /></a>
   </div>
   <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
     <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">

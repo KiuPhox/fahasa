@@ -147,7 +147,7 @@
                     <a href="">
                         <p>Thay đổi địa chỉ khách hàng</p>
                     </a>
-                    <a href="/Fahasa/customer/account">
+                    <a href="<?php echo $_ENV['DOMAIN'];?>customer/account">
                         <p>Chi tiết tài khoản</p>
                     </a>
                     <a href="">

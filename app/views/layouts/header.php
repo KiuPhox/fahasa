@@ -9,12 +9,12 @@
     <div class="cover-container">
         <div class="cover-navbar">
             <div class="logo">
-                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/">
+                <a href="<?php echo $_ENV['DOMAIN']; ?>/">
                     <img src="https://cdn0.fahasa.com/skin/frontend/ma_vanese/fahasa/images/logo/fahasa_logo.png">
                 </a>
             </div>
             <div id="list-menu-icon">
-                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/category"><i class="fa-solid fa-list-ul"></i></a>
+                <a href="<?php echo $_ENV['DOMAIN']; ?>/category"><i class="fa-solid fa-list-ul"></i></a>
 
             </div>
             <form onsubmit="appendSearch(event)" class="search-form">
@@ -38,7 +38,7 @@
                 </a>
             </div>
             <div id="cart-icon" class="cart cover-icon" style="position: relative;">
-                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/checkout/cart" class="cart-button" style="flex-direction: column;">
+                <a href="<?php echo $_ENV['DOMAIN']; ?>/checkout/cart" class="cart-button" style="flex-direction: column;">
                     <div class="cart-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
@@ -63,9 +63,9 @@
 
                             <?php foreach ($mini_cart as $index => $item) { ?>
                                 <div class="cart-dropdown-item">
-                                    <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $index ?>"><img height="80px" src="<?php echo $item['image'] ?>"></a>
+                                    <a href="<?php echo $_ENV['DOMAIN']; ?>/product/<?php echo $index ?>"><img height="80px" src="<?php echo $item['image'] ?>"></a>
                                     <div class="item-detail">
-                                        <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/product/<?php echo $index ?>" class="item-name"><?php echo $item['title'] ?></a>
+                                        <a href="<?php echo $_ENV['DOMAIN']; ?>/product/<?php echo $index ?>" class="item-name"><?php echo $item['title'] ?></a>
                                         <div>
                                             <span class="price"><?php echo number_format($item['price'] * (1 - $item['discount'] / 100), 0, '.', '.') ?> đ</span>
                                             <span style="margin-left: 8px; color: #7A7E7F; font-size: 1.1em;">x<?php echo $item['quantity'] ?></span>
@@ -78,8 +78,8 @@
                 </div>
             </div>
             <div id="login-icon" class="login cover-icon">
-                <a href="<?php if (isset($_SESSION['id'])) echo dirname($_SERVER['PHP_SELF']) . "/customer/account";
-                            else echo dirname($_SERVER['PHP_SELF']) . "/login"; ?> " class="login-button" style="flex-direction: column;">
+                <a href="<?php if (isset($_SESSION['id'])) echo $_ENV['DOMAIN'] . "/customer/account";
+                            else echo $_ENV['DOMAIN'] . "/login"; ?> " class="login-button" style="flex-direction: column;">
                     <div class="login-icon">
                         <i class="fa-regular fa-user"></i>
                     </div>
@@ -99,7 +99,7 @@
                 </a>
                 <?php if (isset($_SESSION['id'])) { ?>
                     <div id="login-dropdown" class="login-dropdown container">
-                        <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/account" class="login-dropdown-top">
+                        <a href="<?php echo $_ENV['DOMAIN']; ?>/customer/account" class="login-dropdown-top">
                             <div class="login-dropdown-top-container">
                                 <h5><?php echo $_SESSION['name'] ?></h5>
                                 <p><?php if ($_SESSION['level'] == 1) {
@@ -112,16 +112,16 @@
                         </a>
                         <div class="login-nav">
                             <?php if ($_SESSION['level'] == 0) { ?>
-                                <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/dashboard">
+                                <a href="<?php echo $_ENV['DOMAIN']; ?>/dashboard">
                                     <i class="fa-solid fa-chart-line"></i>
                                     <span>Dashboard</span>
                                 </a>
                             <?php } ?>
-                            <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/customer/order">
+                            <a href="<?php echo $_ENV['DOMAIN']; ?>/customer/order">
                                 <i class=" fa-regular fa-clipboard"></i>
                                 <span>Đơn hàng của tôi</span>
                             </a>
-                            <a href="<?php echo dirname($_SERVER['PHP_SELF']); ?>/login/logout_process">
+                            <a href="<?php echo $_ENV['DOMAIN']; ?>/login/logout_process">
                                 <i class="fa-solid fa-arrow-right-from-bracket"></i>
                                 <span>Thoát tài khoản</span>
                             </a>

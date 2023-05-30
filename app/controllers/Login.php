@@ -7,13 +7,13 @@ class Login
     public function index()
     {
         if (isset($_SESSION['id'])) {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         } else {
             require("./app/views/user/home/login.php");
         }
     }
 
-    public function login()
+    public function loginProcess()
     {
         if (isset($_POST['email']) && isset($_POST['password'])) {
             $email = $_POST['email'];
@@ -38,7 +38,7 @@ class Login
         if (isset($_GET['token'])) {
             User::verifyToken($_GET['token']);
         }
-        header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+        header("Location:" . $_ENV['DOMAIN'] . "/");
     }
 
     public function register()

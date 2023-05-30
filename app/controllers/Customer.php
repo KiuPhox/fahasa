@@ -15,7 +15,7 @@ class Customer
             $ratings = Rating::getByUserID($_SESSION['id']);
             require("./app/views/user/customer/account.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -25,7 +25,7 @@ class Customer
             $user = User::getByID($_SESSION['id']);
             require("./app/views/user/customer/account_edit.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -40,9 +40,9 @@ class Customer
                 $_POST['birthday']
             );
             $_SESSION['name'] = $_POST['name'];
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/customer/account/edit");
+            header("Location:" . $_ENV['DOMAIN'] . "/customer/account/edit");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -54,9 +54,9 @@ class Customer
             User::checkPassword($_POST['current_password'])
         ) {
             User::updatePassword($_SESSION['id'], $_POST['password']);
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/customer/account/edit");
+            header("Location:" . $_ENV['DOMAIN'] . "/customer/account/edit");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -66,7 +66,7 @@ class Customer
             $addresses = Address::getByUserID($_SESSION['id']);
             require("./app/views/user/customer/address.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -75,7 +75,7 @@ class Customer
         if (isset($_SESSION['id'])) {
             require("./app/views/user/customer/address_new.php");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -91,9 +91,9 @@ class Customer
                 $_POST['ward'],
                 isset($_POST['default']) ? 1 : 0,
             );
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/customer/address");
+            header("Location:" . $_ENV['DOMAIN'] . "/customer/address");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -104,10 +104,10 @@ class Customer
             if ($address['user_id'] == $_SESSION['id']) {
                 require("./app/views/user/customer/address_edit.php");
             } else {
-                header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+                header("Location:" . $_ENV['DOMAIN'] . "/");
             }
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -124,9 +124,9 @@ class Customer
                 $_POST['ward'],
                 isset($_POST['default']) ? 1 : 0,
             );
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/customer/address");
+            header("Location:" . $_ENV['DOMAIN'] . "/customer/address");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -134,9 +134,9 @@ class Customer
     {
         if (isset($_SESSION['id'])) {
             Address::destroy($id);
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/customer/address");
+            header("Location:" . $_ENV['DOMAIN'] . "/customer/address");
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -146,7 +146,7 @@ class Customer
             $ratings = Rating::getByUserID($_SESSION['id']);
             require('./app/views/user/customer/rating.php');
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -156,7 +156,7 @@ class Customer
             $orders = Order::getByUserID($_SESSION['id']);
             require('./app/views/user/customer/order.php');
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -176,10 +176,10 @@ class Customer
 
                 require('./app/views/user/customer/order_detail.php');
             } else {
-                header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+                header("Location:" . $_ENV['DOMAIN'] . "/");
             }
         } else {
-            header("Location:" . dirname($_SERVER['PHP_SELF']) . "/");
+            header("Location:" . $_ENV['DOMAIN'] . "/");
         }
     }
 }

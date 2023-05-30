@@ -4,3 +4,11 @@ RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-l
 RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+<Files .env>
+    Order allow,deny
+    Deny from all
+</Files>
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
