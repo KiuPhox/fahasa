@@ -17,7 +17,7 @@ DB_HOST=localhost
 DB_USER=root
 DB_PASS=
 DB_DATABASE=fahasa
-DOMAIN=http://localhost/Fahasa
+DOMAIN=http://localhost/fahasa
 PHPMAILER_USER=example@gmail.com
 PHPMAILER_PASS=mail_app_pass
 ```
