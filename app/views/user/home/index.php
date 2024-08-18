@@ -43,50 +43,46 @@
 
 <body>
     <?php include(dirname(__FILE__) . '/' . '../../layouts/header.php'); ?>
-    <div>
-        <div>
-            <div class="vertical_menu-carousel">
-                <div class="slide-image" style="z-index: 0;">
-                    <div id="demo" class="carousel slide" data-ride="carousel">
+    <div style="width: 80%; margin: auto">
+        <div class="vertical_menu-carousel">
+            <div class="slide-image" style="z-index: 0;">
+                <div id="demo" class="carousel slide" data-ride="carousel">
 
-                        <!-- Indicators -->
-                        <ul class="carousel-indicators">
-                            <li data-target="#demo" data-slide-to="0" class="active"></li>
-                            <li data-target="#demo" data-slide-to="1"></li>
-                            <li data-target="#demo" data-slide-to="2"></li>
-                            <li data-target="#demo" data-slide-to="3"></li>
-                        </ul>
+                    <!-- Indicators -->
+                    <ul class="carousel-indicators">
+                        <li data-target="#demo" data-slide-to="0" class="active"></li>
+                        <li data-target="#demo" data-slide-to="1"></li>
+                        <li data-target="#demo" data-slide-to="2"></li>
+                        <li data-target="#demo" data-slide-to="3"></li>
+                    </ul>
 
-                        <!-- The slideshow -->
-                        <div class="carousel-inner mb-4">
-                            <div class="carousel-item active">
-                                <img src="https://cdn0.fahasa.com/media/magentothem/banner7/bigsale_t11_resize_840x320.jpg" alt="Carousel 1">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://cdn0.fahasa.com/media/magentothem/banner7/FAHASA_potico_840x320.png" alt="Carousel 2">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://cdn0.fahasa.com/media/magentothem/banner7/VNpay_Sieu_sale_11.11_840x320.jpg" alt="Carousel 3">
-                            </div>
-                            <div class="carousel-item">
-                                <img src="https://cdn0.fahasa.com/media/magentothem/banner7/HoaCuQuy4_banner_840x320.jpg" alt="Carousel 4">
-                            </div>
+                    <!-- The slideshow -->
+                    <div class="carousel-inner mb-4">
+                        <div class="carousel-item active">
+                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/bigsale_t11_resize_840x320.jpg" alt="Carousel 1">
                         </div>
-
-                        <!-- Left and right controls -->
-                        <a class="carousel-control-prev" href="#demo" data-slide="prev">
-                            <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#demo" data-slide="next">
-                            <span class="carousel-control-next-icon"></span>
-                        </a>
+                        <div class="carousel-item">
+                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/FAHASA_potico_840x320.png" alt="Carousel 2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/VNpay_Sieu_sale_11.11_840x320.jpg" alt="Carousel 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://cdn0.fahasa.com/media/magentothem/banner7/HoaCuQuy4_banner_840x320.jpg" alt="Carousel 4">
+                        </div>
                     </div>
+
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#demo" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="home-banner row">
-        <div class="row">
+        <div class="home-banner row">
             <div class="banner col-lg-3 col-md-6">
                 <img width="100%" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/bigsale_t11_voucher_310x210.jpg" alt="">
             </div>
@@ -100,9 +96,8 @@
                 <img width="100%" src="https://cdn0.fahasa.com/media/wysiwyg/Thang-11-2022/Megasale_Banner_giaidoan01_Smallbanner_310x210.jpg" alt="">
             </div>
         </div>
+    </div>
 
-    </div>
-    </div>
     <!-- Son -->
 
     <div id="menu" class="container bg-white row">
@@ -166,7 +161,6 @@
             </div>
             <div class="cms-icon-menu-item-name">Kinh Tế</div>
         </div>
-    </div>
     </div>
     <!-- Phuoc -->
     <style>
