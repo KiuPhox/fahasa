@@ -10,6 +10,7 @@
         flex-basis: 30%;
         border-right: 1px solid #cecece;
         padding-right: 10px;
+        margin-bottom: 20px;
     }
 
     .left-footer p {
@@ -53,6 +54,9 @@
 
     .footer-image-container {
         margin: auto;
+        width: 160px;
+        display: flex;
+        justify-content: center;
     }
 </style>
 
@@ -147,7 +151,7 @@
                     <a href="">
                         <p>Thay đổi địa chỉ khách hàng</p>
                     </a>
-                    <a href="<?php echo $_ENV['DOMAIN'];?>customer/account">
+                    <a href="<?php echo $_ENV['DOMAIN']; ?>customer/account">
                         <p>Chi tiết tài khoản</p>
                     </a>
                     <a href="">
@@ -168,7 +172,7 @@
                         <em class="fa fa-phone" style="font-size: 18px">&nbsp;</em>1900636467
                     </div>
                 </div>
-                <div style="display: flex; justify-content: space-between">
+                <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 20px">
                     <div class="footer-image-container">
                         <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/vnpost.png" width="100px" />
                     </div>
@@ -182,8 +186,6 @@
                     <div class="footer-image-container">
                         <img src="https://www.fahasa.com/media/wysiwyg/Logo-NCC/icon_snappy.png" width="150px" />
                     </div>
-                </div>
-                <div style="display: flex; justify-content: space-between">
                     <div class="footer-image-container">
                         <img style="max-width: 120px" src="https://cdn0.fahasa.com/media//wysiwyg/Logo-NCC/vnpay_logo.png" />
                     </div>
