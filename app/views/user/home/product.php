@@ -80,10 +80,6 @@ require_once('./app/models/User.php');
             border: none;
         }
 
-        .btn-buy-now {
-            /* margin-left: 10px; */
-        }
-
         .product-essential-detail h1 {
             font-size: 1.7em;
             font-weight: 600;
