@@ -26,7 +26,7 @@
                 </a>
             </form>
             <div class="notice cover-icon">
-                <a href="#" class="notice-button" style="flex-direction: column;">
+                <a href="#" class="notice-button">
                     <div class="notice-icon">
                         <i class="fa-regular fa-bell"></i>
                     </div>
@@ -38,7 +38,7 @@
                 </a>
             </div>
             <div id="cart-icon" class="cart cover-icon" style="position: relative;">
-                <a href="<?php echo $_ENV['DOMAIN']; ?>/checkout/cart" class="cart-button" style="flex-direction: column;">
+                <a href="<?php echo $_ENV['DOMAIN']; ?>/checkout/cart" class="cart-button">
                     <div class="cart-icon">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </div>
@@ -79,7 +79,7 @@
             </div>
             <div id="login-icon" class="login cover-icon">
                 <a href="<?php if (isset($_SESSION['id'])) echo $_ENV['DOMAIN'] . "/customer/account";
-                            else echo $_ENV['DOMAIN'] . "/login"; ?> " class="login-button" style="flex-direction: column;">
+                            else echo $_ENV['DOMAIN'] . "/login"; ?> " class="login-button">
                     <div class="login-icon">
                         <i class="fa-regular fa-user"></i>
                     </div>
@@ -805,7 +805,6 @@
 </div>
 
 <script>
-    const list_menu_icon = document.getElementById('list-menu-icon');
     const category = document.getElementById('category');
     const sub_menu = document.getElementById('sub-menu');
     const category_a = document.querySelectorAll('.left-category .nav-link a');
@@ -844,22 +843,6 @@
     cart_dropdown.addEventListener("mouseleave", function() {
         cart_dropdown.style.display = 'none';
     });
-
-    // list_menu_icon.addEventListener("mouseover", function() {
-    //     category.style.display = 'block';
-    // });
-
-    // list_menu_icon.addEventListener("mouseleave", function() {
-    //     category.style.display = 'none';
-    // });
-
-    // category.addEventListener("mouseover", function() {
-    //     category.style.display = 'block';
-    // })
-
-    // category.addEventListener("mouseleave", function() {
-    //     category.style.display = 'none';
-    // })
 
     <?php if (isset($_SESSION['id'])) { ?>
         login_icon.addEventListener("mouseover", function() {

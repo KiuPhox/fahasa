@@ -27,6 +27,7 @@
         .container-inner {
             display: flex;
             flex-direction: row;
+            justify-content: space-between;
         }
 
         .col-left-content {
@@ -83,7 +84,7 @@
         }
 
         .product-content {
-            padding: 0.8em;
+            padding: 1em;
         }
 
         .product-image {
@@ -126,7 +127,6 @@
 
         .col-left {
             margin: 0;
-            margin-right: 15px;
             background: none;
             padding: 0;
         }
@@ -174,7 +174,7 @@
     ?>
     <div class="container" style="background: none;">
         <div class="container-inner row">
-            <div class="col-left col-lg-3 mb-3 container">
+            <div class="col-left col-lg-3 container">
                 <div class="col-left-inner">
                     <div class="col-left-content">
                         <div class="col-left-block">
