@@ -406,6 +406,7 @@ require_once('./app/models/User.php');
         a.btn-add-qty {
             padding: 0 16px;
             cursor: pointer;
+            display: flex;
         }
     </style>
 </head>

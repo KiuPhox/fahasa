@@ -11,47 +11,6 @@
     <link rel="stylesheet" href="../public/css/style.css">
     <link rel="stylesheet" href="../vendor/components/font-awesome/css/all.css">
     <style>
-        .account-container {
-            background: none;
-            display: flex;
-            width: 83%;
-            margin: 12px auto;
-        }
-
-        .block-account {
-            background: white;
-            border: 1px solid #e6e6e6;
-            border-radius: 8px;
-            padding: 1rem;
-            padding-bottom: 0;
-        }
-
-        .block-title {
-            padding: 18px 20px;
-            font-size: 20px;
-            font-weight: 600;
-            border-bottom: 2px solid #f6f6f6;
-            color: #C92127;
-            font-size: 20px;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .block-account .block-content li {
-            border-bottom: 1px solid #f2f2f2;
-            color: #ea7696;
-        }
-
-        .block-account .block-content .current a {
-            color: #bf9a61;
-        }
-
-        .block-account .block-content li a {
-            display: block;
-            padding: 10px 0px;
-            transition: all 300ms ease-in 0s;
-        }
-
         .my-account {
             background: white;
             padding: 20px;
@@ -132,22 +91,7 @@
 <body>
     <?php include(dirname(__FILE__) . '/' . '../../layouts/header.php'); ?>
     <div class="account-container row">
-        <div class="col-left col-lg-3 col-md-3 col-sm-12 col-xs-12" style="padding: 0;">
-            <div class="block-account">
-                <div class="block-title">
-                    Tài khoản
-                </div>
-                <div class="block-content">
-                    <ul>
-                        <li class="current"><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/account">Bảng điều khiển tài khoản</a></li>
-                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/account/edit">Thông tin tài khoản</a></li>
-                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/address">Sổ địa chỉ</a></li>
-                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/order">Đơn hàng của tôi</a></li>
-                        <li><a href="<?php echo $_ENV['DOMAIN']; ?>/customer/rating">Nhận xét của tôi</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <?php include(dirname(__FILE__) . '/' . '../../layouts/customer/sidebar.php'); ?>
 
         <div class="col-main col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <div class="my-account">
