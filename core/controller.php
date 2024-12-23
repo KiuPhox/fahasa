@@ -45,14 +45,10 @@ abstract class Controller
     /**
      * @return void
      */
-    protected function before()
-    {
-    }
+    protected function before() {}
 
     /**
      * @return void
      */
-    protected function after()
-    {
-    }
+    protected function after() {}
 }

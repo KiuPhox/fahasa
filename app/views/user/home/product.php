@@ -627,7 +627,7 @@ require_once('./app/models/User.php');
                         rating: value / 20,
                         comment: review_field.value,
                     }
-                }).done(function(respone) {
+                }).done(function(response) {
                     location.reload();
                 });
             }
@@ -677,7 +677,7 @@ require_once('./app/models/User.php');
                         checked: false,
                         quantity: quantity,
                     }
-                }).done(function(respone) {
+                }).done(function(response) {
                     location.reload();
                 });
             }

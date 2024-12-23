@@ -295,7 +295,7 @@
                     if (response == "Đăng nhập thành công") {
                         alert(response, "success");
                         window.location.href = "<?php echo $_ENV['DOMAIN']; ?>"
-                    }else{
+                    } else {
                         alert(response, "danger");
                     }
                 }
@@ -314,7 +314,7 @@
                     "password-confirm": $("#password-confirm-2").val(),
                 },
                 success: function(response) {
-                    if (respone == "Email đã được sử dụng" || respone == "Vui lòng xác nhận email để đăng nhập") {
+                    if (response == "Email đã được sử dụng" || response == "Vui lòng xác nhận email để đăng nhập") {
                         alert(response, "warning");
                     }
                 }

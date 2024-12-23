@@ -60,7 +60,7 @@ abstract class Model
     public static function getAll()
     {
         $table_name = self::pluralize(get_called_class());
-        
+
         $sql = "SELECT * FROM $table_name";
         return self::executeQuery($sql);
     }

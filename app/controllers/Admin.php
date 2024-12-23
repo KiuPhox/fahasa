@@ -33,7 +33,7 @@ class Admin
 
             require("./app/views/admin/index.php");
         } else {
-            header("Location:/".$_ENV['DOMAIN']."/");
+            header("Location:/" . $_ENV['DOMAIN'] . "/");
         }
     }
 
@@ -89,15 +89,15 @@ class Admin
 
             foreach ($order_details as $order_detail) {
                 $book = Book::getByID($order_detail['book_id']);
-                $respone[$i]['id'] = $book['id'];
-                $respone[$i]['title'] = $book['title'];
-                $respone[$i]['image'] = $book['image'];
-                $respone[$i]['price'] = $book['price'];
-                $respone[$i]['discount'] = $book['discount'];
-                $respone[$i]['quantity'] = $order_detail['quantity'];
+                $response[$i]['id'] = $book['id'];
+                $response[$i]['title'] = $book['title'];
+                $response[$i]['image'] = $book['image'];
+                $response[$i]['price'] = $book['price'];
+                $response[$i]['discount'] = $book['discount'];
+                $response[$i]['quantity'] = $order_detail['quantity'];
                 $i++;
             }
-            echo json_encode($respone);
+            echo json_encode($response);
         }
     }
 }

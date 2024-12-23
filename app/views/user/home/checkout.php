@@ -448,7 +448,7 @@
                         address_id: address_id,
                         total: <?php echo $total ?>
                     }
-                }).done(function(respone) {
+                }).done(function(response) {
                     window.location.href = "<?php echo $_ENV['DOMAIN']; ?>";
                 });
             })
@@ -473,7 +473,7 @@
                             ward: $('#ward').val(),
                             total: <?php echo $total ?>,
                         }
-                    }).done(function(respone) {
+                    }).done(function(response) {
                         window.location.href = "<?php echo $_ENV['DOMAIN']; ?>";
                     });
                 } else {

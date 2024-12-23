@@ -458,7 +458,7 @@
                 data: {
                     id: id,
                 }
-            }).done(function(respone) {
+            }).done(function(response) {
                 location.reload();
             });
         }
@@ -470,7 +470,7 @@
                 data: {
                     id: id,
                 }
-            }).done(function(respone) {
+            }).done(function(response) {
                 location.reload();
             });
         }
@@ -482,7 +482,7 @@
                 data: {
                     id: id,
                 }
-            }).done(function(respone) {
+            }).done(function(response) {
                 location.reload();
             });
         }
@@ -494,7 +494,7 @@
                 data: {
                     check: document.getElementById("checkbox-all-books").checked,
                 }
-            }).done(function(respone) {
+            }).done(function(response) {
                 location.reload();
             });
         }
@@ -506,7 +506,7 @@
                 data: {
                     id: id,
                 }
-            }).done(function(respone) {
+            }).done(function(response) {
                 location.reload();
             });
         }
